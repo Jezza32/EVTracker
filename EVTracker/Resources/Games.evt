@@ -1,0 +1,1731 @@
+<ArrayOfGame xmlns="http://schemas.datacontract.org/2004/07/EVTracker" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Game>
+		<Name>Pokemon White</Name>
+		<Routes>
+			<Route>
+				<Name>Route 1 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>504</a:int>
+					<a:int>506</a:int>
+					<a:int>559</a:int>
+					<a:int>531</a:int>
+					<a:int>83</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 1 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>349</a:int>
+					<a:int>350</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 2 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>504</a:int>
+					<a:int>506</a:int>
+					<a:int>509</a:int>
+					<a:int>531</a:int>
+					<a:int>360</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 3 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>519</a:int>
+					<a:int>504</a:int>
+					<a:int>522</a:int>
+					<a:int>506</a:int>
+					<a:int>509</a:int>
+					<a:int>531</a:int>
+					<a:int>314</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 3 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 4 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>551</a:int>
+					<a:int>554</a:int>
+					<a:int>559</a:int>
+					<a:int>449</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 4 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>98</a:int>
+					<a:int>366</a:int>
+					<a:int>370</a:int>
+					<a:int>369</a:int>
+					<a:int>99</a:int>
+					<a:int>368</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 5 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>577</a:int>
+					<a:int>572</a:int>
+					<a:int>568</a:int>
+					<a:int>510</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>573</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 6 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>585</a:int>
+					<a:int>588</a:int>
+					<a:int>520</a:int>
+					<a:int>582</a:int>
+					<a:int>590</a:int>
+					<a:int>541</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>521</a:int>
+					<a:int>542</a:int>
+					<a:int>312</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 6 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>186</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 7 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>520</a:int>
+					<a:int>613</a:int>
+					<a:int>585</a:int>
+					<a:int>505</a:int>
+					<a:int>523</a:int>
+					<a:int>590</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>521</a:int>
+					<a:int>161</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 8 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>536</a:int>
+					<a:int>616</a:int>
+					<a:int>618</a:int>
+					<a:int>453</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 8 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>618</a:int>
+					<a:int>537</a:int>
+					<a:int>539</a:int>
+					<a:int>340</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 9 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>578</a:int>
+					<a:int>572</a:int>
+					<a:int>569</a:int>
+					<a:int>624</a:int>
+					<a:int>510</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>573</a:int>
+					<a:int>579</a:int>
+					<a:int>261</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 10 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>507</a:int>
+					<a:int>627</a:int>
+					<a:int>626</a:int>
+					<a:int>590</a:int>
+					<a:int>538</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>508</a:int>
+					<a:int>539</a:int>
+					<a:int>236</a:int>
+					<a:int>591</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 11 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>627</a:int>
+					<a:int>55</a:int>
+					<a:int>207</a:int>
+					<a:int>591</a:int>
+					<a:int>335</a:int>
+					<a:int>336</a:int>
+					<a:int>588</a:int>
+					<a:int>624</a:int>
+					<a:int>628</a:int>
+					<a:int>625</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>472</a:int>
+					<a:int>46</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 11 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>418</a:int>
+					<a:int>419</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 12 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>415</a:int>
+					<a:int>191</a:int>
+					<a:int>520</a:int>
+					<a:int>11</a:int>
+					<a:int>78</a:int>
+					<a:int>421</a:int>
+					<a:int>214</a:int>
+					<a:int>127</a:int>
+					<a:int>206</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>12</a:int>
+					<a:int>192</a:int>
+					<a:int>416</a:int>
+					<a:int>521</a:int>
+					<a:int>84</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 13 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>114</a:int>
+					<a:int>277</a:int>
+					<a:int>42</a:int>
+					<a:int>337</a:int>
+					<a:int>338</a:int>
+					<a:int>426</a:int>
+					<a:int>359</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>169</a:int>
+					<a:int>465</a:int>
+					<a:int>353</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 13 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>278</a:int>
+					<a:int>120</a:int>
+					<a:int>279</a:int>
+					<a:int>222</a:int>
+					<a:int>98</a:int>
+					<a:int>90</a:int>
+					<a:int>370</a:int>
+					<a:int>99</a:int>
+					<a:int>91</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 14 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>55</a:int>
+					<a:int>39</a:int>
+					<a:int>357</a:int>
+					<a:int>619</a:int>
+					<a:int>334</a:int>
+					<a:int>426</a:int>
+					<a:int>606</a:int>
+					<a:int>213</a:int>
+					<a:int>620</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>40</a:int>
+					<a:int>193</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 14 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>418</a:int>
+					<a:int>419</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 15 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>22</a:int>
+					<a:int>105</a:int>
+					<a:int>207</a:int>
+					<a:int>538</a:int>
+					<a:int>115</a:int>
+					<a:int>247</a:int>
+					<a:int>505</a:int>
+					<a:int>531</a:int>
+					<a:int>539</a:int>
+					<a:int>248</a:int>
+					<a:int>472</a:int>
+					<a:int>56</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 16 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>577</a:int>
+					<a:int>572</a:int>
+					<a:int>568</a:int>
+					<a:int>510</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>573</a:int>
+					<a:int>204</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 17 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>456</a:int>
+					<a:int>116</a:int>
+					<a:int>117</a:int>
+					<a:int>211</a:int>
+					<a:int>457</a:int>
+					<a:int>230</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 18 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>559</a:int>
+					<a:int>557</a:int>
+					<a:int>505</a:int>
+					<a:int>538</a:int>
+					<a:int>558</a:int>
+					<a:int>539</a:int>
+					<a:int>102</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 18 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>456</a:int>
+					<a:int>116</a:int>
+					<a:int>170</a:int>
+					<a:int>117</a:int>
+					<a:int>211</a:int>
+					<a:int>457</a:int>
+					<a:int>230</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Abundant Shine (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>358</a:int>
+					<a:int>37</a:int>
+					<a:int>164</a:int>
+					<a:int>234</a:int>
+					<a:int>548</a:int>
+					<a:int>437</a:int>
+					<a:int>200</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>429</a:int>
+					<a:int>549</a:int>
+					<a:int>38</a:int>
+					<a:int>645</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Abundant Shine (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>79</a:int>
+					<a:int>80</a:int>
+					<a:int>199</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Celestial Tower</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>607</a:int>
+					<a:int>605</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Challenger's Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>525</a:int>
+					<a:int>527</a:int>
+					<a:int>75</a:int>
+					<a:int>108</a:int>
+					<a:int>302</a:int>
+					<a:int>303</a:int>
+					<a:int>530</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Challenger's Cave (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Chargestone Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>595</a:int>
+					<a:int>599</a:int>
+					<a:int>597</a:int>
+					<a:int>525</a:int>
+					<a:int>602</a:int>
+					<a:int>529</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Cold Storage</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>507</a:int>
+					<a:int>582</a:int>
+					<a:int>572</a:int>
+					<a:int>532</a:int>
+					<a:int>531</a:int>
+					<a:int>573</a:int>
+					<a:int>508</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Desert Resort</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>551</a:int>
+					<a:int>554</a:int>
+					<a:int>556</a:int>
+					<a:int>559</a:int>
+					<a:int>557</a:int>
+					<a:int>561</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Dragonspiral Tower</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>520</a:int>
+					<a:int>585</a:int>
+					<a:int>619</a:int>
+					<a:int>621</a:int>
+					<a:int>582</a:int>
+					<a:int>613</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>521</a:int>
+					<a:int>586</a:int>
+					<a:int>614</a:int>
+					<a:int>622</a:int>
+					<a:int>644</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Dragonspiral Tower (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>147</a:int>
+					<a:int>148</a:int>
+					<a:int>149</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Dreamyard</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>504</a:int>
+					<a:int>509</a:int>
+					<a:int>517</a:int>
+					<a:int>505</a:int>
+					<a:int>510</a:int>
+					<a:int>20</a:int>
+					<a:int>166</a:int>
+					<a:int>168</a:int>
+					<a:int>402</a:int>
+					<a:int>49</a:int>
+					<a:int>531</a:int>
+					<a:int>518</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Driftveil Drawbridge</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>580</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Driftveil City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>98</a:int>
+					<a:int>170</a:int>
+					<a:int>370</a:int>
+					<a:int>99</a:int>
+					<a:int>171</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Giant Chasm (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>114</a:int>
+					<a:int>277</a:int>
+					<a:int>42</a:int>
+					<a:int>337</a:int>
+					<a:int>338</a:int>
+					<a:int>426</a:int>
+					<a:int>359</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>429</a:int>
+					<a:int>169</a:int>
+					<a:int>465</a:int>
+					<a:int>221</a:int>
+					<a:int>215</a:int>
+					<a:int>225</a:int>
+					<a:int>124</a:int>
+					<a:int>525</a:int>
+					<a:int>530</a:int>
+					<a:int>35</a:int>
+					<a:int>132</a:int>
+					<a:int>375</a:int>
+					<a:int>473</a:int>
+					<a:int>36</a:int>
+					<a:int>376</a:int>
+					<a:int>646</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Giant Chasm (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>86</a:int>
+					<a:int>87</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Icirrus City (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>536</a:int>
+					<a:int>616</a:int>
+					<a:int>618</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Icirrus City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>618</a:int>
+					<a:int>537</a:int>
+					<a:int>339</a:int>
+					<a:int>340</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Lostlorn Forest (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>548</a:int>
+					<a:int>541</a:int>
+					<a:int>520</a:int>
+					<a:int>543</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>511</a:int>
+					<a:int>513</a:int>
+					<a:int>515</a:int>
+					<a:int>521</a:int>
+					<a:int>542</a:int>
+					<a:int>549</a:int>
+					<a:int>571</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Lostlorn Forest (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Liberty Garden</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>494</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Marvelous Bridge</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>581</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Mistralton Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>525</a:int>
+					<a:int>527</a:int>
+					<a:int>610</a:int>
+					<a:int>529</a:int>
+					<a:int>638</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Moor Of Icirrus (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>536</a:int>
+					<a:int>616</a:int>
+					<a:int>618</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Moor Of Icirrus (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>618</a:int>
+					<a:int>537</a:int>
+					<a:int>339</a:int>
+					<a:int>340</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>N's Castle</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>644</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>P2 Laboratory (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>505</a:int>
+					<a:int>507</a:int>
+					<a:int>599</a:int>
+					<a:int>559</a:int>
+					<a:int>531</a:int>
+					<a:int>508</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>P2 Laboratory (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>556</a:int>
+					<a:int>116</a:int>
+					<a:int>117</a:int>
+					<a:int>211</a:int>
+					<a:int>457</a:int>
+					<a:int>230</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Pinwheel Forest (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>535</a:int>
+					<a:int>519</a:int>
+					<a:int>532</a:int>
+					<a:int>538</a:int>
+					<a:int>531</a:int>
+					<a:int>539</a:int>
+					<a:int>548</a:int>
+					<a:int>540</a:int>
+					<a:int>543</a:int>
+					<a:int>511</a:int>
+					<a:int>513</a:int>
+					<a:int>515</a:int>
+					<a:int>549</a:int>
+					<a:int>640</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Pinwheel Forest (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Relic Castle</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>551</a:int>
+					<a:int>562</a:int>
+					<a:int>552</a:int>
+					<a:int>563</a:int>
+					<a:int>28</a:int>
+					<a:int>95</a:int>
+					<a:int>344</a:int>
+					<a:int>637</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Striaton City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Twist Mountain</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>525</a:int>
+					<a:int>533</a:int>
+					<a:int>527</a:int>
+					<a:int>613</a:int>
+					<a:int>615</a:int>
+					<a:int>529</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Undella Bay (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>278</a:int>
+					<a:int>458</a:int>
+					<a:int>279</a:int>
+					<a:int>363</a:int>
+					<a:int>320</a:int>
+					<a:int>226</a:int>
+					<a:int>321</a:int>
+					<a:int>364</a:int>
+					<a:int>365</a:int>
+					<a:int>223</a:int>
+					<a:int>90</a:int>
+					<a:int>370</a:int>
+					<a:int>224</a:int>
+					<a:int>91</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Undella Town (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>278</a:int>
+					<a:int>458</a:int>
+					<a:int>279</a:int>
+					<a:int>320</a:int>
+					<a:int>222</a:int>
+					<a:int>226</a:int>
+					<a:int>223</a:int>
+					<a:int>90</a:int>
+					<a:int>370</a:int>
+					<a:int>224</a:int>
+					<a:int>91</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Victory Road</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>631</a:int>
+					<a:int>627</a:int>
+					<a:int>619</a:int>
+					<a:int>611</a:int>
+					<a:int>632</a:int>
+					<a:int>525</a:int>
+					<a:int>633</a:int>
+					<a:int>527</a:int>
+					<a:int>530</a:int>
+					<a:int>639</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Victory Road (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Village Bridge (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>55</a:int>
+					<a:int>400</a:int>
+					<a:int>627</a:int>
+					<a:int>335</a:int>
+					<a:int>336</a:int>
+					<a:int>628</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Village Bridge (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>131</a:int>
+					<a:int>318</a:int>
+					<a:int>319</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Wellspring Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>524</a:int>
+					<a:int>527</a:int>
+					<a:int>529</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Wellspring Cave (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>White City (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>16</a:int>
+					<a:int>29</a:int>
+					<a:int>32</a:int>
+					<a:int>43</a:int>
+					<a:int>63</a:int>
+					<a:int>66</a:int>
+					<a:int>69</a:int>
+					<a:int>81</a:int>
+					<a:int>92</a:int>
+					<a:int>111</a:int>
+					<a:int>137</a:int>
+					<a:int>175</a:int>
+					<a:int>179</a:int>
+					<a:int>187</a:int>
+					<a:int>239</a:int>
+					<a:int>240</a:int>
+					<a:int>265</a:int>
+					<a:int>273</a:int>
+					<a:int>280</a:int>
+					<a:int>287</a:int>
+					<a:int>293</a:int>
+					<a:int>298</a:int>
+					<a:int>304</a:int>
+					<a:int>328</a:int>
+					<a:int>371</a:int>
+					<a:int>396</a:int>
+					<a:int>403</a:int>
+					<a:int>406</a:int>
+					<a:int>440</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>White City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>270</a:int>
+					<a:int>283</a:int>
+					<a:int>341</a:int>
+					<a:int>194</a:int>
+				</Pokemon>
+			</Route>
+		</Routes>
+	</Game>
+	<Game>
+		<Name>Pokemon Black</Name>
+		<Routes>
+			<Route>
+				<Name>Route 1 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>504</a:int>
+					<a:int>506</a:int>
+					<a:int>559</a:int>
+					<a:int>531</a:int>
+					<a:int>83</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 1 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>349</a:int>
+					<a:int>350</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 2 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>504</a:int>
+					<a:int>506</a:int>
+					<a:int>509</a:int>
+					<a:int>531</a:int>
+					<a:int>360</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 3 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>519</a:int>
+					<a:int>504</a:int>
+					<a:int>522</a:int>
+					<a:int>506</a:int>
+					<a:int>509</a:int>
+					<a:int>531</a:int>
+					<a:int>313</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 3 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 4 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>551</a:int>
+					<a:int>554</a:int>
+					<a:int>559</a:int>
+					<a:int>449</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 4 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>98</a:int>
+					<a:int>366</a:int>
+					<a:int>370</a:int>
+					<a:int>369</a:int>
+					<a:int>99</a:int>
+					<a:int>368</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 5 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>574</a:int>
+					<a:int>572</a:int>
+					<a:int>568</a:int>
+					<a:int>510</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>573</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 6 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>585</a:int>
+					<a:int>588</a:int>
+					<a:int>520</a:int>
+					<a:int>582</a:int>
+					<a:int>590</a:int>
+					<a:int>541</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>521</a:int>
+					<a:int>542</a:int>
+					<a:int>311</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 6 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>186</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 7 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>520</a:int>
+					<a:int>613</a:int>
+					<a:int>585</a:int>
+					<a:int>505</a:int>
+					<a:int>523</a:int>
+					<a:int>590</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>521</a:int>
+					<a:int>161</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 8 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>536</a:int>
+					<a:int>616</a:int>
+					<a:int>618</a:int>
+					<a:int>453</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 8 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>618</a:int>
+					<a:int>537</a:int>
+					<a:int>539</a:int>
+					<a:int>340</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 9 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>575</a:int>
+					<a:int>572</a:int>
+					<a:int>569</a:int>
+					<a:int>624</a:int>
+					<a:int>510</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>573</a:int>
+					<a:int>576</a:int>
+					<a:int>228</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 10 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>507</a:int>
+					<a:int>629</a:int>
+					<a:int>626</a:int>
+					<a:int>590</a:int>
+					<a:int>538</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>508</a:int>
+					<a:int>539</a:int>
+					<a:int>236</a:int>
+					<a:int>591</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 11 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>629</a:int>
+					<a:int>55</a:int>
+					<a:int>207</a:int>
+					<a:int>591</a:int>
+					<a:int>335</a:int>
+					<a:int>336</a:int>
+					<a:int>588</a:int>
+					<a:int>624</a:int>
+					<a:int>630</a:int>
+					<a:int>625</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>472</a:int>
+					<a:int>285</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 11 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>418</a:int>
+					<a:int>419</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 12 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>415</a:int>
+					<a:int>191</a:int>
+					<a:int>520</a:int>
+					<a:int>14</a:int>
+					<a:int>78</a:int>
+					<a:int>421</a:int>
+					<a:int>214</a:int>
+					<a:int>127</a:int>
+					<a:int>206</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>15</a:int>
+					<a:int>192</a:int>
+					<a:int>416</a:int>
+					<a:int>521</a:int>
+					<a:int>84</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 13 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>114</a:int>
+					<a:int>277</a:int>
+					<a:int>42</a:int>
+					<a:int>337</a:int>
+					<a:int>338</a:int>
+					<a:int>426</a:int>
+					<a:int>359</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>169</a:int>
+					<a:int>465</a:int>
+					<a:int>353</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 13 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>278</a:int>
+					<a:int>120</a:int>
+					<a:int>279</a:int>
+					<a:int>222</a:int>
+					<a:int>98</a:int>
+					<a:int>90</a:int>
+					<a:int>370</a:int>
+					<a:int>99</a:int>
+					<a:int>91</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 14 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>55</a:int>
+					<a:int>39</a:int>
+					<a:int>357</a:int>
+					<a:int>619</a:int>
+					<a:int>334</a:int>
+					<a:int>426</a:int>
+					<a:int>606</a:int>
+					<a:int>213</a:int>
+					<a:int>620</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>40</a:int>
+					<a:int>193</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 14 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>418</a:int>
+					<a:int>419</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 15 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>22</a:int>
+					<a:int>105</a:int>
+					<a:int>207</a:int>
+					<a:int>538</a:int>
+					<a:int>115</a:int>
+					<a:int>247</a:int>
+					<a:int>505</a:int>
+					<a:int>531</a:int>
+					<a:int>539</a:int>
+					<a:int>248</a:int>
+					<a:int>472</a:int>
+					<a:int>56</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 16 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>574</a:int>
+					<a:int>572</a:int>
+					<a:int>568</a:int>
+					<a:int>510</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>573</a:int>
+					<a:int>204</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 17 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>456</a:int>
+					<a:int>116</a:int>
+					<a:int>117</a:int>
+					<a:int>211</a:int>
+					<a:int>457</a:int>
+					<a:int>230</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 18 (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>559</a:int>
+					<a:int>557</a:int>
+					<a:int>505</a:int>
+					<a:int>538</a:int>
+					<a:int>558</a:int>
+					<a:int>539</a:int>
+					<a:int>102</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Route 18 (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>456</a:int>
+					<a:int>116</a:int>
+					<a:int>170</a:int>
+					<a:int>117</a:int>
+					<a:int>211</a:int>
+					<a:int>457</a:int>
+					<a:int>230</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Abundant Shine (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>358</a:int>
+					<a:int>37</a:int>
+					<a:int>164</a:int>
+					<a:int>234</a:int>
+					<a:int>546</a:int>
+					<a:int>437</a:int>
+					<a:int>198</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>430</a:int>
+					<a:int>547</a:int>
+					<a:int>38</a:int>
+					<a:int>645</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Abundant Shine (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>79</a:int>
+					<a:int>80</a:int>
+					<a:int>199</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Celestial Tower</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>607</a:int>
+					<a:int>605</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Challenger's Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>525</a:int>
+					<a:int>527</a:int>
+					<a:int>75</a:int>
+					<a:int>108</a:int>
+					<a:int>302</a:int>
+					<a:int>303</a:int>
+					<a:int>530</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Challenger's Cave (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Chargestone Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>595</a:int>
+					<a:int>599</a:int>
+					<a:int>597</a:int>
+					<a:int>525</a:int>
+					<a:int>602</a:int>
+					<a:int>529</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Cold Storage</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>507</a:int>
+					<a:int>582</a:int>
+					<a:int>572</a:int>
+					<a:int>532</a:int>
+					<a:int>531</a:int>
+					<a:int>573</a:int>
+					<a:int>508</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Desert Resort</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>551</a:int>
+					<a:int>554</a:int>
+					<a:int>556</a:int>
+					<a:int>559</a:int>
+					<a:int>557</a:int>
+					<a:int>561</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Dragonspiral Tower</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>520</a:int>
+					<a:int>585</a:int>
+					<a:int>619</a:int>
+					<a:int>621</a:int>
+					<a:int>582</a:int>
+					<a:int>613</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>521</a:int>
+					<a:int>586</a:int>
+					<a:int>614</a:int>
+					<a:int>622</a:int>
+					<a:int>643</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Dragonspiral Tower (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>147</a:int>
+					<a:int>148</a:int>
+					<a:int>149</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Dreamyard</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>504</a:int>
+					<a:int>509</a:int>
+					<a:int>517</a:int>
+					<a:int>505</a:int>
+					<a:int>510</a:int>
+					<a:int>20</a:int>
+					<a:int>166</a:int>
+					<a:int>168</a:int>
+					<a:int>402</a:int>
+					<a:int>49</a:int>
+					<a:int>531</a:int>
+					<a:int>518</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Driftveil Drawbridge</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>580</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Driftveil City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>98</a:int>
+					<a:int>170</a:int>
+					<a:int>370</a:int>
+					<a:int>99</a:int>
+					<a:int>171</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Giant Chasm (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>114</a:int>
+					<a:int>277</a:int>
+					<a:int>42</a:int>
+					<a:int>337</a:int>
+					<a:int>338</a:int>
+					<a:int>426</a:int>
+					<a:int>359</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>	
+					<a:int>169</a:int>
+					<a:int>465</a:int>
+					<a:int>221</a:int>
+					<a:int>215</a:int>
+					<a:int>225</a:int>
+					<a:int>124</a:int>
+					<a:int>525</a:int>
+					<a:int>530</a:int>
+					<a:int>35</a:int>
+					<a:int>132</a:int>
+					<a:int>375</a:int>
+					<a:int>473</a:int>
+					<a:int>36</a:int>
+					<a:int>376</a:int>
+					<a:int>646</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Giant Chasm (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>86</a:int>
+					<a:int>87</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Icirrus City (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>536</a:int>
+					<a:int>616</a:int>
+					<a:int>618</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Icirrus City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>618</a:int>
+					<a:int>537</a:int>
+					<a:int>339</a:int>
+					<a:int>340</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Lostlorn Forest (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>546</a:int>
+					<a:int>541</a:int>
+					<a:int>520</a:int>
+					<a:int>543</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+					<a:int>511</a:int>
+					<a:int>513</a:int>
+					<a:int>515</a:int>
+					<a:int>521</a:int>
+					<a:int>542</a:int>
+					<a:int>547</a:int>
+					<a:int>571</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Lostlorn Forest (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Liberty Garden</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>494</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Marvelous Bridge</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>581</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Mistralton Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>525</a:int>
+					<a:int>527</a:int>
+					<a:int>610</a:int>
+					<a:int>529</a:int>
+					<a:int>638</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Moor Of Icirrus (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>536</a:int>
+					<a:int>616</a:int>
+					<a:int>618</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Moor Of Icirrus (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>618</a:int>
+					<a:int>537</a:int>
+					<a:int>339</a:int>
+					<a:int>340</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>N's Castle</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>643</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>P2 Laboratory (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>505</a:int>
+					<a:int>507</a:int>
+					<a:int>599</a:int>
+					<a:int>559</a:int>
+					<a:int>531</a:int>
+					<a:int>508</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>P2 Laboratory (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>592</a:int>
+					<a:int>594</a:int>
+					<a:int>593</a:int>
+					<a:int>556</a:int>
+					<a:int>116</a:int>
+					<a:int>117</a:int>
+					<a:int>211</a:int>
+					<a:int>457</a:int>
+					<a:int>230</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Pinwheel Forest (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>535</a:int>
+					<a:int>519</a:int>
+					<a:int>532</a:int>
+					<a:int>538</a:int>
+					<a:int>531</a:int>
+					<a:int>539</a:int>
+					<a:int>546</a:int>
+					<a:int>540</a:int>
+					<a:int>543</a:int>
+					<a:int>511</a:int>
+					<a:int>513</a:int>
+					<a:int>515</a:int>
+					<a:int>547</a:int>
+					<a:int>640</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Pinwheel Forest (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Relic Castle</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>551</a:int>
+					<a:int>562</a:int>
+					<a:int>552</a:int>
+					<a:int>563</a:int>
+					<a:int>28</a:int>
+					<a:int>95</a:int>
+					<a:int>344</a:int>
+					<a:int>637</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Striaton City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>118</a:int>
+					<a:int>119</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Twist Mountain</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>525</a:int>
+					<a:int>533</a:int>
+					<a:int>527</a:int>
+					<a:int>613</a:int>
+					<a:int>615</a:int>
+					<a:int>529</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Undella Bay (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>278</a:int>
+					<a:int>458</a:int>
+					<a:int>279</a:int>
+					<a:int>363</a:int>
+					<a:int>320</a:int>
+					<a:int>226</a:int>
+					<a:int>321</a:int>
+					<a:int>364</a:int>
+					<a:int>365</a:int>
+					<a:int>223</a:int>
+					<a:int>90</a:int>
+					<a:int>370</a:int>
+					<a:int>224</a:int>
+					<a:int>91</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Undella Town (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>278</a:int>
+					<a:int>458</a:int>
+					<a:int>279</a:int>
+					<a:int>320</a:int>
+					<a:int>222</a:int>
+					<a:int>226</a:int>
+					<a:int>223</a:int>
+					<a:int>90</a:int>
+					<a:int>370</a:int>
+					<a:int>224</a:int>
+					<a:int>91</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Victory Road</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>631</a:int>
+					<a:int>629</a:int>
+					<a:int>619</a:int>
+					<a:int>611</a:int>
+					<a:int>632</a:int>
+					<a:int>525</a:int>
+					<a:int>633</a:int>
+					<a:int>527</a:int>
+					<a:int>530</a:int>
+					<a:int>639</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Victory Road (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Village Bridge (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>55</a:int>
+					<a:int>400</a:int>
+					<a:int>629</a:int>
+					<a:int>335</a:int>
+					<a:int>336</a:int>
+					<a:int>630</a:int>
+					<a:int>531</a:int>
+					<a:int>587</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Village Bridge (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>131</a:int>
+					<a:int>318</a:int>
+					<a:int>319</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Wellspring Cave</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>524</a:int>
+					<a:int>527</a:int>
+					<a:int>529</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>Wellspring Cave (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>550</a:int>
+					<a:int>60</a:int>
+					<a:int>61</a:int>
+					<a:int>62</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>White City (Grass)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>16</a:int>
+					<a:int>29</a:int>
+					<a:int>32</a:int>
+					<a:int>43</a:int>
+					<a:int>63</a:int>
+					<a:int>66</a:int>
+					<a:int>69</a:int>
+					<a:int>81</a:int>
+					<a:int>92</a:int>
+					<a:int>111</a:int>
+					<a:int>137</a:int>
+					<a:int>175</a:int>
+					<a:int>179</a:int>
+					<a:int>187</a:int>
+					<a:int>239</a:int>
+					<a:int>240</a:int>
+					<a:int>265</a:int>
+					<a:int>273</a:int>
+					<a:int>280</a:int>
+					<a:int>287</a:int>
+					<a:int>293</a:int>
+					<a:int>298</a:int>
+					<a:int>304</a:int>
+					<a:int>328</a:int>
+					<a:int>371</a:int>
+					<a:int>396</a:int>
+					<a:int>403</a:int>
+					<a:int>406</a:int>
+					<a:int>440</a:int>
+				</Pokemon>
+			</Route>
+			<Route>
+				<Name>White City (Water)</Name>
+				<Pokemon xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<a:int>270</a:int>
+					<a:int>283</a:int>
+					<a:int>341</a:int>
+					<a:int>194</a:int>
+				</Pokemon>
+			</Route>
+		</Routes>
+	</Game>
+</ArrayOfGame>

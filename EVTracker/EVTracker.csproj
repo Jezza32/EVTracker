@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{931B6707-9099-4938-BC85-8FD31F6B11FD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EVTracker</RootNamespace>
+    <AssemblyName>EVTracker</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game.cs" />
+    <Compile Include="Manager.cs" />
+    <Compile Include="Nature.cs" />
+    <Compile Include="Page.cs" />
+    <Compile Include="Pokemon.cs" />
+    <Compile Include="PokemonType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Route.cs" />
+    <Compile Include="Stat.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Resources\Games.evt" />
+    <EmbeddedResource Include="Resources\Species.evt" />
+    <EmbeddedResource Include="Resources\Natures.evt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\000.png" />
+    <EmbeddedResource Include="Resources\001.png" />
+    <EmbeddedResource Include="Resources\002.png" />
+    <EmbeddedResource Include="Resources\003.png" />
+    <EmbeddedResource Include="Resources\004.png" />
+    <EmbeddedResource Include="Resources\005.png" />
+    <EmbeddedResource Include="Resources\006.png" />
+    <EmbeddedResource Include="Resources\007.png" />
+    <EmbeddedResource Include="Resources\008.png" />
+    <EmbeddedResource Include="Resources\009.png" />
+    <EmbeddedResource Include="Resources\010.png" />
+    <EmbeddedResource Include="Resources\011.png" />
+    <EmbeddedResource Include="Resources\012.png" />
+    <EmbeddedResource Include="Resources\013.png" />
+    <EmbeddedResource Include="Resources\014.png" />
+    <EmbeddedResource Include="Resources\015.png" />
+    <EmbeddedResource Include="Resources\016.png" />
+    <EmbeddedResource Include="Resources\017.png" />
+    <EmbeddedResource Include="Resources\018.png" />
+    <EmbeddedResource Include="Resources\019.png" />
+    <EmbeddedResource Include="Resources\020.png" />
+    <EmbeddedResource Include="Resources\021.png" />
+    <EmbeddedResource Include="Resources\022.png" />
+    <EmbeddedResource Include="Resources\023.png" />
+    <EmbeddedResource Include="Resources\024.png" />
+    <EmbeddedResource Include="Resources\025.png" />
+    <EmbeddedResource Include="Resources\026.png" />
+    <EmbeddedResource Include="Resources\027.png" />
+    <EmbeddedResource Include="Resources\028.png" />
+    <EmbeddedResource Include="Resources\029.png" />
+    <EmbeddedResource Include="Resources\030.png" />
+    <EmbeddedResource Include="Resources\031.png" />
+    <EmbeddedResource Include="Resources\032.png" />
+    <EmbeddedResource Include="Resources\033.png" />
+    <EmbeddedResource Include="Resources\034.png" />
+    <EmbeddedResource Include="Resources\035.png" />
+    <EmbeddedResource Include="Resources\036.png" />
+    <EmbeddedResource Include="Resources\037.png" />
+    <EmbeddedResource Include="Resources\038.png" />
+    <EmbeddedResource Include="Resources\039.png" />
+    <EmbeddedResource Include="Resources\040.png" />
+    <EmbeddedResource Include="Resources\041.png" />
+    <EmbeddedResource Include="Resources\042.png" />
+    <EmbeddedResource Include="Resources\043.png" />
+    <EmbeddedResource Include="Resources\044.png" />
+    <EmbeddedResource Include="Resources\045.png" />
+    <EmbeddedResource Include="Resources\046.png" />
+    <EmbeddedResource Include="Resources\047.png" />
+    <EmbeddedResource Include="Resources\048.png" />
+    <EmbeddedResource Include="Resources\049.png" />
+    <EmbeddedResource Include="Resources\050.png" />
+    <EmbeddedResource Include="Resources\051.png" />
+    <EmbeddedResource Include="Resources\052.png" />
+    <EmbeddedResource Include="Resources\053.png" />
+    <EmbeddedResource Include="Resources\054.png" />
+    <EmbeddedResource Include="Resources\055.png" />
+    <EmbeddedResource Include="Resources\056.png" />
+    <EmbeddedResource Include="Resources\057.png" />
+    <EmbeddedResource Include="Resources\058.png" />
+    <EmbeddedResource Include="Resources\059.png" />
+    <EmbeddedResource Include="Resources\060.png" />
+    <EmbeddedResource Include="Resources\061.png" />
+    <EmbeddedResource Include="Resources\062.png" />
+    <EmbeddedResource Include="Resources\063.png" />
+    <EmbeddedResource Include="Resources\064.png" />
+    <EmbeddedResource Include="Resources\065.png" />
+    <EmbeddedResource Include="Resources\066.png" />
+    <EmbeddedResource Include="Resources\067.png" />
+    <EmbeddedResource Include="Resources\068.png" />
+    <EmbeddedResource Include="Resources\069.png" />
+    <EmbeddedResource Include="Resources\070.png" />
+    <EmbeddedResource Include="Resources\071.png" />
+    <EmbeddedResource Include="Resources\072.png" />
+    <EmbeddedResource Include="Resources\073.png" />
+    <EmbeddedResource Include="Resources\074.png" />
+    <EmbeddedResource Include="Resources\075.png" />
+    <EmbeddedResource Include="Resources\076.png" />
+    <EmbeddedResource Include="Resources\077.png" />
+    <EmbeddedResource Include="Resources\078.png" />
+    <EmbeddedResource Include="Resources\079.png" />
+    <EmbeddedResource Include="Resources\080.png" />
+    <EmbeddedResource Include="Resources\081.png" />
+    <EmbeddedResource Include="Resources\082.png" />
+    <EmbeddedResource Include="Resources\083.png" />
+    <EmbeddedResource Include="Resources\084.png" />
+    <EmbeddedResource Include="Resources\085.png" />
+    <EmbeddedResource Include="Resources\086.png" />
+    <EmbeddedResource Include="Resources\087.png" />
+    <EmbeddedResource Include="Resources\088.png" />
+    <EmbeddedResource Include="Resources\089.png" />
+    <EmbeddedResource Include="Resources\090.png" />
+    <EmbeddedResource Include="Resources\091.png" />
+    <EmbeddedResource Include="Resources\092.png" />
+    <EmbeddedResource Include="Resources\093.png" />
+    <EmbeddedResource Include="Resources\094.png" />
+    <EmbeddedResource Include="Resources\095.png" />
+    <EmbeddedResource Include="Resources\096.png" />
+    <EmbeddedResource Include="Resources\097.png" />
+    <EmbeddedResource Include="Resources\098.png" />
+    <EmbeddedResource Include="Resources\099.png" />
+    <EmbeddedResource Include="Resources\100.png" />
+    <EmbeddedResource Include="Resources\101.png" />
+    <EmbeddedResource Include="Resources\102.png" />
+    <EmbeddedResource Include="Resources\103.png" />
+    <EmbeddedResource Include="Resources\104.png" />
+    <EmbeddedResource Include="Resources\105.png" />
+    <EmbeddedResource Include="Resources\106.png" />
+    <EmbeddedResource Include="Resources\107.png" />
+    <EmbeddedResource Include="Resources\108.png" />
+    <EmbeddedResource Include="Resources\109.png" />
+    <EmbeddedResource Include="Resources\110.png" />
+    <EmbeddedResource Include="Resources\111.png" />
+    <EmbeddedResource Include="Resources\112.png" />
+    <EmbeddedResource Include="Resources\113.png" />
+    <EmbeddedResource Include="Resources\114.png" />
+    <EmbeddedResource Include="Resources\115.png" />
+    <EmbeddedResource Include="Resources\116.png" />
+    <EmbeddedResource Include="Resources\117.png" />
+    <EmbeddedResource Include="Resources\118.png" />
+    <EmbeddedResource Include="Resources\119.png" />
+    <EmbeddedResource Include="Resources\120.png" />
+    <EmbeddedResource Include="Resources\121.png" />
+    <EmbeddedResource Include="Resources\122.png" />
+    <EmbeddedResource Include="Resources\123.png" />
+    <EmbeddedResource Include="Resources\124.png" />
+    <EmbeddedResource Include="Resources\125.png" />
+    <EmbeddedResource Include="Resources\126.png" />
+    <EmbeddedResource Include="Resources\127.png" />
+    <EmbeddedResource Include="Resources\128.png" />
+    <EmbeddedResource Include="Resources\129.png" />
+    <EmbeddedResource Include="Resources\130.png" />
+    <EmbeddedResource Include="Resources\131.png" />
+    <EmbeddedResource Include="Resources\132.png" />
+    <EmbeddedResource Include="Resources\133.png" />
+    <EmbeddedResource Include="Resources\134.png" />
+    <EmbeddedResource Include="Resources\135.png" />
+    <EmbeddedResource Include="Resources\136.png" />
+    <EmbeddedResource Include="Resources\137.png" />
+    <EmbeddedResource Include="Resources\138.png" />
+    <EmbeddedResource Include="Resources\139.png" />
+    <EmbeddedResource Include="Resources\140.png" />
+    <EmbeddedResource Include="Resources\141.png" />
+    <EmbeddedResource Include="Resources\142.png" />
+    <EmbeddedResource Include="Resources\143.png" />
+    <EmbeddedResource Include="Resources\144.png" />
+    <EmbeddedResource Include="Resources\145.png" />
+    <EmbeddedResource Include="Resources\146.png" />
+    <EmbeddedResource Include="Resources\147.png" />
+    <EmbeddedResource Include="Resources\148.png" />
+    <EmbeddedResource Include="Resources\149.png" />
+    <EmbeddedResource Include="Resources\150.png" />
+    <EmbeddedResource Include="Resources\151.png" />
+    <EmbeddedResource Include="Resources\152.png" />
+    <EmbeddedResource Include="Resources\153.png" />
+    <EmbeddedResource Include="Resources\154.png" />
+    <EmbeddedResource Include="Resources\155.png" />
+    <EmbeddedResource Include="Resources\156.png" />
+    <EmbeddedResource Include="Resources\157.png" />
+    <EmbeddedResource Include="Resources\158.png" />
+    <EmbeddedResource Include="Resources\159.png" />
+    <EmbeddedResource Include="Resources\160.png" />
+    <EmbeddedResource Include="Resources\161.png" />
+    <EmbeddedResource Include="Resources\162.png" />
+    <EmbeddedResource Include="Resources\163.png" />
+    <EmbeddedResource Include="Resources\164.png" />
+    <EmbeddedResource Include="Resources\165.png" />
+    <EmbeddedResource Include="Resources\166.png" />
+    <EmbeddedResource Include="Resources\167.png" />
+    <EmbeddedResource Include="Resources\168.png" />
+    <EmbeddedResource Include="Resources\169.png" />
+    <EmbeddedResource Include="Resources\170.png" />
+    <EmbeddedResource Include="Resources\171.png" />
+    <EmbeddedResource Include="Resources\172.png" />
+    <EmbeddedResource Include="Resources\173.png" />
+    <EmbeddedResource Include="Resources\174.png" />
+    <EmbeddedResource Include="Resources\175.png" />
+    <EmbeddedResource Include="Resources\176.png" />
+    <EmbeddedResource Include="Resources\177.png" />
+    <EmbeddedResource Include="Resources\178.png" />
+    <EmbeddedResource Include="Resources\179.png" />
+    <EmbeddedResource Include="Resources\180.png" />
+    <EmbeddedResource Include="Resources\181.png" />
+    <EmbeddedResource Include="Resources\182.png" />
+    <EmbeddedResource Include="Resources\183.png" />
+    <EmbeddedResource Include="Resources\184.png" />
+    <EmbeddedResource Include="Resources\185.png" />
+    <EmbeddedResource Include="Resources\186.png" />
+    <EmbeddedResource Include="Resources\187.png" />
+    <EmbeddedResource Include="Resources\188.png" />
+    <EmbeddedResource Include="Resources\189.png" />
+    <EmbeddedResource Include="Resources\190.png" />
+    <EmbeddedResource Include="Resources\191.png" />
+    <EmbeddedResource Include="Resources\192.png" />
+    <EmbeddedResource Include="Resources\193.png" />
+    <EmbeddedResource Include="Resources\194.png" />
+    <EmbeddedResource Include="Resources\195.png" />
+    <EmbeddedResource Include="Resources\196.png" />
+    <EmbeddedResource Include="Resources\197.png" />
+    <EmbeddedResource Include="Resources\198.png" />
+    <EmbeddedResource Include="Resources\199.png" />
+    <EmbeddedResource Include="Resources\200.png" />
+    <EmbeddedResource Include="Resources\201.png" />
+    <EmbeddedResource Include="Resources\202.png" />
+    <EmbeddedResource Include="Resources\203.png" />
+    <EmbeddedResource Include="Resources\204.png" />
+    <EmbeddedResource Include="Resources\205.png" />
+    <EmbeddedResource Include="Resources\206.png" />
+    <EmbeddedResource Include="Resources\207.png" />
+    <EmbeddedResource Include="Resources\208.png" />
+    <EmbeddedResource Include="Resources\209.png" />
+    <EmbeddedResource Include="Resources\210.png" />
+    <EmbeddedResource Include="Resources\211.png" />
+    <EmbeddedResource Include="Resources\212.png" />
+    <EmbeddedResource Include="Resources\213.png" />
+    <EmbeddedResource Include="Resources\214.png" />
+    <EmbeddedResource Include="Resources\215.png" />
+    <EmbeddedResource Include="Resources\216.png" />
+    <EmbeddedResource Include="Resources\217.png" />
+    <EmbeddedResource Include="Resources\218.png" />
+    <EmbeddedResource Include="Resources\219.png" />
+    <EmbeddedResource Include="Resources\220.png" />
+    <EmbeddedResource Include="Resources\221.png" />
+    <EmbeddedResource Include="Resources\222.png" />
+    <EmbeddedResource Include="Resources\223.png" />
+    <EmbeddedResource Include="Resources\224.png" />
+    <EmbeddedResource Include="Resources\225.png" />
+    <EmbeddedResource Include="Resources\226.png" />
+    <EmbeddedResource Include="Resources\227.png" />
+    <EmbeddedResource Include="Resources\228.png" />
+    <EmbeddedResource Include="Resources\229.png" />
+    <EmbeddedResource Include="Resources\230.png" />
+    <EmbeddedResource Include="Resources\231.png" />
+    <EmbeddedResource Include="Resources\232.png" />
+    <EmbeddedResource Include="Resources\233.png" />
+    <EmbeddedResource Include="Resources\234.png" />
+    <EmbeddedResource Include="Resources\235.png" />
+    <EmbeddedResource Include="Resources\236.png" />
+    <EmbeddedResource Include="Resources\237.png" />
+    <EmbeddedResource Include="Resources\238.png" />
+    <EmbeddedResource Include="Resources\239.png" />
+    <EmbeddedResource Include="Resources\240.png" />
+    <EmbeddedResource Include="Resources\241.png" />
+    <EmbeddedResource Include="Resources\242.png" />
+    <EmbeddedResource Include="Resources\243.png" />
+    <EmbeddedResource Include="Resources\244.png" />
+    <EmbeddedResource Include="Resources\245.png" />
+    <EmbeddedResource Include="Resources\246.png" />
+    <EmbeddedResource Include="Resources\247.png" />
+    <EmbeddedResource Include="Resources\248.png" />
+    <EmbeddedResource Include="Resources\249.png" />
+    <EmbeddedResource Include="Resources\250.png" />
+    <EmbeddedResource Include="Resources\251.png" />
+    <EmbeddedResource Include="Resources\252.png" />
+    <EmbeddedResource Include="Resources\253.png" />
+    <EmbeddedResource Include="Resources\254.png" />
+    <EmbeddedResource Include="Resources\255.png" />
+    <EmbeddedResource Include="Resources\256.png" />
+    <EmbeddedResource Include="Resources\257.png" />
+    <EmbeddedResource Include="Resources\258.png" />
+    <EmbeddedResource Include="Resources\259.png" />
+    <EmbeddedResource Include="Resources\260.png" />
+    <EmbeddedResource Include="Resources\261.png" />
+    <EmbeddedResource Include="Resources\262.png" />
+    <EmbeddedResource Include="Resources\263.png" />
+    <EmbeddedResource Include="Resources\264.png" />
+    <EmbeddedResource Include="Resources\265.png" />
+    <EmbeddedResource Include="Resources\266.png" />
+    <EmbeddedResource Include="Resources\267.png" />
+    <EmbeddedResource Include="Resources\268.png" />
+    <EmbeddedResource Include="Resources\269.png" />
+    <EmbeddedResource Include="Resources\270.png" />
+    <EmbeddedResource Include="Resources\271.png" />
+    <EmbeddedResource Include="Resources\272.png" />
+    <EmbeddedResource Include="Resources\273.png" />
+    <EmbeddedResource Include="Resources\274.png" />
+    <EmbeddedResource Include="Resources\275.png" />
+    <EmbeddedResource Include="Resources\276.png" />
+    <EmbeddedResource Include="Resources\277.png" />
+    <EmbeddedResource Include="Resources\278.png" />
+    <EmbeddedResource Include="Resources\279.png" />
+    <EmbeddedResource Include="Resources\280.png" />
+    <EmbeddedResource Include="Resources\281.png" />
+    <EmbeddedResource Include="Resources\282.png" />
+    <EmbeddedResource Include="Resources\283.png" />
+    <EmbeddedResource Include="Resources\284.png" />
+    <EmbeddedResource Include="Resources\285.png" />
+    <EmbeddedResource Include="Resources\286.png" />
+    <EmbeddedResource Include="Resources\287.png" />
+    <EmbeddedResource Include="Resources\288.png" />
+    <EmbeddedResource Include="Resources\289.png" />
+    <EmbeddedResource Include="Resources\290.png" />
+    <EmbeddedResource Include="Resources\291.png" />
+    <EmbeddedResource Include="Resources\292.png" />
+    <EmbeddedResource Include="Resources\293.png" />
+    <EmbeddedResource Include="Resources\294.png" />
+    <EmbeddedResource Include="Resources\295.png" />
+    <EmbeddedResource Include="Resources\296.png" />
+    <EmbeddedResource Include="Resources\297.png" />
+    <EmbeddedResource Include="Resources\298.png" />
+    <EmbeddedResource Include="Resources\299.png" />
+    <EmbeddedResource Include="Resources\300.png" />
+    <EmbeddedResource Include="Resources\301.png" />
+    <EmbeddedResource Include="Resources\302.png" />
+    <EmbeddedResource Include="Resources\303.png" />
+    <EmbeddedResource Include="Resources\304.png" />
+    <EmbeddedResource Include="Resources\305.png" />
+    <EmbeddedResource Include="Resources\306.png" />
+    <EmbeddedResource Include="Resources\307.png" />
+    <EmbeddedResource Include="Resources\308.png" />
+    <EmbeddedResource Include="Resources\309.png" />
+    <EmbeddedResource Include="Resources\310.png" />
+    <EmbeddedResource Include="Resources\311.png" />
+    <EmbeddedResource Include="Resources\312.png" />
+    <EmbeddedResource Include="Resources\313.png" />
+    <EmbeddedResource Include="Resources\314.png" />
+    <EmbeddedResource Include="Resources\315.png" />
+    <EmbeddedResource Include="Resources\316.png" />
+    <EmbeddedResource Include="Resources\317.png" />
+    <EmbeddedResource Include="Resources\318.png" />
+    <EmbeddedResource Include="Resources\319.png" />
+    <EmbeddedResource Include="Resources\320.png" />
+    <EmbeddedResource Include="Resources\321.png" />
+    <EmbeddedResource Include="Resources\322.png" />
+    <EmbeddedResource Include="Resources\323.png" />
+    <EmbeddedResource Include="Resources\324.png" />
+    <EmbeddedResource Include="Resources\325.png" />
+    <EmbeddedResource Include="Resources\326.png" />
+    <EmbeddedResource Include="Resources\327.png" />
+    <EmbeddedResource Include="Resources\328.png" />
+    <EmbeddedResource Include="Resources\329.png" />
+    <EmbeddedResource Include="Resources\330.png" />
+    <EmbeddedResource Include="Resources\331.png" />
+    <EmbeddedResource Include="Resources\332.png" />
+    <EmbeddedResource Include="Resources\333.png" />
+    <EmbeddedResource Include="Resources\334.png" />
+    <EmbeddedResource Include="Resources\335.png" />
+    <EmbeddedResource Include="Resources\336.png" />
+    <EmbeddedResource Include="Resources\337.png" />
+    <EmbeddedResource Include="Resources\338.png" />
+    <EmbeddedResource Include="Resources\339.png" />
+    <EmbeddedResource Include="Resources\340.png" />
+    <EmbeddedResource Include="Resources\341.png" />
+    <EmbeddedResource Include="Resources\342.png" />
+    <EmbeddedResource Include="Resources\343.png" />
+    <EmbeddedResource Include="Resources\344.png" />
+    <EmbeddedResource Include="Resources\345.png" />
+    <EmbeddedResource Include="Resources\346.png" />
+    <EmbeddedResource Include="Resources\347.png" />
+    <EmbeddedResource Include="Resources\348.png" />
+    <EmbeddedResource Include="Resources\349.png" />
+    <EmbeddedResource Include="Resources\350.png" />
+    <EmbeddedResource Include="Resources\351.png" />
+    <EmbeddedResource Include="Resources\352.png" />
+    <EmbeddedResource Include="Resources\353.png" />
+    <EmbeddedResource Include="Resources\354.png" />
+    <EmbeddedResource Include="Resources\355.png" />
+    <EmbeddedResource Include="Resources\356.png" />
+    <EmbeddedResource Include="Resources\357.png" />
+    <EmbeddedResource Include="Resources\358.png" />
+    <EmbeddedResource Include="Resources\359.png" />
+    <EmbeddedResource Include="Resources\360.png" />
+    <EmbeddedResource Include="Resources\361.png" />
+    <EmbeddedResource Include="Resources\362.png" />
+    <EmbeddedResource Include="Resources\363.png" />
+    <EmbeddedResource Include="Resources\364.png" />
+    <EmbeddedResource Include="Resources\365.png" />
+    <EmbeddedResource Include="Resources\366.png" />
+    <EmbeddedResource Include="Resources\367.png" />
+    <EmbeddedResource Include="Resources\368.png" />
+    <EmbeddedResource Include="Resources\369.png" />
+    <EmbeddedResource Include="Resources\370.png" />
+    <EmbeddedResource Include="Resources\371.png" />
+    <EmbeddedResource Include="Resources\372.png" />
+    <EmbeddedResource Include="Resources\373.png" />
+    <EmbeddedResource Include="Resources\374.png" />
+    <EmbeddedResource Include="Resources\375.png" />
+    <EmbeddedResource Include="Resources\376.png" />
+    <EmbeddedResource Include="Resources\377.png" />
+    <EmbeddedResource Include="Resources\378.png" />
+    <EmbeddedResource Include="Resources\379.png" />
+    <EmbeddedResource Include="Resources\380.png" />
+    <EmbeddedResource Include="Resources\381.png" />
+    <EmbeddedResource Include="Resources\382.png" />
+    <EmbeddedResource Include="Resources\383.png" />
+    <EmbeddedResource Include="Resources\384.png" />
+    <EmbeddedResource Include="Resources\385.png" />
+    <EmbeddedResource Include="Resources\386.png" />
+    <EmbeddedResource Include="Resources\387.png" />
+    <EmbeddedResource Include="Resources\388.png" />
+    <EmbeddedResource Include="Resources\389.png" />
+    <EmbeddedResource Include="Resources\390.png" />
+    <EmbeddedResource Include="Resources\391.png" />
+    <EmbeddedResource Include="Resources\392.png" />
+    <EmbeddedResource Include="Resources\393.png" />
+    <EmbeddedResource Include="Resources\394.png" />
+    <EmbeddedResource Include="Resources\395.png" />
+    <EmbeddedResource Include="Resources\396.png" />
+    <EmbeddedResource Include="Resources\397.png" />
+    <EmbeddedResource Include="Resources\398.png" />
+    <EmbeddedResource Include="Resources\399.png" />
+    <EmbeddedResource Include="Resources\400.png" />
+    <EmbeddedResource Include="Resources\401.png" />
+    <EmbeddedResource Include="Resources\402.png" />
+    <EmbeddedResource Include="Resources\403.png" />
+    <EmbeddedResource Include="Resources\404.png" />
+    <EmbeddedResource Include="Resources\405.png" />
+    <EmbeddedResource Include="Resources\406.png" />
+    <EmbeddedResource Include="Resources\407.png" />
+    <EmbeddedResource Include="Resources\408.png" />
+    <EmbeddedResource Include="Resources\409.png" />
+    <EmbeddedResource Include="Resources\410.png" />
+    <EmbeddedResource Include="Resources\411.png" />
+    <EmbeddedResource Include="Resources\412.png" />
+    <EmbeddedResource Include="Resources\413.png" />
+    <EmbeddedResource Include="Resources\414.png" />
+    <EmbeddedResource Include="Resources\415.png" />
+    <EmbeddedResource Include="Resources\416.png" />
+    <EmbeddedResource Include="Resources\417.png" />
+    <EmbeddedResource Include="Resources\418.png" />
+    <EmbeddedResource Include="Resources\419.png" />
+    <EmbeddedResource Include="Resources\420.png" />
+    <EmbeddedResource Include="Resources\421.png" />
+    <EmbeddedResource Include="Resources\422.png" />
+    <EmbeddedResource Include="Resources\423.png" />
+    <EmbeddedResource Include="Resources\424.png" />
+    <EmbeddedResource Include="Resources\425.png" />
+    <EmbeddedResource Include="Resources\426.png" />
+    <EmbeddedResource Include="Resources\427.png" />
+    <EmbeddedResource Include="Resources\428.png" />
+    <EmbeddedResource Include="Resources\429.png" />
+    <EmbeddedResource Include="Resources\430.png" />
+    <EmbeddedResource Include="Resources\431.png" />
+    <EmbeddedResource Include="Resources\432.png" />
+    <EmbeddedResource Include="Resources\433.png" />
+    <EmbeddedResource Include="Resources\434.png" />
+    <EmbeddedResource Include="Resources\435.png" />
+    <EmbeddedResource Include="Resources\436.png" />
+    <EmbeddedResource Include="Resources\437.png" />
+    <EmbeddedResource Include="Resources\438.png" />
+    <EmbeddedResource Include="Resources\439.png" />
+    <EmbeddedResource Include="Resources\440.png" />
+    <EmbeddedResource Include="Resources\441.png" />
+    <EmbeddedResource Include="Resources\442.png" />
+    <EmbeddedResource Include="Resources\443.png" />
+    <EmbeddedResource Include="Resources\444.png" />
+    <EmbeddedResource Include="Resources\445.png" />
+    <EmbeddedResource Include="Resources\446.png" />
+    <EmbeddedResource Include="Resources\447.png" />
+    <EmbeddedResource Include="Resources\448.png" />
+    <EmbeddedResource Include="Resources\449.png" />
+    <EmbeddedResource Include="Resources\450.png" />
+    <EmbeddedResource Include="Resources\451.png" />
+    <EmbeddedResource Include="Resources\452.png" />
+    <EmbeddedResource Include="Resources\453.png" />
+    <EmbeddedResource Include="Resources\454.png" />
+    <EmbeddedResource Include="Resources\455.png" />
+    <EmbeddedResource Include="Resources\456.png" />
+    <EmbeddedResource Include="Resources\457.png" />
+    <EmbeddedResource Include="Resources\458.png" />
+    <EmbeddedResource Include="Resources\459.png" />
+    <EmbeddedResource Include="Resources\460.png" />
+    <EmbeddedResource Include="Resources\461.png" />
+    <EmbeddedResource Include="Resources\462.png" />
+    <EmbeddedResource Include="Resources\463.png" />
+    <EmbeddedResource Include="Resources\464.png" />
+    <EmbeddedResource Include="Resources\465.png" />
+    <EmbeddedResource Include="Resources\466.png" />
+    <EmbeddedResource Include="Resources\467.png" />
+    <EmbeddedResource Include="Resources\468.png" />
+    <EmbeddedResource Include="Resources\469.png" />
+    <EmbeddedResource Include="Resources\470.png" />
+    <EmbeddedResource Include="Resources\471.png" />
+    <EmbeddedResource Include="Resources\472.png" />
+    <EmbeddedResource Include="Resources\473.png" />
+    <EmbeddedResource Include="Resources\474.png" />
+    <EmbeddedResource Include="Resources\475.png" />
+    <EmbeddedResource Include="Resources\476.png" />
+    <EmbeddedResource Include="Resources\477.png" />
+    <EmbeddedResource Include="Resources\478.png" />
+    <EmbeddedResource Include="Resources\479.png" />
+    <EmbeddedResource Include="Resources\480.png" />
+    <EmbeddedResource Include="Resources\481.png" />
+    <EmbeddedResource Include="Resources\482.png" />
+    <EmbeddedResource Include="Resources\483.png" />
+    <EmbeddedResource Include="Resources\484.png" />
+    <EmbeddedResource Include="Resources\485.png" />
+    <EmbeddedResource Include="Resources\486.png" />
+    <EmbeddedResource Include="Resources\487.png" />
+    <EmbeddedResource Include="Resources\488.png" />
+    <EmbeddedResource Include="Resources\489.png" />
+    <EmbeddedResource Include="Resources\490.png" />
+    <EmbeddedResource Include="Resources\491.png" />
+    <EmbeddedResource Include="Resources\492.png" />
+    <EmbeddedResource Include="Resources\493.png" />
+    <EmbeddedResource Include="Resources\494.png" />
+    <EmbeddedResource Include="Resources\495.png" />
+    <EmbeddedResource Include="Resources\496.png" />
+    <EmbeddedResource Include="Resources\497.png" />
+    <EmbeddedResource Include="Resources\498.png" />
+    <EmbeddedResource Include="Resources\499.png" />
+    <EmbeddedResource Include="Resources\500.png" />
+    <EmbeddedResource Include="Resources\501.png" />
+    <EmbeddedResource Include="Resources\502.png" />
+    <EmbeddedResource Include="Resources\503.png" />
+    <EmbeddedResource Include="Resources\504.png" />
+    <EmbeddedResource Include="Resources\505.png" />
+    <EmbeddedResource Include="Resources\506.png" />
+    <EmbeddedResource Include="Resources\507.png" />
+    <EmbeddedResource Include="Resources\508.png" />
+    <EmbeddedResource Include="Resources\509.png" />
+    <EmbeddedResource Include="Resources\510.png" />
+    <EmbeddedResource Include="Resources\511.png" />
+    <EmbeddedResource Include="Resources\512.png" />
+    <EmbeddedResource Include="Resources\513.png" />
+    <EmbeddedResource Include="Resources\514.png" />
+    <EmbeddedResource Include="Resources\515.png" />
+    <EmbeddedResource Include="Resources\516.png" />
+    <EmbeddedResource Include="Resources\517.png" />
+    <EmbeddedResource Include="Resources\518.png" />
+    <EmbeddedResource Include="Resources\519.png" />
+    <EmbeddedResource Include="Resources\520.png" />
+    <EmbeddedResource Include="Resources\521.png" />
+    <EmbeddedResource Include="Resources\522.png" />
+    <EmbeddedResource Include="Resources\523.png" />
+    <EmbeddedResource Include="Resources\524.png" />
+    <EmbeddedResource Include="Resources\525.png" />
+    <EmbeddedResource Include="Resources\526.png" />
+    <EmbeddedResource Include="Resources\527.png" />
+    <EmbeddedResource Include="Resources\528.png" />
+    <EmbeddedResource Include="Resources\529.png" />
+    <EmbeddedResource Include="Resources\530.png" />
+    <EmbeddedResource Include="Resources\531.png" />
+    <EmbeddedResource Include="Resources\532.png" />
+    <EmbeddedResource Include="Resources\533.png" />
+    <EmbeddedResource Include="Resources\534.png" />
+    <EmbeddedResource Include="Resources\535.png" />
+    <EmbeddedResource Include="Resources\536.png" />
+    <EmbeddedResource Include="Resources\537.png" />
+    <EmbeddedResource Include="Resources\538.png" />
+    <EmbeddedResource Include="Resources\539.png" />
+    <EmbeddedResource Include="Resources\540.png" />
+    <EmbeddedResource Include="Resources\541.png" />
+    <EmbeddedResource Include="Resources\542.png" />
+    <EmbeddedResource Include="Resources\543.png" />
+    <EmbeddedResource Include="Resources\544.png" />
+    <EmbeddedResource Include="Resources\545.png" />
+    <EmbeddedResource Include="Resources\546.png" />
+    <EmbeddedResource Include="Resources\547.png" />
+    <EmbeddedResource Include="Resources\548.png" />
+    <EmbeddedResource Include="Resources\549.png" />
+    <EmbeddedResource Include="Resources\550.png" />
+    <EmbeddedResource Include="Resources\551.png" />
+    <EmbeddedResource Include="Resources\552.png" />
+    <EmbeddedResource Include="Resources\553.png" />
+    <EmbeddedResource Include="Resources\554.png" />
+    <EmbeddedResource Include="Resources\555.png" />
+    <EmbeddedResource Include="Resources\556.png" />
+    <EmbeddedResource Include="Resources\557.png" />
+    <EmbeddedResource Include="Resources\558.png" />
+    <EmbeddedResource Include="Resources\559.png" />
+    <EmbeddedResource Include="Resources\560.png" />
+    <EmbeddedResource Include="Resources\561.png" />
+    <EmbeddedResource Include="Resources\562.png" />
+    <EmbeddedResource Include="Resources\563.png" />
+    <EmbeddedResource Include="Resources\564.png" />
+    <EmbeddedResource Include="Resources\565.png" />
+    <EmbeddedResource Include="Resources\566.png" />
+    <EmbeddedResource Include="Resources\567.png" />
+    <EmbeddedResource Include="Resources\568.png" />
+    <EmbeddedResource Include="Resources\569.png" />
+    <EmbeddedResource Include="Resources\570.png" />
+    <EmbeddedResource Include="Resources\571.png" />
+    <EmbeddedResource Include="Resources\572.png" />
+    <EmbeddedResource Include="Resources\573.png" />
+    <EmbeddedResource Include="Resources\574.png" />
+    <EmbeddedResource Include="Resources\575.png" />
+    <EmbeddedResource Include="Resources\576.png" />
+    <EmbeddedResource Include="Resources\577.png" />
+    <EmbeddedResource Include="Resources\578.png" />
+    <EmbeddedResource Include="Resources\579.png" />
+    <EmbeddedResource Include="Resources\580.png" />
+    <EmbeddedResource Include="Resources\581.png" />
+    <EmbeddedResource Include="Resources\582.png" />
+    <EmbeddedResource Include="Resources\583.png" />
+    <EmbeddedResource Include="Resources\584.png" />
+    <EmbeddedResource Include="Resources\585.png" />
+    <EmbeddedResource Include="Resources\586.png" />
+    <EmbeddedResource Include="Resources\587.png" />
+    <EmbeddedResource Include="Resources\588.png" />
+    <EmbeddedResource Include="Resources\589.png" />
+    <EmbeddedResource Include="Resources\590.png" />
+    <EmbeddedResource Include="Resources\591.png" />
+    <EmbeddedResource Include="Resources\592.png" />
+    <EmbeddedResource Include="Resources\593.png" />
+    <EmbeddedResource Include="Resources\594.png" />
+    <EmbeddedResource Include="Resources\595.png" />
+    <EmbeddedResource Include="Resources\596.png" />
+    <EmbeddedResource Include="Resources\597.png" />
+    <EmbeddedResource Include="Resources\598.png" />
+    <EmbeddedResource Include="Resources\599.png" />
+    <EmbeddedResource Include="Resources\600.png" />
+    <EmbeddedResource Include="Resources\601.png" />
+    <EmbeddedResource Include="Resources\602.png" />
+    <EmbeddedResource Include="Resources\603.png" />
+    <EmbeddedResource Include="Resources\604.png" />
+    <EmbeddedResource Include="Resources\605.png" />
+    <EmbeddedResource Include="Resources\606.png" />
+    <EmbeddedResource Include="Resources\607.png" />
+    <EmbeddedResource Include="Resources\608.png" />
+    <EmbeddedResource Include="Resources\609.png" />
+    <EmbeddedResource Include="Resources\610.png" />
+    <EmbeddedResource Include="Resources\611.png" />
+    <EmbeddedResource Include="Resources\612.png" />
+    <EmbeddedResource Include="Resources\613.png" />
+    <EmbeddedResource Include="Resources\614.png" />
+    <EmbeddedResource Include="Resources\615.png" />
+    <EmbeddedResource Include="Resources\616.png" />
+    <EmbeddedResource Include="Resources\617.png" />
+    <EmbeddedResource Include="Resources\618.png" />
+    <EmbeddedResource Include="Resources\619.png" />
+    <EmbeddedResource Include="Resources\620.png" />
+    <EmbeddedResource Include="Resources\621.png" />
+    <EmbeddedResource Include="Resources\622.png" />
+    <EmbeddedResource Include="Resources\623.png" />
+    <EmbeddedResource Include="Resources\624.png" />
+    <EmbeddedResource Include="Resources\625.png" />
+    <EmbeddedResource Include="Resources\626.png" />
+    <EmbeddedResource Include="Resources\627.png" />
+    <EmbeddedResource Include="Resources\628.png" />
+    <EmbeddedResource Include="Resources\629.png" />
+    <EmbeddedResource Include="Resources\630.png" />
+    <EmbeddedResource Include="Resources\631.png" />
+    <EmbeddedResource Include="Resources\632.png" />
+    <EmbeddedResource Include="Resources\633.png" />
+    <EmbeddedResource Include="Resources\634.png" />
+    <EmbeddedResource Include="Resources\635.png" />
+    <EmbeddedResource Include="Resources\636.png" />
+    <EmbeddedResource Include="Resources\637.png" />
+    <EmbeddedResource Include="Resources\638.png" />
+    <EmbeddedResource Include="Resources\639.png" />
+    <EmbeddedResource Include="Resources\640.png" />
+    <EmbeddedResource Include="Resources\641.png" />
+    <EmbeddedResource Include="Resources\642.png" />
+    <EmbeddedResource Include="Resources\643.png" />
+    <EmbeddedResource Include="Resources\644.png" />
+    <EmbeddedResource Include="Resources\645.png" />
+    <EmbeddedResource Include="Resources\646.png" />
+    <EmbeddedResource Include="Resources\647.png" />
+    <EmbeddedResource Include="Resources\648.png" />
+    <EmbeddedResource Include="Resources\649.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1413.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1479.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1492.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1555.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1645.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1646.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1648.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2386.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2413.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2646.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3386.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

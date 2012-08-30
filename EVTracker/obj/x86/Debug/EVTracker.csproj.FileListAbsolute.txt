@@ -1,0 +1,10 @@
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\bin\Debug\EVTracker.exe
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\bin\Debug\EVTracker.pdb
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\obj\x86\Debug\EVTracker.Form1.resources
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\obj\x86\Debug\EVTracker.Properties.Resources.resources
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\obj\x86\Debug\EVTracker.exe
+c:\users\peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\obj\x86\Debug\EVTracker.pdb
+C:\Users\Peter\documents\visual studio 2010\Projects\EVTracker\EVTracker\bin\Debug\EVTracker.exe.config
