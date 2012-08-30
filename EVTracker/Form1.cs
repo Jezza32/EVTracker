@@ -701,6 +701,7 @@ namespace EVTracker
 			recalculate(null, null);
 		}
 
+		private string saveLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EVTrackerSave.evt";
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			List<Pokemon> Saved = new List<Pokemon>();
@@ -709,16 +710,15 @@ namespace EVTracker
 				Page p = (Page)tab.Tag;
 				Saved.Add(p.Pokemon);
 			}
-			Pokemon.Serialize(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EVTrackerSave.evt", Saved);
+			Pokemon.Serialize(saveLocation, Saved);
 		}
 
 		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			string location = Application.StartupPath + @"\" + Environment.UserName + "Save.evt";
-			if (!File.Exists(location)) return;
+			if (!File.Exists(saveLocation)) return;
 			tabControl1.TabPages.Clear();
 			DataContractSerializer deserializer = new DataContractSerializer(typeof(List<Pokemon>));
-			Stream s = File.OpenRead(location);
+			Stream s = File.OpenRead(saveLocation);
 			List<Pokemon> pok = (List<Pokemon>)deserializer.ReadObject(s);
 			s.Close();
 			pok.ForEach(p =>
