@@ -709,7 +709,7 @@ namespace EVTracker
 				Page p = (Page)tab.Tag;
 				Saved.Add(p.Pokemon);
 			}
-			Pokemon.Serialize(Application.StartupPath + @"\" + Environment.UserName + "Save.evt", Saved);
+			Pokemon.Serialize(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EVTrackerSave.evt", Saved);
 		}
 
 		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
