@@ -44,6 +44,9 @@ namespace EVTracker
 			tabControl1.TabPages.Add(CreateTabPage());
 			current = (Page)tabControl1.TabPages[0].Tag;
 
+			if (File.Exists(saveLocation))
+				load();
+
 			UpdateForm();
 		}
 
@@ -715,42 +718,54 @@ namespace EVTracker
 
 		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (!File.Exists(saveLocation)) return;
-			tabControl1.TabPages.Clear();
+			if (!File.Exists(saveLocation))
+				MessageBox.Show("Cannot find " + saveLocation + " please ensure it exists before loading");
+		}
+
+		private void load(){
 			DataContractSerializer deserializer = new DataContractSerializer(typeof(List<Pokemon>));
 			Stream s = File.OpenRead(saveLocation);
-			List<Pokemon> pok = (List<Pokemon>)deserializer.ReadObject(s);
-			s.Close();
-			pok.ForEach(p =>
+			try
 			{
-				p.Species = Manager.GetPokemonType(p.Species.DexNumber);
-				p.Nature = Manager.GetNature(p.Nature.Name);
-				TabPage newTab = CreateTabPage();
-				Page page = ((Page)newTab.Tag);
-				page.Pokemon = p;
-				page.Species.SelectedIndex = page.Species.Items.IndexOf(p.Species);
-				page.Level.Value = p.Level;
-				page.Nature.SelectedIndex = page.Nature.Items.IndexOf(p.Nature);
-				page.Pokerus.Checked = p.HasPokerus;
-				page.HeldItem.SelectedIndex = page.HeldItem.Items.IndexOf(GetEnumDescription(p.HeldItem));
+				List<Pokemon> pok = (List<Pokemon>)deserializer.ReadObject(s);
+				s.Close();
+				tabControl1.TabPages.Clear();
+				pok.ForEach(p =>
+				{
+					p.Species = Manager.GetPokemonType(p.Species.DexNumber);
+					p.Nature = Manager.GetNature(p.Nature.Name);
+					TabPage newTab = CreateTabPage();
+					Page page = ((Page)newTab.Tag);
+					page.Pokemon = p;
+					page.Species.SelectedIndex = page.Species.Items.IndexOf(p.Species);
+					page.Level.Value = p.Level;
+					page.Nature.SelectedIndex = page.Nature.Items.IndexOf(p.Nature);
+					page.Pokerus.Checked = p.HasPokerus;
+					page.HeldItem.SelectedIndex = page.HeldItem.Items.IndexOf(GetEnumDescription(p.HeldItem));
 
-				page.EVAttack.Value = p.EV[Stat.Attack];
-				page.EVDefence.Value = p.EV[Stat.Defence];
-				page.EVHP.Value = p.EV[Stat.HP];
-				page.EVSpecialAttack.Value = p.EV[Stat.SpecialAttack];
-				page.EVSpecialDefence.Value = p.EV[Stat.SpecialDefence];
-				page.EVSpeed.Value = p.EV[Stat.Speed];
-				page.IVAttack.Value = p.IV[Stat.Attack];
-				page.IVDefence.Value = p.IV[Stat.Defence];
-				page.IVHP.Value = p.IV[Stat.HP];
-				page.IVSpecialAttack.Value = p.IV[Stat.SpecialAttack];
-				page.IVSpecialDefence.Value = p.IV[Stat.SpecialDefence];
-				page.IVSpeed.Value = p.IV[Stat.Speed];
+					page.EVAttack.Value = p.EV[Stat.Attack];
+					page.EVDefence.Value = p.EV[Stat.Defence];
+					page.EVHP.Value = p.EV[Stat.HP];
+					page.EVSpecialAttack.Value = p.EV[Stat.SpecialAttack];
+					page.EVSpecialDefence.Value = p.EV[Stat.SpecialDefence];
+					page.EVSpeed.Value = p.EV[Stat.Speed];
+					page.IVAttack.Value = p.IV[Stat.Attack];
+					page.IVDefence.Value = p.IV[Stat.Defence];
+					page.IVHP.Value = p.IV[Stat.HP];
+					page.IVSpecialAttack.Value = p.IV[Stat.SpecialAttack];
+					page.IVSpecialDefence.Value = p.IV[Stat.SpecialDefence];
+					page.IVSpeed.Value = p.IV[Stat.Speed];
 
-				tabControl1.TabPages.Add(newTab);
-			});
-			current = ((Page)tabControl1.SelectedTab.Tag);
-			recalculate(null, null);
+					tabControl1.TabPages.Add(newTab);
+				});
+				current = ((Page)tabControl1.SelectedTab.Tag);
+				recalculate(null, null);
+			}
+			catch
+			{
+				//This is when the  file is invalid
+				MessageBox.Show("The Save File is Invalid, load failed");
+			}
 		}
 
 	}
