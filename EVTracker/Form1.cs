@@ -14,17 +14,19 @@ namespace EVTracker
 {
     public partial class Form1 : Form
 	{
-		Page current;
+		Page _current;
+        private readonly Manager _manager;
 
-		public Form1()
+		public Form1(Manager manager)
 		{
-			InitializeComponent();
+		    _manager = manager;
+		    InitializeComponent();
 
 			LoadGames();
 			tabControl1.Selected += new TabControlEventHandler(tabControl1_Selected);
 
 			tabControl1.TabPages.Add(CreateTabPage());
-			current = (Page)tabControl1.TabPages[0].Tag;
+			_current = (Page)tabControl1.TabPages[0].Tag;
 
 			if (File.Exists(saveLocation))
 				load();
@@ -35,13 +37,13 @@ namespace EVTracker
 		void tabControl1_Selected(object sender, TabControlEventArgs e)
 		{
 			if (e.TabPage == null) return;
-			current = ((Page)e.TabPage.Tag);
+			_current = ((Page)e.TabPage.Tag);
 			recalculate(null, null);
 		}
 
 		public void LoadGames()
 		{
-			cmbGame.Items.AddRange(Manager.GetGames().ToArray());
+			cmbGame.Items.AddRange(_manager.GetGames().ToArray());
 			cmbGame.SelectedIndex = 0;
 			cmbGame.SelectedIndexChanged += new EventHandler(cmbGame_SelectedIndexChanged);
 			cmbRoute.Items.AddRange(((Game)cmbGame.SelectedItem).Routes.ToArray());
@@ -88,44 +90,44 @@ namespace EVTracker
 		void b_Click(object sender, EventArgs e)
 		{
 			int i = (int)((Button)sender).Tag;
-			IDictionary<Stat, int> dict = Manager.GetPokemonType(i).GivenEffortValues;
+			IDictionary<Stat, int> dict = _manager.GetPokemonType(i).GivenEffortValues;
 			foreach (Stat s in dict.Keys)
 				switch (s)
 				{
-					case Stat.HP: current.EVHP.Value = Math.Min(dict[s] * (current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (current.Pokerus.Checked ? 2 : 1) + current.EVHP.Value, 255);
+					case Stat.HP: _current.EVHP.Value = Math.Min(dict[s] * (_current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (_current.Pokerus.Checked ? 2 : 1) + _current.EVHP.Value, 255);
 						break;
-					case Stat.Attack: current.EVAttack.Value = Math.Min(dict[s] * (current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (current.Pokerus.Checked ? 2 : 1) + current.EVAttack.Value, 255);
+					case Stat.Attack: _current.EVAttack.Value = Math.Min(dict[s] * (_current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (_current.Pokerus.Checked ? 2 : 1) + _current.EVAttack.Value, 255);
 						break;
-					case Stat.Defence: current.EVDefence.Value = Math.Min(dict[s] * (current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (current.Pokerus.Checked ? 2 : 1) + current.EVDefence.Value, 255);
+					case Stat.Defence: _current.EVDefence.Value = Math.Min(dict[s] * (_current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (_current.Pokerus.Checked ? 2 : 1) + _current.EVDefence.Value, 255);
 						break;
-					case Stat.SpecialAttack: current.EVSpecialAttack.Value = Math.Min(dict[s] * (current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (current.Pokerus.Checked ? 2 : 1) + current.EVSpecialAttack.Value, 255);
+					case Stat.SpecialAttack: _current.EVSpecialAttack.Value = Math.Min(dict[s] * (_current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (_current.Pokerus.Checked ? 2 : 1) + _current.EVSpecialAttack.Value, 255);
 						break;
-					case Stat.SpecialDefence: current.EVSpecialDefence.Value = Math.Min(dict[s] * (current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (current.Pokerus.Checked ? 2 : 1) + current.EVSpecialDefence.Value, 255);
+					case Stat.SpecialDefence: _current.EVSpecialDefence.Value = Math.Min(dict[s] * (_current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (_current.Pokerus.Checked ? 2 : 1) + _current.EVSpecialDefence.Value, 255);
 						break;
-					case Stat.Speed: current.EVSpeed.Value = Math.Min(dict[s] * (current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (current.Pokerus.Checked ? 2 : 1) + current.EVSpeed.Value, 255);
+					case Stat.Speed: _current.EVSpeed.Value = Math.Min(dict[s] * (_current.HeldItem.SelectedItem.ToString() == GetEnumDescription(Items.MachoBrace) ? 2 : 1) * (_current.Pokerus.Checked ? 2 : 1) + _current.EVSpeed.Value, 255);
 						break;
 					default:
 						break;
 				}
-			switch ((Items)Enum.Parse(typeof(Items), current.HeldItem.SelectedItem.ToString().Replace(" ", "")))
+			switch ((Items)Enum.Parse(typeof(Items), _current.HeldItem.SelectedItem.ToString().Replace(" ", "")))
 			{
 				case Items.PowerWeight:
-					current.EVHP.Value = Math.Min(255, current.EVHP.Value + (current.Pokerus.Checked ? 8 : 4));
+					_current.EVHP.Value = Math.Min(255, _current.EVHP.Value + (_current.Pokerus.Checked ? 8 : 4));
 					break;
 				case Items.PowerBracer:
-					current.EVAttack.Value = Math.Min(255, current.EVAttack.Value + (current.Pokerus.Checked ? 8 : 4));
+					_current.EVAttack.Value = Math.Min(255, _current.EVAttack.Value + (_current.Pokerus.Checked ? 8 : 4));
 					break;
 				case Items.PowerBelt:
-					current.EVDefence.Value = Math.Min(255, current.EVDefence.Value + (current.Pokerus.Checked ? 8 : 4));
+					_current.EVDefence.Value = Math.Min(255, _current.EVDefence.Value + (_current.Pokerus.Checked ? 8 : 4));
 					break;
 				case Items.PowerLens:
-					current.EVSpecialAttack.Value = Math.Min(255, current.EVSpecialAttack.Value + (current.Pokerus.Checked ? 8 : 4));
+					_current.EVSpecialAttack.Value = Math.Min(255, _current.EVSpecialAttack.Value + (_current.Pokerus.Checked ? 8 : 4));
 					break;
 				case Items.PowerBand:
-					current.EVSpecialDefence.Value = Math.Min(255, current.EVSpecialDefence.Value + (current.Pokerus.Checked ? 8 : 4));
+					_current.EVSpecialDefence.Value = Math.Min(255, _current.EVSpecialDefence.Value + (_current.Pokerus.Checked ? 8 : 4));
 					break;
 				case Items.PowerAnklet:
-					current.EVSpeed.Value = Math.Min(255, current.EVSpeed.Value + (current.Pokerus.Checked ? 8 : 4));
+					_current.EVSpeed.Value = Math.Min(255, _current.EVSpeed.Value + (_current.Pokerus.Checked ? 8 : 4));
 					break;
 			}
 
@@ -134,70 +136,70 @@ namespace EVTracker
 		
 		private void UpdateForm()
 		{
-			current.Pokemon.Species = (PokemonType)current.Species.SelectedItem;
+			_current.Pokemon.Species = (PokemonType)_current.Species.SelectedItem;
 
 			foreach (Stat s in Enum.GetValues(typeof(Stat)))
 			{
-				double modifier = current.Pokemon.Nature.GetModifier(s);
-				if (modifier < 1) current.StatLabels[s].ForeColor = Color.Red;
-				else if (modifier == 1) current.StatLabels[s].ForeColor = Color.Black;
-				else current.StatLabels[s].ForeColor = Color.Green;
+				double modifier = _current.Pokemon.Nature.GetModifier(s);
+				if (modifier < 1) _current.StatLabels[s].ForeColor = Color.Red;
+				else if (modifier == 1) _current.StatLabels[s].ForeColor = Color.Black;
+				else _current.StatLabels[s].ForeColor = Color.Green;
 			}
 
-			current.BaseStatHP.Text = current.Pokemon.Species.BaseStats[Stat.HP].ToString();
-			current.BaseStatAttack.Text = current.Pokemon.Species.BaseStats[Stat.Attack].ToString();
-			current.BaseStatDefence.Text = current.Pokemon.Species.BaseStats[Stat.Defence].ToString();
-			current.BaseStatSpecialAttack.Text = current.Pokemon.Species.BaseStats[Stat.SpecialAttack].ToString();
-			current.BaseStatSpecialDefence.Text = current.Pokemon.Species.BaseStats[Stat.SpecialDefence].ToString();
-			current.BaseStatSpeed.Text = current.Pokemon.Species.BaseStats[Stat.Speed].ToString();
+			_current.BaseStatHP.Text = _current.Pokemon.Species.BaseStats[Stat.HP].ToString();
+			_current.BaseStatAttack.Text = _current.Pokemon.Species.BaseStats[Stat.Attack].ToString();
+			_current.BaseStatDefence.Text = _current.Pokemon.Species.BaseStats[Stat.Defence].ToString();
+			_current.BaseStatSpecialAttack.Text = _current.Pokemon.Species.BaseStats[Stat.SpecialAttack].ToString();
+			_current.BaseStatSpecialDefence.Text = _current.Pokemon.Species.BaseStats[Stat.SpecialDefence].ToString();
+			_current.BaseStatSpeed.Text = _current.Pokemon.Species.BaseStats[Stat.Speed].ToString();
 
-			current.ActualStatHP.Text = current.Pokemon.HP.ToString();
-			current.ActualStatAttack.Text = current.Pokemon.Attack.ToString();
-			current.ActualStatDefence.Text = current.Pokemon.Defence.ToString();
-			current.ActualStatSpecialAttack.Text = current.Pokemon.SpecialAttack.ToString();
-			current.ActualStatSpecialDefence.Text = current.Pokemon.SpecialDefence.ToString();
-			current.ActualStatSpeed.Text = current.Pokemon.Speed.ToString();
+			_current.ActualStatHP.Text = _current.Pokemon.HP.ToString();
+			_current.ActualStatAttack.Text = _current.Pokemon.Attack.ToString();
+			_current.ActualStatDefence.Text = _current.Pokemon.Defence.ToString();
+			_current.ActualStatSpecialAttack.Text = _current.Pokemon.SpecialAttack.ToString();
+			_current.ActualStatSpecialDefence.Text = _current.Pokemon.SpecialDefence.ToString();
+			_current.ActualStatSpeed.Text = _current.Pokemon.Speed.ToString();
 
-			current.TabPage.Text = current.Pokemon.Species.Name;
+			_current.TabPage.Text = _current.Pokemon.Species.Name;
 
-			int num = current.Pokemon.Species.DexNumber;
+			int num = _current.Pokemon.Species.DexNumber;
 			string location = "_" + num.ToString().PadLeft(3, '0');
 
-			current.Image.Image = (Image)Properties.Resources.ResourceManager.GetObject(location);
+			_current.Image.Image = (Image)Properties.Resources.ResourceManager.GetObject(location);
 
 			int ev = 0;
-			ev += (int)current.EVHP.Value;
-			ev += (int)current.EVAttack.Value;
-			ev += (int)current.EVDefence.Value;
-			ev += (int)current.EVSpecialAttack.Value;
-			ev += (int)current.EVSpecialDefence.Value;
-			ev += (int)current.EVSpeed.Value;
+			ev += (int)_current.EVHP.Value;
+			ev += (int)_current.EVAttack.Value;
+			ev += (int)_current.EVDefence.Value;
+			ev += (int)_current.EVSpecialAttack.Value;
+			ev += (int)_current.EVSpecialDefence.Value;
+			ev += (int)_current.EVSpeed.Value;
 
 			int remaining = 510 - ev;
-			current.Warning.ForeColor = (remaining >=0 ? Color.Black : Color.Red);
-			current.Warning.Text = (remaining >= 0? "You have " + remaining + " EVs left" : "You are " + (remaining * -1) + " EVs over");
+			_current.Warning.ForeColor = (remaining >=0 ? Color.Black : Color.Red);
+			_current.Warning.Text = (remaining >= 0? "You have " + remaining + " EVs left" : "You are " + (remaining * -1) + " EVs over");
 		}
 
 		private void recalculate(object sender, EventArgs e)
 		{
-			current.Pokemon.Level = (int)current.Level.Value;
-			current.Pokemon.HasPokerus = current.Pokerus.Checked;
-			current.Pokemon.HeldItem = (Items)current.HeldItem.SelectedIndex;
-			current.Pokemon.Nature = (Nature)current.Nature.SelectedItem;
+			_current.Pokemon.Level = (int)_current.Level.Value;
+			_current.Pokemon.HasPokerus = _current.Pokerus.Checked;
+			_current.Pokemon.HeldItem = (Items)_current.HeldItem.SelectedIndex;
+			_current.Pokemon.Nature = (Nature)_current.Nature.SelectedItem;
 
-			current.Pokemon.IV[Stat.HP] = (int)current.IVHP.Value;
-			current.Pokemon.IV[Stat.Attack] = (int)current.IVAttack.Value;
-			current.Pokemon.IV[Stat.Defence] = (int)current.IVDefence.Value;
-			current.Pokemon.IV[Stat.SpecialAttack] = (int)current.IVSpecialAttack.Value;
-			current.Pokemon.IV[Stat.SpecialDefence] = (int)current.IVSpecialDefence.Value;
-			current.Pokemon.IV[Stat.Speed] = (int)current.IVSpeed.Value;
+			_current.Pokemon.IV[Stat.HP] = (int)_current.IVHP.Value;
+			_current.Pokemon.IV[Stat.Attack] = (int)_current.IVAttack.Value;
+			_current.Pokemon.IV[Stat.Defence] = (int)_current.IVDefence.Value;
+			_current.Pokemon.IV[Stat.SpecialAttack] = (int)_current.IVSpecialAttack.Value;
+			_current.Pokemon.IV[Stat.SpecialDefence] = (int)_current.IVSpecialDefence.Value;
+			_current.Pokemon.IV[Stat.Speed] = (int)_current.IVSpeed.Value;
 
-			current.Pokemon.EV[Stat.HP] = (int)current.EVHP.Value;
-			current.Pokemon.EV[Stat.Attack] = (int)current.EVAttack.Value;
-			current.Pokemon.EV[Stat.Defence] = (int)current.EVDefence.Value;
-			current.Pokemon.EV[Stat.SpecialAttack] = (int)current.EVSpecialAttack.Value;
-			current.Pokemon.EV[Stat.SpecialDefence] = (int)current.EVSpecialDefence.Value;
-			current.Pokemon.EV[Stat.Speed] = (int)current.EVSpeed.Value;
+			_current.Pokemon.EV[Stat.HP] = (int)_current.EVHP.Value;
+			_current.Pokemon.EV[Stat.Attack] = (int)_current.EVAttack.Value;
+			_current.Pokemon.EV[Stat.Defence] = (int)_current.EVDefence.Value;
+			_current.Pokemon.EV[Stat.SpecialAttack] = (int)_current.EVSpecialAttack.Value;
+			_current.Pokemon.EV[Stat.SpecialDefence] = (int)_current.EVSpecialDefence.Value;
+			_current.Pokemon.EV[Stat.Speed] = (int)_current.EVSpeed.Value;
 
 			UpdateForm();
 		}
@@ -205,133 +207,133 @@ namespace EVTracker
 
 		private void btnHPUp_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVHP.Value;
+			int value = (int)_current.EVHP.Value;
 			if (value >= 100) return;
 			value = Math.Min(100, value + 10);
-			current.EVHP.Value = value;
+			_current.EVHP.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnProtein_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVAttack.Value;
+			int value = (int)_current.EVAttack.Value;
 			if (value >= 100) return;
 			value = Math.Min(100, value + 10);
-			current.EVAttack.Value = value;
+			_current.EVAttack.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnIron_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVDefence.Value;
+			int value = (int)_current.EVDefence.Value;
 			if (value >= 100) return;
 			value = Math.Min(100, value + 10);
-			current.EVDefence.Value = value;
+			_current.EVDefence.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnCalcium_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVSpecialAttack.Value;
+			int value = (int)_current.EVSpecialAttack.Value;
 			if (value >= 100) return;
 			value = Math.Min(100, value + 10);
-			current.EVSpecialAttack.Value = value;
+			_current.EVSpecialAttack.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnZinc_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVSpecialDefence.Value;
+			int value = (int)_current.EVSpecialDefence.Value;
 			if (value >= 100) return;
 			value = Math.Min(100, value + 10);
-			current.EVSpecialDefence.Value = value;
+			_current.EVSpecialDefence.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnCarbos_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVSpeed.Value;
+			int value = (int)_current.EVSpeed.Value;
 			if (value >= 100) return;
 			value = Math.Min(100, value + 10);
-			current.EVSpeed.Value = value;
+			_current.EVSpeed.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnPomeg_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVHP.Value;
+			int value = (int)_current.EVHP.Value;
 			if (value <= 100)
 				value = Math.Max(0, value - 10);
 			else
 				value = 100;
 
-			current.EVHP.Value = value;
+			_current.EVHP.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnKelpsy_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVAttack.Value;
+			int value = (int)_current.EVAttack.Value;
 			if (value <= 100)
 				value = Math.Max(0, value - 10);
 			else
 				value = 100;
 
-			current.EVAttack.Value = value;
+			_current.EVAttack.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnQualot_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVDefence.Value;
+			int value = (int)_current.EVDefence.Value;
 			if (value <= 100)
 				value = Math.Max(0, value - 10);
 			else
 				value = 100;
 
-			current.EVDefence.Value = value;
+			_current.EVDefence.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnHondew_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVSpecialAttack.Value;
+			int value = (int)_current.EVSpecialAttack.Value;
 			if (value <= 100)
 				value = Math.Max(0, value - 10);
 			else
 				value = 100;
 
-			current.EVSpecialAttack.Value = value;
+			_current.EVSpecialAttack.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnGrepa_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVSpecialDefence.Value;
+			int value = (int)_current.EVSpecialDefence.Value;
 			if (value <= 100)
 				value = Math.Max(0, value - 10);
 			else
 				value = 100;
 
-			current.EVSpecialDefence.Value = value;
+			_current.EVSpecialDefence.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void btnTamato_Click(object sender, EventArgs e)
 		{
-			int value = (int)current.EVSpeed.Value;
+			int value = (int)_current.EVSpeed.Value;
 			if (value <= 100)
 				value = Math.Max(0, value - 10);
 			else
 				value = 100;
 
-			current.EVSpeed.Value = value;
+			_current.EVSpeed.Value = value;
 			recalculate(sender, e);
 		}
 
 		private void cmbPok_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			current.Pokemon.Species = (PokemonType)current.Species.SelectedItem;
+			_current.Pokemon.Species = (PokemonType)_current.Species.SelectedItem;
 			UpdateForm();
 		}
 
@@ -352,7 +354,7 @@ namespace EVTracker
 
 			#region Pokemon Details
 			ComboBox pok = new ComboBox();
-			pok.Items.AddRange(Manager.GetPokemonTypes().ToArray());
+			pok.Items.AddRange(_manager.GetPokemonTypes().ToArray());
 			pok.SelectedIndex = 0;
 			pok.DropDownStyle = ComboBoxStyle.DropDownList;
 			pok.SelectedIndexChanged +=new EventHandler(cmbPok_SelectedIndexChanged);
@@ -363,7 +365,7 @@ namespace EVTracker
 
 			//Nature
 			ComboBox nat = new ComboBox();
-			nat.Items.AddRange(Manager.GetNatures().ToArray());
+			nat.Items.AddRange(_manager.GetNatures().ToArray());
 			nat.SelectedIndex = 0;
 			nat.DropDownStyle = ComboBoxStyle.DropDownList;
 			nat.Location = new Point(pok.Right + 20, pok.Top);
@@ -714,8 +716,8 @@ namespace EVTracker
 				tabControl1.TabPages.Clear();
 				pok.ForEach(p =>
 				{
-					p.Species = Manager.GetPokemonType(p.Species.DexNumber);
-					p.Nature = Manager.GetNature(p.Nature.Name);
+					p.Species = _manager.GetPokemonType(p.Species.DexNumber);
+					p.Nature = _manager.GetNature(p.Nature.Name);
 					TabPage newTab = CreateTabPage();
 					Page page = ((Page)newTab.Tag);
 					page.Pokemon = p;
@@ -740,7 +742,7 @@ namespace EVTracker
 
 					tabControl1.TabPages.Add(newTab);
 				});
-				current = ((Page)tabControl1.SelectedTab.Tag);
+				_current = ((Page)tabControl1.SelectedTab.Tag);
 				recalculate(null, null);
 			}
 			catch

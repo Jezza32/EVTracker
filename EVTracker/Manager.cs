@@ -5,11 +5,11 @@ using System.Runtime.Serialization;
 
 namespace EVTracker
 {
-	public static class Manager
+	public class Manager
 	{
-		static Manager()
+		public Manager()
 		{
-			Species = new Dictionary<int, PokemonType>();
+			_species = new Dictionary<int, PokemonType>();
 			List<PokemonType> types;
 			var assem = Assembly.GetExecutingAssembly();
 
@@ -18,41 +18,41 @@ namespace EVTracker
 				types = (List<PokemonType>)deserializer.ReadObject(stream);
 			}
 
-			types.ForEach(t => Species.Add(t.DexNumber, t));
+			types.ForEach(t => _species.Add(t.DexNumber, t));
 
 		    deserializer = new DataContractSerializer(typeof(List<Game>));
 			var game = (List<Game>)deserializer.ReadObject(assem.GetManifestResourceStream("EVTracker.Resources.Games.evt"));
 
-			Games = new Dictionary<string, Game>();
-			game.ForEach(g => Games.Add(g.Name, g));
+			_games = new Dictionary<string, Game>();
+			game.ForEach(g => _games.Add(g.Name, g));
 
 		    deserializer = new DataContractSerializer(typeof(List<Nature>));
 			var nature = (List<Nature>)deserializer.ReadObject(assem.GetManifestResourceStream("EVTracker.Resources.Natures.evt"));
 
-			Natures = new Dictionary<string, Nature>();
-			nature.ForEach(g => Natures.Add(g.Name, g));
+			_natures = new Dictionary<string, Nature>();
+			nature.ForEach(g => _natures.Add(g.Name, g));
 		}
-		private static readonly IDictionary<int, PokemonType> Species;
-		private static readonly IDictionary<string, Game> Games;
-		private static readonly IDictionary<string, Nature> Natures;
+		private readonly IDictionary<int, PokemonType> _species;
+		private readonly IDictionary<string, Game> _games;
+		private readonly IDictionary<string, Nature> _natures;
 
-		public static PokemonType GetPokemonType(int i)
+		public PokemonType GetPokemonType(int i)
 		{
-			return Species[i];
+			return _species[i];
 		}
-		public static IList<PokemonType> GetPokemonTypes()
+		public IList<PokemonType> GetPokemonTypes()
 		{
-			return Species.Values.ToList();
+			return _species.Values.ToList();
 		}
-		public static Game GetGame(string s)
+		public Game GetGame(string s)
 		{
-			return Games[s];
+			return _games[s];
 		}
-		public static IList<Game> GetGames() { return Games.Values.ToList(); }
-		public static Nature GetNature(string s)
+		public IList<Game> GetGames() { return _games.Values.ToList(); }
+		public Nature GetNature(string s)
 		{
-			return Natures[s];
+			return _natures[s];
 		}
-		public static IList<Nature> GetNatures() { return Natures.Values.ToList(); }
+		public IList<Nature> GetNatures() { return _natures.Values.ToList(); }
 	}
 }
