@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
-using System.Reflection;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Windows.Forms;
+using EVTracker.Properties;
 
 namespace EVTracker
 {
@@ -24,13 +21,13 @@ namespace EVTracker
 		    InitializeComponent();
 
 			LoadGames();
-			tabControl1.Selected += new TabControlEventHandler(tabControl1_Selected);
+			tabControl1.Selected += tabControl1_Selected;
 
 			tabControl1.TabPages.Add(new Page(_pokemonTypes, _natures).TabPage);
 			_current = (Page)tabControl1.TabPages[0].Tag;
 
-			if (File.Exists(saveLocation))
-				load();
+			if (File.Exists(_saveLocation))
+				LoadFromFile();
 		}
 
 		void tabControl1_Selected(object sender, TabControlEventArgs e)
@@ -43,17 +40,17 @@ namespace EVTracker
 		{
 			cmbGame.Items.AddRange(_games.Values.ToArray<object>());
 			cmbGame.SelectedIndex = 0;
-			cmbGame.SelectedIndexChanged += new EventHandler(cmbGame_SelectedIndexChanged);
-			cmbRoute.Items.AddRange(((Game)cmbGame.SelectedItem).Routes.ToArray());
+			cmbGame.SelectedIndexChanged += cmbGame_SelectedIndexChanged;
+			cmbRoute.Items.AddRange(((Game)cmbGame.SelectedItem).Routes.ToArray<object>());
 			cmbRoute.SelectedIndex = 0;
-			cmbRoute.SelectedIndexChanged += new EventHandler(cmbRoute_SelectedIndexChanged);
+			cmbRoute.SelectedIndexChanged += cmbRoute_SelectedIndexChanged;
 			cmbRoute_SelectedIndexChanged(null, null);
 		}
 
 		void cmbGame_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			cmbRoute.Items.Clear();
-			cmbRoute.Items.AddRange(((Game)cmbGame.SelectedItem).Routes.ToArray());
+			cmbRoute.Items.AddRange(((Game)cmbGame.SelectedItem).Routes.ToArray<object>());
 			cmbRoute.SelectedIndex = 0;
 			cmbRoute_SelectedIndexChanged(null, null);
 		}
@@ -61,27 +58,25 @@ namespace EVTracker
 		void cmbRoute_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			splitContainer3.Panel2.Controls.Clear();
-			int x = 0;
-			int y = 0;
-			int vert = 0;
-			foreach (int i in ((Route)cmbRoute.SelectedItem).Pokemon)
+			var count = 0;
+			foreach (var i in ((Route)cmbRoute.SelectedItem).Pokemon)
 			{
-				Button b = new Button();
-				b.Text = "";
-				b.AutoSize = true;
-				string location = "_" + i.ToString().PadLeft(3, '0');
+			    var b = new Button
+			    {
+			        Text = "",
+			        AutoSize = true
+			    };
+			    var location = "_" + i.ToString().PadLeft(3, '0');
 				b.Tag = i;
 
-				b.Image = (Image)Properties.Resources.ResourceManager.GetObject(location);
+				b.Image = (Image)Resources.ResourceManager.GetObject(location);
 
 
-				b.Location = new Point(x, y);
-				vert = (vert + 1) % 3;
-				y = 106 * vert;
-				if (vert == 0) x += 106;
+				b.Location = new Point((count / 3) * 106, (count % 3) * 106);
 				splitContainer3.Panel2.Controls.Add(b);
 
-				b.Click += new EventHandler(b_Click);
+				b.Click += b_Click;
+			    count++;
 			}
 		}
 
@@ -114,50 +109,47 @@ namespace EVTracker
 			tabControl1.SelectedIndex = Math.Min(tabControl1.TabPages.Count - 1, page);
 		}
 
-		private string saveLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EVTrackerSave.evt";
+		private readonly string _saveLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EVTrackerSave.evt";
         private readonly IDictionary<string, Game> _games;
         private readonly IDictionary<int, PokemonType> _pokemonTypes;
         private readonly IDictionary<string, Nature> _natures;
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			List<Pokemon> Saved = new List<Pokemon>();
-			foreach (TabPage tab in tabControl1.TabPages)
-			{
-				Page p = (Page)tab.Tag;
-				Saved.Add(p.Pokemon);
-			}
-			Pokemon.Serialize(saveLocation, Saved);
+        {
+            var saved = tabControl1.TabPages.Cast<TabPage>().Select(p => ((Page)p.Tag).Pokemon).ToList();
+            Pokemon.Serialize(_saveLocation, saved);
 		}
 
-		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (!File.Exists(saveLocation))
-				MessageBox.Show("Cannot find " + saveLocation + " please ensure it exists before loading");
+			if (!File.Exists(_saveLocation))
+				MessageBox.Show($"Cannot find {_saveLocation} please ensure it exists before loading");
 		}
 
-		private void load(){
-			DataContractSerializer deserializer = new DataContractSerializer(typeof(List<Pokemon>));
-			Stream s = File.OpenRead(saveLocation);
-			try
-			{
-				List<Pokemon> pok = (List<Pokemon>)deserializer.ReadObject(s);
-				s.Close();
-				tabControl1.TabPages.Clear();
-				pok.ForEach(p =>
-				{
-					var page = new Page(_pokemonTypes, _natures);
-                    page.Load(p);
-					tabControl1.TabPages.Add(page.TabPage);
-				});
-				_current = ((Page)tabControl1.SelectedTab.Tag);
-			}
-			catch
-			{
-				//This is when the  file is invalid
-				MessageBox.Show("The Save File is Invalid, load failed");
-			}
-		}
+        private void LoadFromFile(){
+			var deserializer = new DataContractSerializer(typeof(List<Pokemon>));
+            using (var stream = File.OpenRead(_saveLocation))
+            {
+                try
+                {
+                    var pok = (List<Pokemon>) deserializer.ReadObject(stream);
+                    stream.Close();
+                    tabControl1.TabPages.Clear();
+                    pok.ForEach(p =>
+                    {
+                        var page = new Page(_pokemonTypes, _natures);
+                        page.Load(p);
+                        tabControl1.TabPages.Add(page.TabPage);
+                    });
+                    _current = ((Page) tabControl1.SelectedTab.Tag);
+                }
+                catch
+                {
+                    //This is when the  file is invalid
+                    MessageBox.Show(Resources.LoadFailed);
+                }
+            }
+        }
 
 	}
 }

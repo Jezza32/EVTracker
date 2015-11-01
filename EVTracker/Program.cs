@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Windows.Forms;
@@ -21,24 +23,33 @@ namespace EVTracker
             var deserializer = new DataContractSerializer(typeof(List<PokemonType>));
             using (var stream = assem.GetManifestResourceStream("EVTracker.Resources.Species.evt"))
             {
+                Debug.Assert(stream != null, "Failed to load species");
                 types = (List<PokemonType>)deserializer.ReadObject(stream);
             }
 
-            types.ForEach(t => species.Add(t.DexNumber, t));
+		    types.ForEach(t => species.Add(t.DexNumber, t));
 
+		    Dictionary<string, Game> games;
             deserializer = new DataContractSerializer(typeof(List<Game>));
-            var game = (List<Game>)deserializer.ReadObject(assem.GetManifestResourceStream("EVTracker.Resources.Games.evt"));
+		    using (var stream = assem.GetManifestResourceStream("EVTracker.Resources.Games.evt"))
+            {
+                Debug.Assert(stream != null, "Failed to load games");
+                var game = (List<Game>) deserializer.ReadObject(stream);
+                games = game.ToDictionary(g => g.Name);
+		    }
 
-            var games = new Dictionary<string, Game>();
-            game.ForEach(g => games.Add(g.Name, g));
 
             deserializer = new DataContractSerializer(typeof(List<Nature>));
-            var nature = (List<Nature>)deserializer.ReadObject(assem.GetManifestResourceStream("EVTracker.Resources.Natures.evt"));
+            Dictionary<string, Nature> natures;
 
-            var natures = new Dictionary<string, Nature>();
-            nature.ForEach(g => natures.Add(g.Name, g));
+		    using (var stream = assem.GetManifestResourceStream("EVTracker.Resources.Natures.evt"))
+		    {
+		        Debug.Assert(stream != null, "Failed to load natures");
+		        var nature = (List<Nature>) deserializer.ReadObject(stream);
+		        natures = nature.ToDictionary(n => n.Name);
+		    }
 
-            Application.EnableVisualStyles();
+		    Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1(games, species, natures));
 		}

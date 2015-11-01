@@ -6838,6 +6838,15 @@ namespace EVTracker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Save File is Invalid, load failed.
+        /// </summary>
+        internal static string LoadFailed {
+            get {
+                return ResourceManager.GetString("LoadFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Natures {

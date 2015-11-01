@@ -2188,4 +2188,7 @@
   <data name="TamatoBerry" xml:space="preserve">
     <value>Tamato Berry</value>
   </data>
+  <data name="LoadFailed" xml:space="preserve">
+    <value>The Save File is Invalid, load failed</value>
+  </data>
 </root>
