@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 namespace EVTracker
@@ -30,10 +26,12 @@ namespace EVTracker
 		#region Serializable
 		public static void Serialize(string location, List<Route> routes)
 		{
-			DataContractSerializer serializer = new DataContractSerializer(typeof(List<Game>));
-			Stream s = File.Create(location);
-			serializer.WriteObject(s, routes);
-			s.Close();
+			var serializer = new DataContractSerializer(typeof(List<Game>));
+		    using (var stream = File.Create(location))
+		    {
+		        serializer.WriteObject(stream, routes);
+		        stream.Close();
+		    }
 		}
 		#endregion
 	}

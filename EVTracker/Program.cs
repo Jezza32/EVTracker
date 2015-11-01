@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using System.Resources;
-using System.Globalization;
-using System.Collections;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace EVTracker
 {
