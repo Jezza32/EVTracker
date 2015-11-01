@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using EVTracker.Properties;
 
 namespace EVTracker
 {
@@ -16,35 +18,28 @@ namespace EVTracker
 		[STAThread]
 		static void Main()
 		{
-            var species = new Dictionary<int, PokemonType>();
-            List<PokemonType> types;
-            var assem = Assembly.GetExecutingAssembly();
+            Dictionary<int, PokemonType> species;
+		    Dictionary<string, Game> games;
+            Dictionary<string, Nature> natures;
 
             var deserializer = new DataContractSerializer(typeof(List<PokemonType>));
-            using (var stream = assem.GetManifestResourceStream("EVTracker.Resources.Species.evt"))
+            using (var stream = new MemoryStream(Resources.Species))
             {
-                Debug.Assert(stream != null, "Failed to load species");
-                types = (List<PokemonType>)deserializer.ReadObject(stream);
+                var types = (List<PokemonType>)deserializer.ReadObject(stream);
+                species = types.ToDictionary(t => t.DexNumber);
             }
 
-		    types.ForEach(t => species.Add(t.DexNumber, t));
-
-		    Dictionary<string, Game> games;
             deserializer = new DataContractSerializer(typeof(List<Game>));
-		    using (var stream = assem.GetManifestResourceStream("EVTracker.Resources.Games.evt"))
+		    using (var stream = new MemoryStream(Resources.Games))
             {
-                Debug.Assert(stream != null, "Failed to load games");
                 var game = (List<Game>) deserializer.ReadObject(stream);
                 games = game.ToDictionary(g => g.Name);
 		    }
 
 
             deserializer = new DataContractSerializer(typeof(List<Nature>));
-            Dictionary<string, Nature> natures;
-
-		    using (var stream = assem.GetManifestResourceStream("EVTracker.Resources.Natures.evt"))
+		    using (var stream = new MemoryStream(Resources.Natures))
 		    {
-		        Debug.Assert(stream != null, "Failed to load natures");
 		        var nature = (List<Nature>) deserializer.ReadObject(stream);
 		        natures = nature.ToDictionary(n => n.Name);
 		    }
