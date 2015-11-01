@@ -15,11 +15,12 @@ namespace EVTracker
     public partial class Form1 : Form
 	{
 		Page _current;
-        private readonly Manager _manager;
 
-		public Form1(Manager manager)
+		public Form1(IDictionary<string, Game> games, IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures)
 		{
-		    _manager = manager;
+		    _games = games;
+		    _pokemonTypes = pokemonTypes;
+		    _natures = natures;
 		    InitializeComponent();
 
 			LoadGames();
@@ -43,7 +44,7 @@ namespace EVTracker
 
 		public void LoadGames()
 		{
-			cmbGame.Items.AddRange(_manager.GetGames().ToArray());
+			cmbGame.Items.AddRange(_games.Values.ToArray<object>());
 			cmbGame.SelectedIndex = 0;
 			cmbGame.SelectedIndexChanged += new EventHandler(cmbGame_SelectedIndexChanged);
 			cmbRoute.Items.AddRange(((Game)cmbGame.SelectedItem).Routes.ToArray());
@@ -90,7 +91,7 @@ namespace EVTracker
 		void b_Click(object sender, EventArgs e)
 		{
 			int i = (int)((Button)sender).Tag;
-			IDictionary<Stat, int> dict = _manager.GetPokemonType(i).GivenEffortValues;
+			IDictionary<Stat, int> dict = _pokemonTypes[i].GivenEffortValues;
 			foreach (Stat s in dict.Keys)
 				switch (s)
 				{
@@ -354,7 +355,7 @@ namespace EVTracker
 
 			#region Pokemon Details
 			ComboBox pok = new ComboBox();
-			pok.Items.AddRange(_manager.GetPokemonTypes().ToArray());
+			pok.Items.AddRange(_pokemonTypes.Values.ToArray<object>());
 			pok.SelectedIndex = 0;
 			pok.DropDownStyle = ComboBoxStyle.DropDownList;
 			pok.SelectedIndexChanged +=new EventHandler(cmbPok_SelectedIndexChanged);
@@ -365,7 +366,7 @@ namespace EVTracker
 
 			//Nature
 			ComboBox nat = new ComboBox();
-			nat.Items.AddRange(_manager.GetNatures().ToArray());
+			nat.Items.AddRange(_natures.Values.ToArray<object>());
 			nat.SelectedIndex = 0;
 			nat.DropDownStyle = ComboBoxStyle.DropDownList;
 			nat.Location = new Point(pok.Right + 20, pok.Top);
@@ -689,7 +690,11 @@ namespace EVTracker
 		}
 
 		private string saveLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EVTrackerSave.evt";
-		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private readonly IDictionary<string, Game> _games;
+        private readonly IDictionary<int, PokemonType> _pokemonTypes;
+        private readonly IDictionary<string, Nature> _natures;
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			List<Pokemon> Saved = new List<Pokemon>();
 			foreach (TabPage tab in tabControl1.TabPages)
@@ -716,8 +721,8 @@ namespace EVTracker
 				tabControl1.TabPages.Clear();
 				pok.ForEach(p =>
 				{
-					p.Species = _manager.GetPokemonType(p.Species.DexNumber);
-					p.Nature = _manager.GetNature(p.Nature.Name);
+					p.Species = _pokemonTypes[p.Species.DexNumber];
+					p.Nature = _natures[p.Nature.Name];
 					TabPage newTab = CreateTabPage();
 					Page page = ((Page)newTab.Tag);
 					page.Pokemon = p;
