@@ -2122,4 +2122,70 @@
   <data name="_3386" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\3386.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Pokerus" xml:space="preserve">
+    <value>Pokerus</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="HP" xml:space="preserve">
+    <value>HP</value>
+  </data>
+  <data name="Attack" xml:space="preserve">
+    <value>Attack</value>
+  </data>
+  <data name="Defence" xml:space="preserve">
+    <value>Defence</value>
+  </data>
+  <data name="SpAttack" xml:space="preserve">
+    <value>Sp. Attack</value>
+  </data>
+  <data name="SpDefence" xml:space="preserve">
+    <value>Sp. Defence</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="BaseStats" xml:space="preserve">
+    <value>Base Stats</value>
+  </data>
+  <data name="ActualStats" xml:space="preserve">
+    <value>Actual Stats</value>
+  </data>
+  <data name="HPUp" xml:space="preserve">
+    <value>HP Up</value>
+  </data>
+  <data name="PomegBerry" xml:space="preserve">
+    <value>Pomeg Berry</value>
+  </data>
+  <data name="Protein" xml:space="preserve">
+    <value>Protein</value>
+  </data>
+  <data name="KelpsyBerry" xml:space="preserve">
+    <value>Kelpsy Berry</value>
+  </data>
+  <data name="Iron" xml:space="preserve">
+    <value>Iron</value>
+  </data>
+  <data name="QualotBerry" xml:space="preserve">
+    <value>Qualot Berry</value>
+  </data>
+  <data name="Calcium" xml:space="preserve">
+    <value>Calcium</value>
+  </data>
+  <data name="HondewBerry" xml:space="preserve">
+    <value>Hondew Berry</value>
+  </data>
+  <data name="Zinc" xml:space="preserve">
+    <value>Zinc</value>
+  </data>
+  <data name="GrepaBerry" xml:space="preserve">
+    <value>Grepa Berry</value>
+  </data>
+  <data name="Carbos" xml:space="preserve">
+    <value>Carbos</value>
+  </data>
+  <data name="TamatoBerry" xml:space="preserve">
+    <value>Tamato Berry</value>
+  </data>
 </root>
