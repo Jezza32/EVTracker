@@ -580,152 +580,92 @@ namespace EVTracker
 
 	    public void UpdateStat(Stat stat, int statIncrease)
 	    {
-	        var items = HeldItem.SelectedItem as Items?;
-	        Pokemon.EV[stat] = Math.Min(statIncrease * (items.HasValue && items.Value == Items.MachoBrace ? 2 : 1) * (Pokerus.Checked ? 2 : 1) + Pokemon.EV[stat], 255);
+	        Pokemon.UpdateStat(stat, statIncrease);
 	        UpdateForm();
 	    }
 
 	    public void ApplyItem(Items item)
 	    {
-	        switch (item)
-	        {
-				case Items.PowerWeight:
-					Pokemon.EV[Stat.HP] = Math.Min(255, Pokemon.EV[Stat.HP] + (Pokerus.Checked ? 8 : 4));
-                    break;
-				case Items.PowerBracer:
-					Pokemon.EV[Stat.Attack] = Math.Min(255, Pokemon.EV[Stat.Attack] + (Pokerus.Checked ? 8 : 4));
-                    break;
-				case Items.PowerBelt:
-					Pokemon.EV[Stat.Defence] = Math.Min(255, Pokemon.EV[Stat.Defence] + (Pokerus.Checked ? 8 : 4));
-                    break;
-				case Items.PowerLens:
-					Pokemon.EV[Stat.SpecialAttack] = Math.Min(255, Pokemon.EV[Stat.SpecialAttack] + (Pokerus.Checked ? 8 : 4));
-                    break;
-				case Items.PowerBand:
-					Pokemon.EV[Stat.SpecialDefence] = Math.Min(255, Pokemon.EV[Stat.SpecialDefence] + (Pokerus.Checked ? 8 : 4));
-                    break;
-				case Items.PowerAnklet:
-					Pokemon.EV[Stat.Speed] = Math.Min(255, Pokemon.EV[Stat.Speed] + (Pokerus.Checked ? 8 : 4));
-                    break;
-            }
+	        Pokemon.ApplyItem(item);
             UpdateForm();
 	    }
 
 
 	    private void btnHPUp_Click(object sender, EventArgs e)
-        {
-            var value = Pokemon.EV[Stat.HP];
-            if (value >= 100) return;
-            value = Math.Min(100, value + 10);
-            Pokemon.EV[Stat.HP] = value;
+	    {
+	        Pokemon.ApplyStatBoost(Stat.HP);
             UpdateForm();
         }
 
         private void btnProtein_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.Attack];
-            if (value >= 100) return;
-            value = Math.Min(100, value + 10);
-            Pokemon.EV[Stat.Attack] = value;
+            Pokemon.ApplyStatBoost(Stat.Attack);
             UpdateForm();
         }
 
         private void btnIron_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.Defence];
-            if (value >= 100) return;
-            value = Math.Min(100, value + 10);
-            Pokemon.EV[Stat.Defence] = value;
+            Pokemon.ApplyStatBoost(Stat.Defence);
             UpdateForm();
         }
 
         private void btnCalcium_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.SpecialAttack];
-            if (value >= 100) return;
-            value = Math.Min(100, value + 10);
-            Pokemon.EV[Stat.SpecialAttack] = value;
+            Pokemon.ApplyStatBoost(Stat.SpecialAttack);
             UpdateForm();
         }
 
         private void btnZinc_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.SpecialDefence];
-            if (value >= 100) return;
-            value = Math.Min(100, value + 10);
-            Pokemon.EV[Stat.SpecialDefence] = value;
+            Pokemon.ApplyStatBoost(Stat.SpecialDefence);
             UpdateForm();
         }
 
         private void btnCarbos_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.Speed];
-            if (value >= 100) return;
-            value = Math.Min(100, value + 10);
-            Pokemon.EV[Stat.Speed] = value;
+            Pokemon.ApplyStatBoost(Stat.Speed);
             UpdateForm();
         }
 
         private void btnPomeg_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.HP];
-            value = value <= 100 ? Math.Max(0, value - 10) : 100;
-
-            Pokemon.EV[Stat.HP] = value;
+            Pokemon.ApplyStatBerry(Stat.HP);
             UpdateForm();
         }
 
-        private void btnKelpsy_Click(object sender, EventArgs e)
+	    private void btnKelpsy_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.Attack];
-            value = value <= 100 ? Math.Max(0, value - 10) : 100;
-
-            Pokemon.EV[Stat.Attack] = value;
+            Pokemon.ApplyStatBerry(Stat.Attack);
             UpdateForm();
         }
 
         private void btnQualot_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.Defence];
-            value = value <= 100 ? Math.Max(0, value - 10) : 100;
-
-            Pokemon.EV[Stat.Defence] = value;
+            Pokemon.ApplyStatBerry(Stat.Defence);
             UpdateForm();
         }
 
         private void btnHondew_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.SpecialAttack];
-            value = value <= 100 ? Math.Max(0, value - 10) : 100;
-
-            Pokemon.EV[Stat.SpecialAttack] = value;
+            Pokemon.ApplyStatBerry(Stat.SpecialAttack);
             UpdateForm();
         }
 
         private void btnGrepa_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.SpecialDefence];
-            value = value <= 100 ? Math.Max(0, value - 10) : 100;
-
-            Pokemon.EV[Stat.SpecialDefence] = value;
+            Pokemon.ApplyStatBerry(Stat.SpecialDefence);
             UpdateForm();
         }
 
         private void btnTamato_Click(object sender, EventArgs e)
         {
-            var value = Pokemon.EV[Stat.Speed];
-            value = value <= 100 ? Math.Max(0, value - 10) : 100;
-
-            Pokemon.EV[Stat.Speed] = value;
+            Pokemon.ApplyStatBerry(Stat.Speed);
             UpdateForm();
         }
 
         private void cmbPok_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedItem = (PokemonType)Species.SelectedItem;
-            if (selectedItem == Pokemon.Species) return;
-
-            Pokemon.Species = selectedItem;
+            Pokemon.Species = (PokemonType)Species.SelectedItem;
             UpdateForm();
         }
 

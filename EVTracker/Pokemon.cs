@@ -79,5 +79,51 @@ namespace EVTracker
 		    }
 		}
 		#endregion
-	}
+
+	    public void ApplyItem(Items item)
+	    {
+            switch (item)
+            {
+                case Items.PowerWeight:
+                    EV[Stat.HP] = Math.Min(255, EV[Stat.HP] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerBracer:
+                    EV[Stat.Attack] = Math.Min(255, EV[Stat.Attack] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerBelt:
+                    EV[Stat.Defence] = Math.Min(255, EV[Stat.Defence] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerLens:
+                    EV[Stat.SpecialAttack] = Math.Min(255, EV[Stat.SpecialAttack] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerBand:
+                    EV[Stat.SpecialDefence] = Math.Min(255, EV[Stat.SpecialDefence] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerAnklet:
+                    EV[Stat.Speed] = Math.Min(255, EV[Stat.Speed] + (HasPokerus ? 8 : 4));
+                    break;
+            }
+        }
+
+	    public void UpdateStat(Stat stat, int statIncrease)
+	    {
+            EV[stat] = Math.Min(statIncrease * (HeldItem == Items.MachoBrace ? 2 : 1) * (HasPokerus ? 2 : 1) + EV[stat], 255);
+        }
+
+	    public void ApplyStatBoost(Stat stat)
+	    {
+            var value = EV[stat];
+            if (value >= 100) return;
+            value = Math.Min(100, value + 10);
+            EV[stat] = value;
+        }
+
+        public void ApplyStatBerry(Stat stat)
+        {
+            var value = EV[stat];
+            value = value <= 100 ? Math.Max(0, value - 10) : 100;
+
+            EV[stat] = value;
+        }
+    }
 }
