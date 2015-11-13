@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.Serialization;
 using System.IO;
+using System.Runtime.Serialization;
 
 namespace EVTracker
 {
@@ -51,19 +49,21 @@ namespace EVTracker
 				return value;
 			}
 		}
-		public int Attack { get { return getStat(Stat.Attack); } }
-		public int Defence { get { return getStat(Stat.Defence); } }
-		public int SpecialAttack { get { return getStat(Stat.SpecialAttack); } }
-		public int SpecialDefence { get { return getStat(Stat.SpecialDefence); } }
-		public int Speed { get { return getStat(Stat.Speed); } }
+		public int Attack => GetStat(Stat.Attack);
+	    public int Defence => GetStat(Stat.Defence);
+	    public int SpecialAttack => GetStat(Stat.SpecialAttack);
+	    public int SpecialDefence => GetStat(Stat.SpecialDefence);
+	    public int Speed => GetStat(Stat.Speed);
 
-		private int getStat(Stat s)
+	    public static Pokemon MissingNo => new Pokemon { Species = new PokemonType()};
+
+	    private int GetStat(Stat s)
 		{
-			int value = (2 * Species.BaseStats[s]) + IV[s] + (EV[s] / 4);
+			var value = (2 * Species.BaseStats[s]) + IV[s] + (EV[s] / 4);
 			value *= Level;
 			value /= 100;
 			value += 5;
-			value = (int)Math.Floor((double)value * Nature.GetModifier(s));
+			value = (int)Math.Floor(value * Nature.GetModifier(s));
 			return value;
 		}
 
@@ -71,11 +71,91 @@ namespace EVTracker
 		#region Serializable
 		public static void Serialize(string location, List<Pokemon> pokemon)
 		{
-			DataContractSerializer serializer = new DataContractSerializer(typeof(List<Pokemon>));
-			Stream s = File.Create(location);
-			serializer.WriteObject(s, pokemon);
-			s.Close();
+			var serializer = new DataContractSerializer(typeof(List<Pokemon>));
+		    using (var stream = File.Create(location))
+		    {
+		        serializer.WriteObject(stream, pokemon);
+		        stream.Close();
+		    }
 		}
 		#endregion
-	}
+
+	    public void ApplyItem(Items item)
+	    {
+            switch (item)
+            {
+                case Items.PowerWeight:
+                    EV[Stat.HP] = Math.Min(255, EV[Stat.HP] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerBracer:
+                    EV[Stat.Attack] = Math.Min(255, EV[Stat.Attack] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerBelt:
+                    EV[Stat.Defence] = Math.Min(255, EV[Stat.Defence] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerLens:
+                    EV[Stat.SpecialAttack] = Math.Min(255, EV[Stat.SpecialAttack] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerBand:
+                    EV[Stat.SpecialDefence] = Math.Min(255, EV[Stat.SpecialDefence] + (HasPokerus ? 8 : 4));
+                    break;
+                case Items.PowerAnklet:
+                    EV[Stat.Speed] = Math.Min(255, EV[Stat.Speed] + (HasPokerus ? 8 : 4));
+                    break;
+            }
+        }
+        
+	    public void ApplyStatBoost(Stat stat)
+	    {
+            var value = EV[stat];
+            if (value >= 100) return;
+            value = Math.Min(100, value + 10);
+            EV[stat] = value;
+        }
+
+        public void ApplyStatBerry(Stat stat)
+        {
+            var value = EV[stat];
+            value = value <= 100 ? Math.Max(0, value - 10) : 100;
+
+            EV[stat] = value;
+        }
+
+	    public void Defeat(PokemonType pokemonType)
+	    {
+            var dict = pokemonType.GivenEffortValues;
+
+            if (dict.ContainsKey(Stat.HP))
+            {
+                UpdateStat(Stat.HP, dict[Stat.HP]);
+            }
+            if (dict.ContainsKey(Stat.Attack))
+            {
+                UpdateStat(Stat.Attack, dict[Stat.Attack]);
+            }
+            if (dict.ContainsKey(Stat.Defence))
+            {
+                UpdateStat(Stat.Defence, dict[Stat.Defence]);
+            }
+            if (dict.ContainsKey(Stat.SpecialAttack))
+            {
+                UpdateStat(Stat.SpecialAttack, dict[Stat.SpecialAttack]);
+            }
+            if (dict.ContainsKey(Stat.SpecialDefence))
+            {
+                UpdateStat(Stat.SpecialDefence, dict[Stat.SpecialDefence]);
+            }
+            if (dict.ContainsKey(Stat.Speed))
+            {
+                UpdateStat(Stat.Speed, dict[Stat.Speed]);
+            }
+
+            ApplyItem(HeldItem);
+        }
+
+        private void UpdateStat(Stat stat, int statIncrease)
+        {
+            EV[stat] = Math.Min(statIncrease * (HeldItem == Items.MachoBrace ? 2 : 1) * (HasPokerus ? 2 : 1) + EV[stat], 255);
+        }
+    }
 }

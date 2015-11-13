@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
 using System.IO;
+using System.Runtime.Serialization;
 
 namespace EVTracker
 {
@@ -33,16 +30,18 @@ namespace EVTracker
 		#region Serializable
 		public static void Serialize(string location, List<PokemonType> pokemon)
 		{
-			DataContractSerializer serializer = new DataContractSerializer(typeof(List<PokemonType>));
-			Stream s = File.Create(location);
-			serializer.WriteObject(s, pokemon);
-			s.Close();
+			var serializer = new DataContractSerializer(typeof(List<PokemonType>));
+		    using (var stream = File.Create(location))
+		    {
+		        serializer.WriteObject(stream, pokemon);
+		        stream.Close();
+		    }
 		}
 		#endregion
 
 		public override string ToString()
 		{
-			return string.Format("#{0} - {1}", DexNumber.ToString().PadLeft(3, '0'), Name);
+			return $"#{DexNumber.ToString().PadLeft(3, '0')} - {Name}";
 		}
 	}
 }
