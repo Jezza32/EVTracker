@@ -578,19 +578,6 @@ namespace EVTracker
 
 		public ComboBox Species { get; set; }
 
-	    public void UpdateStat(Stat stat, int statIncrease)
-	    {
-	        Pokemon.UpdateStat(stat, statIncrease);
-	        UpdateForm();
-	    }
-
-	    public void ApplyItem(Items item)
-	    {
-	        Pokemon.ApplyItem(item);
-            UpdateForm();
-	    }
-
-
 	    private void btnHPUp_Click(object sender, EventArgs e)
 	    {
 	        Pokemon.ApplyStatBoost(Stat.HP);
@@ -741,5 +728,11 @@ namespace EVTracker
             Warning.ForeColor = (remaining >= 0 ? Color.Black : Color.Red);
             Warning.Text = (remaining >= 0 ? "You have " + remaining + " EVs left" : "You are " + (remaining * -1) + " EVs over");
         }
+
+	    public void Defeat(PokemonType pokemonType)
+	    {
+	        Pokemon.Defeat(pokemonType);
+            UpdateForm();
+	    }
 	}
 }

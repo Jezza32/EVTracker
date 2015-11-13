@@ -104,12 +104,7 @@ namespace EVTracker
                     break;
             }
         }
-
-	    public void UpdateStat(Stat stat, int statIncrease)
-	    {
-            EV[stat] = Math.Min(statIncrease * (HeldItem == Items.MachoBrace ? 2 : 1) * (HasPokerus ? 2 : 1) + EV[stat], 255);
-        }
-
+        
 	    public void ApplyStatBoost(Stat stat)
 	    {
             var value = EV[stat];
@@ -124,6 +119,43 @@ namespace EVTracker
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
             EV[stat] = value;
+        }
+
+	    public void Defeat(PokemonType pokemonType)
+	    {
+            var dict = pokemonType.GivenEffortValues;
+
+            if (dict.ContainsKey(Stat.HP))
+            {
+                UpdateStat(Stat.HP, dict[Stat.HP]);
+            }
+            if (dict.ContainsKey(Stat.Attack))
+            {
+                UpdateStat(Stat.Attack, dict[Stat.Attack]);
+            }
+            if (dict.ContainsKey(Stat.Defence))
+            {
+                UpdateStat(Stat.Defence, dict[Stat.Defence]);
+            }
+            if (dict.ContainsKey(Stat.SpecialAttack))
+            {
+                UpdateStat(Stat.SpecialAttack, dict[Stat.SpecialAttack]);
+            }
+            if (dict.ContainsKey(Stat.SpecialDefence))
+            {
+                UpdateStat(Stat.SpecialDefence, dict[Stat.SpecialDefence]);
+            }
+            if (dict.ContainsKey(Stat.Speed))
+            {
+                UpdateStat(Stat.Speed, dict[Stat.Speed]);
+            }
+
+            ApplyItem(HeldItem);
+        }
+
+        private void UpdateStat(Stat stat, int statIncrease)
+        {
+            EV[stat] = Math.Min(statIncrease * (HeldItem == Items.MachoBrace ? 2 : 1) * (HasPokerus ? 2 : 1) + EV[stat], 255);
         }
     }
 }

@@ -83,16 +83,8 @@ namespace EVTracker
 		void b_Click(object sender, EventArgs e)
 		{
 			var i = (int)((Button)sender).Tag;
-			var dict = _pokemonTypes[i].GivenEffortValues;
 
-            if (dict.ContainsKey(Stat.HP)) _current.UpdateStat(Stat.HP, dict[Stat.HP]);
-			if (dict.ContainsKey(Stat.Attack)) _current.UpdateStat(Stat.Attack, dict[Stat.Attack]);
-			if (dict.ContainsKey(Stat.Defence)) _current.UpdateStat(Stat.Defence, dict[Stat.Defence]);
-			if (dict.ContainsKey(Stat.SpecialAttack)) _current.UpdateStat(Stat.SpecialAttack, dict[Stat.SpecialAttack]);
-			if (dict.ContainsKey(Stat.SpecialDefence)) _current.UpdateStat(Stat.SpecialDefence, dict[Stat.SpecialDefence]);
-			if (dict.ContainsKey(Stat.Speed)) _current.UpdateStat(Stat.Speed, dict[Stat.Speed]);
-
-		    _current.ApplyItem(((Items) _current.HeldItem.SelectedItem));
+		    _current.Defeat(_pokemonTypes[i]);
 		}
 
 		private void addPokemonToolStripMenuItem_Click(object sender, EventArgs e)
