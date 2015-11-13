@@ -23,8 +23,7 @@ namespace EVTracker
 			LoadGames();
 			tabControl1.Selected += tabControl1_Selected;
 
-			tabControl1.TabPages.Add(new Page(Pokemon.MissingNo, _pokemonTypes, _natures).TabPage);
-			_current = (Page)tabControl1.TabPages[0].Tag;
+			tabControl1.TabPages.Add(new Page(Pokemon.MissingNo, _pokemonTypes, _natures));
 
 			if (File.Exists(_saveLocation))
 				LoadFromFile();
@@ -33,7 +32,7 @@ namespace EVTracker
 		void tabControl1_Selected(object sender, TabControlEventArgs e)
 		{
 			if (e.TabPage == null) return;
-			_current = ((Page)e.TabPage.Tag);
+			_current = (Page) (e.TabPage);
 		}
 
 		public void LoadGames()
@@ -89,7 +88,7 @@ namespace EVTracker
 
 		private void addPokemonToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var newTab = new Page(Pokemon.MissingNo, _pokemonTypes, _natures).TabPage;
+			var newTab = new Page(Pokemon.MissingNo, _pokemonTypes, _natures);
 			tabControl1.TabPages.Add(newTab);
 		}
 
@@ -109,7 +108,7 @@ namespace EVTracker
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var saved = tabControl1.TabPages.Cast<TabPage>().Select(p => ((Page)p.Tag).Pokemon).ToList();
+            var saved = tabControl1.TabPages.Cast<TabPage>().Select(p => ((Page)p).Pokemon).ToList();
             Pokemon.Serialize(_saveLocation, saved);
 		}
 
@@ -128,9 +127,9 @@ namespace EVTracker
                 foreach (var pokemon in savedPokemon)
                 {
                      var page = new Page(pokemon, _pokemonTypes, _natures);
-                     tabControl1.TabPages.Add(page.TabPage);
+                     tabControl1.TabPages.Add(page);
                 }
-                _current = ((Page) tabControl1.SelectedTab.Tag);
+                _current = ((Page) tabControl1.SelectedTab);
             }
             catch
             {

@@ -8,19 +8,12 @@ using static System.Double;
 
 namespace EVTracker
 {
-	public class Page
+	public class Page : TabPage
 	{
 	    public Page(Pokemon pokemon, IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures)
 	    {
 	        Pokemon = pokemon;
             StatLabels = new Dictionary<Stat, Label>();
-
-	        TabPage = new TabPage
-	        {
-	            Tag = this,
-	            BackColor = Color.White,
-	            Text = Pokemon.Species.Name
-	        };
 
 	        #region Pokemon Details
             Species = new ComboBox();
@@ -30,7 +23,7 @@ namespace EVTracker
             Species.SelectedIndexChanged += cmbPok_SelectedIndexChanged;
             Species.Location = new Point(15, 23);
             Species.Size = new Size(146, 21);
-            TabPage.Controls.Add(Species);
+            Controls.Add(Species);
 
             //Nature
             Nature = new ComboBox();
@@ -39,7 +32,7 @@ namespace EVTracker
             Nature.DropDownStyle = ComboBoxStyle.DropDownList;
             Nature.Location = new Point(Species.Right + 20, Species.Top);
             Nature.SelectedIndexChanged += (o, args) => { Pokemon.Nature = (Nature) Nature.SelectedItem; UpdateForm(); };
-            TabPage.Controls.Add(Nature);
+            Controls.Add(Nature);
 
             //Pokerus
 	        Pokerus = new CheckBox
@@ -48,7 +41,7 @@ namespace EVTracker
 	            Location = new Point(Nature.Right + 20, Species.Top)
 	        };
 	        Pokerus.CheckedChanged += (o, args) => { Pokemon.HasPokerus = Pokerus.Checked; UpdateForm(); };
-            TabPage.Controls.Add(Pokerus);
+            Controls.Add(Pokerus);
 
             //HeldItem
 	        HeldItem = new ComboBox {FormattingEnabled = true};
@@ -62,7 +55,7 @@ namespace EVTracker
             HeldItem.DropDownStyle = ComboBoxStyle.DropDownList;
             HeldItem.SelectedIndex = 0;
             HeldItem.SelectedIndexChanged += (o, args) => { Pokemon.HeldItem = (Items) HeldItem.SelectedIndex; UpdateForm(); };
-            TabPage.Controls.Add(HeldItem);
+            Controls.Add(HeldItem);
 
 	        var level = new Label
 	        {
@@ -70,7 +63,7 @@ namespace EVTracker
 	            Location = new Point(11, 64),
 	            Size = new Size(33, 13)
 	        };
-	        TabPage.Controls.Add(level);
+	        Controls.Add(level);
 
 	        Level = new NumericUpDown
 	        {
@@ -81,7 +74,7 @@ namespace EVTracker
 	            Size = new Size(61, 20)
 	        };
 	        Level.ValueChanged += (o, args) => { Pokemon.Level = (int) Level.Value; UpdateForm(); };
-            TabPage.Controls.Add(Level);
+            Controls.Add(Level);
 
 	        Image = new PictureBox
 	        {
@@ -89,7 +82,7 @@ namespace EVTracker
 	            Size = new Size(80, 80),
 	            SizeMode = PictureBoxSizeMode.AutoSize
 	        };
-            TabPage.Controls.Add(Image);
+            Controls.Add(Image);
 
 	        var hp = new Label
 	        {
@@ -97,42 +90,42 @@ namespace EVTracker
 	            Location = new Point(29, 116),
 	            Size = new Size(22, 13)
 	        };
-	        TabPage.Controls.Add(hp); StatLabels[Stat.HP] = hp;
+	        Controls.Add(hp); StatLabels[Stat.HP] = hp;
 	        var att = new Label
 	        {
 	            Text = Resources.Attack,
 	            Location = new Point(110, 116),
 	            Size = new Size(38, 13)
 	        };
-	        TabPage.Controls.Add(att); StatLabels[Stat.Attack] = att;
+	        Controls.Add(att); StatLabels[Stat.Attack] = att;
 	        var def = new Label
 	        {
 	            Text = Resources.Defence,
 	            Location = new Point(203, 116),
 	            Size = new Size(50, 13)
 	        };
-	        TabPage.Controls.Add(def); StatLabels[Stat.Defence] = def;
+	        Controls.Add(def); StatLabels[Stat.Defence] = def;
 	        var satt = new Label
 	        {
 	            Text = Resources.SpAttack,
 	            Location = new Point(296, 116),
 	            Size = new Size(57, 13)
 	        };
-	        TabPage.Controls.Add(satt); StatLabels[Stat.SpecialAttack] = satt;
+	        Controls.Add(satt); StatLabels[Stat.SpecialAttack] = satt;
 	        var sdef = new Label
 	        {
 	            Text = Resources.SpDefence,
 	            Location = new Point(389, 116),
 	            Size = new Size(70, 13)
 	        };
-	        TabPage.Controls.Add(sdef); StatLabels[Stat.SpecialDefence] = sdef;
+	        Controls.Add(sdef); StatLabels[Stat.SpecialDefence] = sdef;
 	        var spe = new Label
 	        {
 	            Text = Resources.Speed,
 	            Location = new Point(482, 116),
 	            Size = new Size(38, 13)
 	        };
-	        TabPage.Controls.Add(spe); StatLabels[Stat.Speed] = spe;
+	        Controls.Add(spe); StatLabels[Stat.Speed] = spe;
 
             #region BaseStats
 
@@ -142,7 +135,7 @@ namespace EVTracker
 	            Location = new Point(14, 132),
 	            Size = new Size(529, 46)
 	        };
-	        TabPage.Controls.Add(groupStats);
+	        Controls.Add(groupStats);
 
 	        BaseStatHP = new Label
 	        {
@@ -190,7 +183,7 @@ namespace EVTracker
 	            Location = new Point(14, 193),
 	            Size = new Size(529, 46)
 	        };
-	        TabPage.Controls.Add(groupIVs);
+	        Controls.Add(groupIVs);
 
 	        IVHP = new NumericUpDown
 	        {
@@ -239,7 +232,7 @@ namespace EVTracker
 	            Location = new Point(14, 262),
 	            Size = new Size(529, 46)
 	        };
-	        TabPage.Controls.Add(groupActuals);
+	        Controls.Add(groupActuals);
 
 	        ActualStatHP = new Label
 	        {
@@ -289,7 +282,7 @@ namespace EVTracker
 	            Width = 420,
 	            Text = @"EVs"
 	        };
-	        TabPage.Controls.Add(eVs);
+	        Controls.Add(eVs);
 
             #region HP
 
@@ -538,8 +531,7 @@ namespace EVTracker
 		public Pokemon Pokemon { get; set; }
 
 		public IDictionary<Stat, Label> StatLabels { get; set; }
-
-		public TabPage TabPage { get; set; }
+        
 		public PictureBox Image { get; set; }
 		public NumericUpDown Level { get; set; }
 		public CheckBox Pokerus { get; set; }
@@ -709,7 +701,7 @@ namespace EVTracker
             ActualStatSpecialDefence.Text = Pokemon.SpecialDefence.ToString();
             ActualStatSpeed.Text = Pokemon.Speed.ToString();
 
-            TabPage.Text = Pokemon.Species.Name;
+            Text = Pokemon.Species.Name;
 
             var num = Pokemon.Species.DexNumber;
             var location = "_" + num.ToString().PadLeft(3, '0');
@@ -734,5 +726,7 @@ namespace EVTracker
 	        Pokemon.Defeat(pokemonType);
             UpdateForm();
 	    }
+
+	    public override Color BackColor => Color.White;
 	}
 }
