@@ -46,7 +46,7 @@ namespace EVTracker
 
 		    Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1(games, species, natures));
+			Application.Run(new Form1(games, species, natures, new SaveLoader()));
 		}
 	}
 }

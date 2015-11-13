@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Windows.Forms;
 using EVTracker.Properties;
 
@@ -13,11 +12,12 @@ namespace EVTracker
 	{
 		Page _current;
 
-		public Form1(IDictionary<string, Game> games, IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures)
+		public Form1(IDictionary<string, Game> games, IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures, ISaveLoader saveLoader)
 		{
 		    _games = games;
 		    _pokemonTypes = pokemonTypes;
 		    _natures = natures;
+		    _saveLoader = saveLoader;
 		    InitializeComponent();
 
 			LoadGames();
@@ -113,6 +113,7 @@ namespace EVTracker
         private readonly IDictionary<string, Game> _games;
         private readonly IDictionary<int, PokemonType> _pokemonTypes;
         private readonly IDictionary<string, Nature> _natures;
+        private readonly ISaveLoader _saveLoader;
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -124,32 +125,27 @@ namespace EVTracker
 		{
 			if (!File.Exists(_saveLocation))
 				MessageBox.Show($"Cannot find {_saveLocation} please ensure it exists before loading");
+            LoadFromFile();
 		}
 
         private void LoadFromFile(){
-			var deserializer = new DataContractSerializer(typeof(List<Pokemon>));
-            using (var stream = File.OpenRead(_saveLocation))
+            try
             {
-                try
+                var savedPokemon = _saveLoader.LoadSaveFile(_saveLocation);
+                tabControl1.TabPages.Clear();
+                foreach (var pokemon in savedPokemon)
                 {
-                    var pok = (List<Pokemon>) deserializer.ReadObject(stream);
-                    stream.Close();
-                    tabControl1.TabPages.Clear();
-                    pok.ForEach(p =>
-                    {
-                        var page = new Page(_pokemonTypes, _natures);
-                        page.Load(p);
-                        tabControl1.TabPages.Add(page.TabPage);
-                    });
-                    _current = ((Page) tabControl1.SelectedTab.Tag);
+                     var page = new Page(_pokemonTypes, _natures);
+                     page.Load(pokemon);
+                     tabControl1.TabPages.Add(page.TabPage);
                 }
-                catch
-                {
-                    //This is when the  file is invalid
-                    MessageBox.Show(Resources.LoadFailed);
-                }
+                _current = ((Page) tabControl1.SelectedTab.Tag);
+            }
+            catch
+            {
+                //This is when the  file is invalid
+                MessageBox.Show(Resources.LoadFailed);
             }
         }
-
-	}
+    }
 }
