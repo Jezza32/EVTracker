@@ -10,8 +10,6 @@ namespace EVTracker
 {
     public partial class Form1 : Form
 	{
-		Page _current;
-
 		public Form1(IDictionary<string, Game> games, IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures, ISaveLoader saveLoader)
 		{
 		    _games = games;
@@ -21,18 +19,11 @@ namespace EVTracker
 		    InitializeComponent();
 
 			LoadGames();
-			tabControl1.Selected += tabControl1_Selected;
 
 			tabControl1.TabPages.Add(new Page(Pokemon.MissingNo, _pokemonTypes, _natures));
 
 			if (File.Exists(_saveLocation))
 				LoadFromFile();
-		}
-
-		void tabControl1_Selected(object sender, TabControlEventArgs e)
-		{
-			if (e.TabPage == null) return;
-			_current = (Page) (e.TabPage);
 		}
 
 		public void LoadGames()
@@ -83,7 +74,7 @@ namespace EVTracker
 		{
 			var i = (int)((Button)sender).Tag;
 
-		    _current.Defeat(_pokemonTypes[i]);
+		    ((Page)tabControl1.SelectedTab).Defeat(_pokemonTypes[i]);
 		}
 
 		private void addPokemonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,7 +120,6 @@ namespace EVTracker
                      var page = new Page(pokemon, _pokemonTypes, _natures);
                      tabControl1.TabPages.Add(page);
                 }
-                _current = ((Page) tabControl1.SelectedTab);
             }
             catch
             {
