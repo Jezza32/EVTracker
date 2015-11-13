@@ -23,7 +23,7 @@ namespace EVTracker
 			LoadGames();
 			tabControl1.Selected += tabControl1_Selected;
 
-			tabControl1.TabPages.Add(new Page(_pokemonTypes, _natures).TabPage);
+			tabControl1.TabPages.Add(new Page(Pokemon.MissingNo, _pokemonTypes, _natures).TabPage);
 			_current = (Page)tabControl1.TabPages[0].Tag;
 
 			if (File.Exists(_saveLocation))
@@ -97,7 +97,7 @@ namespace EVTracker
 
 		private void addPokemonToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var newTab = new Page(_pokemonTypes, _natures).TabPage;
+			var newTab = new Page(Pokemon.MissingNo, _pokemonTypes, _natures).TabPage;
 			tabControl1.TabPages.Add(newTab);
 		}
 
@@ -135,8 +135,7 @@ namespace EVTracker
                 tabControl1.TabPages.Clear();
                 foreach (var pokemon in savedPokemon)
                 {
-                     var page = new Page(_pokemonTypes, _natures);
-                     page.Load(pokemon);
+                     var page = new Page(pokemon, _pokemonTypes, _natures);
                      tabControl1.TabPages.Add(page.TabPage);
                 }
                 _current = ((Page) tabControl1.SelectedTab.Tag);

@@ -10,9 +10,9 @@ namespace EVTracker
 {
 	public class Page
 	{
-	    public Page(IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures)
+	    public Page(Pokemon pokemon, IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures)
 	    {
-	        Pokemon = new Pokemon();
+	        Pokemon = pokemon;
             StatLabels = new Dictionary<Stat, Label>();
 
 	        TabPage = new TabPage
@@ -38,7 +38,7 @@ namespace EVTracker
             Nature.SelectedIndex = 0;
             Nature.DropDownStyle = ComboBoxStyle.DropDownList;
             Nature.Location = new Point(Species.Right + 20, Species.Top);
-            Nature.SelectedIndexChanged += (o, args) => Recalculate();
+            Nature.SelectedIndexChanged += (o, args) => { Pokemon.Nature = (Nature) Nature.SelectedItem; UpdateForm(); };
             TabPage.Controls.Add(Nature);
 
             //Pokerus
@@ -47,7 +47,7 @@ namespace EVTracker
 	            Text = Resources.Pokerus,
 	            Location = new Point(Nature.Right + 20, Species.Top)
 	        };
-	        Pokerus.CheckedChanged += (o, args) => Recalculate();
+	        Pokerus.CheckedChanged += (o, args) => { Pokemon.HasPokerus = Pokerus.Checked; UpdateForm(); };
             TabPage.Controls.Add(Pokerus);
 
             //HeldItem
@@ -59,10 +59,9 @@ namespace EVTracker
             };
             HeldItem.Location = new Point(Pokerus.Left, Pokerus.Bottom + 20);
             foreach (Items i in Enum.GetValues(typeof(Items))) HeldItem.Items.Add(i);
-            HeldItem = HeldItem;
             HeldItem.DropDownStyle = ComboBoxStyle.DropDownList;
             HeldItem.SelectedIndex = 0;
-            HeldItem.SelectedIndexChanged += (o, args) => Recalculate();
+            HeldItem.SelectedIndexChanged += (o, args) => { Pokemon.HeldItem = (Items) HeldItem.SelectedIndex; UpdateForm(); };
             TabPage.Controls.Add(HeldItem);
 
 	        var level = new Label
@@ -81,7 +80,7 @@ namespace EVTracker
 	            Location = new Point(50, 62),
 	            Size = new Size(61, 20)
 	        };
-	        Level.ValueChanged += (o, args) => Recalculate();
+	        Level.ValueChanged += (o, args) => { Pokemon.Level = (int) Level.Value; UpdateForm(); };
             TabPage.Controls.Add(Level);
 
 	        Image = new PictureBox
@@ -198,37 +197,37 @@ namespace EVTracker
 	            Location = new Point(15, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVHP); IVHP.ValueChanged += (o, args) => Recalculate(); IVHP.Maximum = 31;
+	        groupIVs.Controls.Add(IVHP); IVHP.ValueChanged += (o, args) => { Pokemon.IV[Stat.HP] = (int) IVHP.Value; UpdateForm(); }; IVHP.Maximum = 31;
 	        IVAttack = new NumericUpDown
 	        {
 	            Location = new Point(96, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVAttack); IVAttack.ValueChanged += (o, args) => Recalculate(); IVAttack.Maximum = 31;
+	        groupIVs.Controls.Add(IVAttack); IVAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.Attack] = (int)IVAttack.Value; UpdateForm(); }; IVAttack.Maximum = 31;
 	        IVDefence = new NumericUpDown
 	        {
 	            Location = new Point(189, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVDefence); IVDefence.ValueChanged += (o, args) => Recalculate(); IVDefence.Maximum = 31;
+	        groupIVs.Controls.Add(IVDefence); IVDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.Defence] = (int)IVDefence.Value; UpdateForm(); }; IVDefence.Maximum = 31;
 	        IVSpecialAttack = new NumericUpDown
 	        {
 	            Location = new Point(282, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpecialAttack); IVSpecialAttack.ValueChanged += (o, args) => Recalculate(); IVSpecialAttack.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpecialAttack); IVSpecialAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialAttack] = (int)IVSpecialAttack.Value; UpdateForm();}; IVSpecialAttack.Maximum = 31;
 	        IVSpecialDefence = new NumericUpDown
 	        {
 	            Location = new Point(375, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpecialDefence); IVSpecialDefence.ValueChanged += (o, args) => Recalculate(); IVSpecialDefence.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpecialDefence); IVSpecialDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialDefence] = (int)IVSpecialDefence.Value; UpdateForm();}; IVSpecialDefence.Maximum = 31;
 	        IVSpeed = new NumericUpDown
 	        {
 	            Location = new Point(468, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpeed); IVSpeed.ValueChanged += (o, args) => Recalculate(); IVSpeed.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpeed); IVSpeed.ValueChanged += (o, args) => { Pokemon.IV[Stat.Speed] = (int)IVSpeed.Value; UpdateForm();}; IVSpeed.Maximum = 31;
             #endregion
 
 
@@ -308,7 +307,7 @@ namespace EVTracker
 	            Location = new Point(82, 41),
 	            Size = new Size(120, 20)
 	        };
-	        EVHP.ValueChanged += (o, args) => Recalculate();
+	        EVHP.ValueChanged += (o, args) => { Pokemon.EV[Stat.HP] = (int) EVHP.Value; UpdateForm(); };
             eVs.Controls.Add(EVHP);
 
 	        var hpUp = new Button
@@ -346,7 +345,7 @@ namespace EVTracker
 	            Location = new Point(82, 67),
 	            Size = new Size(120, 20)
 	        };
-            EVAttack.ValueChanged += (o, args) => Recalculate();
+            EVAttack.ValueChanged += (o, args) => { Pokemon.EV[Stat.Attack] = (int) EVAttack.Value; UpdateForm(); };
             eVs.Controls.Add(EVAttack);
 
 	        var protein = new Button
@@ -384,7 +383,7 @@ namespace EVTracker
 	            Location = new Point(82, 93),
 	            Size = new Size(120, 20)
 	        };
-            EVDefence.ValueChanged += (o, args) => Recalculate();
+            EVDefence.ValueChanged += (o, args) => { Pokemon.EV[Stat.Defence] = (int) EVDefence.Value; UpdateForm(); };
             eVs.Controls.Add(EVDefence);
 
 	        var iron = new Button
@@ -422,7 +421,10 @@ namespace EVTracker
 	            Location = new Point(82, 119),
 	            Size = new Size(120, 20)
 	        };
-            EVSpecialAttack.ValueChanged += (o, args) => Recalculate();
+            EVSpecialAttack.ValueChanged += (o, args) =>
+            {
+                Pokemon.EV[Stat.SpecialAttack] = (int) EVSpecialAttack.Value; UpdateForm();
+            };
             eVs.Controls.Add(EVSpecialAttack);
 
 	        var calcium = new Button
@@ -460,7 +462,10 @@ namespace EVTracker
 	            Location = new Point(82, 145),
 	            Size = new Size(120, 20)
 	        };
-            EVSpecialDefence.ValueChanged += (o, args) => Recalculate();
+            EVSpecialDefence.ValueChanged += (o, args) =>
+            {
+                Pokemon.EV[Stat.SpecialDefence] = (int) EVSpecialDefence.Value; UpdateForm();
+            };
             eVs.Controls.Add(EVSpecialDefence);
 
 	        var zinc = new Button
@@ -498,7 +503,7 @@ namespace EVTracker
 	            Location = new Point(82, 171),
 	            Size = new Size(120, 20)
 	        };
-            EVSpeed.ValueChanged += (o, args) => Recalculate();
+            EVSpeed.ValueChanged += (o, args) => { Pokemon.EV[Stat.Speed] = (int) EVSpeed.Value; UpdateForm(); };
             eVs.Controls.Add(EVSpeed);
 
 	        var carbos = new Button
@@ -528,17 +533,7 @@ namespace EVTracker
 	        eVs.Controls.Add(Warning);
             #endregion
 
-            _statNumericUpDowns = new Dictionary<Stat, NumericUpDown>
-            {
-                { Stat.HP, EVHP},
-                { Stat.Attack, EVAttack},
-                { Stat.Defence, EVDefence},
-                { Stat.SpecialAttack, EVSpecialAttack},
-                { Stat.SpecialDefence, EVSpecialDefence},
-                { Stat.Speed, EVSpeed}
-            };
-
-            Recalculate();
+            UpdateForm();
         }
 		public Pokemon Pokemon { get; set; }
 
@@ -583,12 +578,11 @@ namespace EVTracker
 
 		public ComboBox Species { get; set; }
 
-	    private readonly IDictionary<Stat, NumericUpDown> _statNumericUpDowns;
-
 	    public void UpdateStat(Stat stat, int statIncrease)
 	    {
-	        UpdateStat(statIncrease, _statNumericUpDowns[stat]);
-            Recalculate();
+	        var items = HeldItem.SelectedItem as Items?;
+	        Pokemon.EV[stat] = Math.Min(statIncrease * (items.HasValue && items.Value == Items.MachoBrace ? 2 : 1) * (Pokerus.Checked ? 2 : 1) + Pokemon.EV[stat], 255);
+	        UpdateForm();
 	    }
 
 	    public void ApplyItem(Items item)
@@ -596,176 +590,147 @@ namespace EVTracker
 	        switch (item)
 	        {
 				case Items.PowerWeight:
-					EVHP.Value = Math.Min(255, EVHP.Value + (Pokerus.Checked ? 8 : 4));
+					Pokemon.EV[Stat.HP] = Math.Min(255, Pokemon.EV[Stat.HP] + (Pokerus.Checked ? 8 : 4));
                     break;
 				case Items.PowerBracer:
-					EVAttack.Value = Math.Min(255, EVAttack.Value + (Pokerus.Checked ? 8 : 4));
+					Pokemon.EV[Stat.Attack] = Math.Min(255, Pokemon.EV[Stat.Attack] + (Pokerus.Checked ? 8 : 4));
                     break;
 				case Items.PowerBelt:
-					EVDefence.Value = Math.Min(255, EVDefence.Value + (Pokerus.Checked ? 8 : 4));
+					Pokemon.EV[Stat.Defence] = Math.Min(255, Pokemon.EV[Stat.Defence] + (Pokerus.Checked ? 8 : 4));
                     break;
 				case Items.PowerLens:
-					EVSpecialAttack.Value = Math.Min(255, EVSpecialAttack.Value + (Pokerus.Checked ? 8 : 4));
+					Pokemon.EV[Stat.SpecialAttack] = Math.Min(255, Pokemon.EV[Stat.SpecialAttack] + (Pokerus.Checked ? 8 : 4));
                     break;
 				case Items.PowerBand:
-					EVSpecialDefence.Value = Math.Min(255, EVSpecialDefence.Value + (Pokerus.Checked ? 8 : 4));
+					Pokemon.EV[Stat.SpecialDefence] = Math.Min(255, Pokemon.EV[Stat.SpecialDefence] + (Pokerus.Checked ? 8 : 4));
                     break;
 				case Items.PowerAnklet:
-					EVSpeed.Value = Math.Min(255, EVSpeed.Value + (Pokerus.Checked ? 8 : 4));
+					Pokemon.EV[Stat.Speed] = Math.Min(255, Pokemon.EV[Stat.Speed] + (Pokerus.Checked ? 8 : 4));
                     break;
-                }
-            Recalculate();
-	    }
-
-	    private void UpdateStat(int statIncrease, NumericUpDown numericUpDown)
-	    {
-	        var items = HeldItem.SelectedItem as Items?;
-	        numericUpDown.Value = Math.Min(statIncrease * (items.HasValue && items.Value == Items.MachoBrace ? 2 : 1) * (Pokerus.Checked ? 2 : 1) + numericUpDown.Value, 255);
-	    }
-
-        private void Recalculate()
-        {
-            Pokemon.Level = (int)Level.Value;
-            Pokemon.HasPokerus = Pokerus.Checked;
-            Pokemon.HeldItem = (Items)HeldItem.SelectedIndex;
-            Pokemon.Nature = (Nature)Nature.SelectedItem;
-
-            Pokemon.IV[Stat.HP] = (int)IVHP.Value;
-            Pokemon.IV[Stat.Attack] = (int)IVAttack.Value;
-            Pokemon.IV[Stat.Defence] = (int)IVDefence.Value;
-            Pokemon.IV[Stat.SpecialAttack] = (int)IVSpecialAttack.Value;
-            Pokemon.IV[Stat.SpecialDefence] = (int)IVSpecialDefence.Value;
-            Pokemon.IV[Stat.Speed] = (int)IVSpeed.Value;
-
-            Pokemon.EV[Stat.HP] = (int)EVHP.Value;
-            Pokemon.EV[Stat.Attack] = (int)EVAttack.Value;
-            Pokemon.EV[Stat.Defence] = (int)EVDefence.Value;
-            Pokemon.EV[Stat.SpecialAttack] = (int)EVSpecialAttack.Value;
-            Pokemon.EV[Stat.SpecialDefence] = (int)EVSpecialDefence.Value;
-            Pokemon.EV[Stat.Speed] = (int)EVSpeed.Value;
-
+            }
             UpdateForm();
-        }
+	    }
 
 
-        private void btnHPUp_Click(object sender, EventArgs e)
+	    private void btnHPUp_Click(object sender, EventArgs e)
         {
-            int value = (int)EVHP.Value;
+            var value = Pokemon.EV[Stat.HP];
             if (value >= 100) return;
             value = Math.Min(100, value + 10);
-            EVHP.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.HP] = value;
+            UpdateForm();
         }
 
         private void btnProtein_Click(object sender, EventArgs e)
         {
-            int value = (int)EVAttack.Value;
+            var value = Pokemon.EV[Stat.Attack];
             if (value >= 100) return;
             value = Math.Min(100, value + 10);
-            EVAttack.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.Attack] = value;
+            UpdateForm();
         }
 
         private void btnIron_Click(object sender, EventArgs e)
         {
-            int value = (int)EVDefence.Value;
+            var value = Pokemon.EV[Stat.Defence];
             if (value >= 100) return;
             value = Math.Min(100, value + 10);
-            EVDefence.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.Defence] = value;
+            UpdateForm();
         }
 
         private void btnCalcium_Click(object sender, EventArgs e)
         {
-            int value = (int)EVSpecialAttack.Value;
+            var value = Pokemon.EV[Stat.SpecialAttack];
             if (value >= 100) return;
             value = Math.Min(100, value + 10);
-            EVSpecialAttack.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.SpecialAttack] = value;
+            UpdateForm();
         }
 
         private void btnZinc_Click(object sender, EventArgs e)
         {
-            int value = (int)EVSpecialDefence.Value;
+            var value = Pokemon.EV[Stat.SpecialDefence];
             if (value >= 100) return;
             value = Math.Min(100, value + 10);
-            EVSpecialDefence.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.SpecialDefence] = value;
+            UpdateForm();
         }
 
         private void btnCarbos_Click(object sender, EventArgs e)
         {
-            var value = (int)EVSpeed.Value;
+            var value = Pokemon.EV[Stat.Speed];
             if (value >= 100) return;
             value = Math.Min(100, value + 10);
-            EVSpeed.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.Speed] = value;
+            UpdateForm();
         }
 
         private void btnPomeg_Click(object sender, EventArgs e)
         {
-            var value = (int)EVHP.Value;
+            var value = Pokemon.EV[Stat.HP];
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
-            EVHP.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.HP] = value;
+            UpdateForm();
         }
 
         private void btnKelpsy_Click(object sender, EventArgs e)
         {
-            var value = (int)EVAttack.Value;
+            var value = Pokemon.EV[Stat.Attack];
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
-            EVAttack.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.Attack] = value;
+            UpdateForm();
         }
 
         private void btnQualot_Click(object sender, EventArgs e)
         {
-            var value = (int)EVDefence.Value;
+            var value = Pokemon.EV[Stat.Defence];
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
-            EVDefence.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.Defence] = value;
+            UpdateForm();
         }
 
         private void btnHondew_Click(object sender, EventArgs e)
         {
-            var value = (int)EVSpecialAttack.Value;
+            var value = Pokemon.EV[Stat.SpecialAttack];
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
-            EVSpecialAttack.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.SpecialAttack] = value;
+            UpdateForm();
         }
 
         private void btnGrepa_Click(object sender, EventArgs e)
         {
-            var value = (int)EVSpecialDefence.Value;
+            var value = Pokemon.EV[Stat.SpecialDefence];
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
-            EVSpecialDefence.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.SpecialDefence] = value;
+            UpdateForm();
         }
 
         private void btnTamato_Click(object sender, EventArgs e)
         {
-            var value = (int)EVSpeed.Value;
+            var value = Pokemon.EV[Stat.Speed];
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
-            EVSpeed.Value = value;
-            Recalculate();
+            Pokemon.EV[Stat.Speed] = value;
+            UpdateForm();
         }
 
         private void cmbPok_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Pokemon.Species = (PokemonType)Species.SelectedItem;
+            var selectedItem = (PokemonType)Species.SelectedItem;
+            if (selectedItem == Pokemon.Species) return;
+
+            Pokemon.Species = selectedItem;
             UpdateForm();
         }
 
         private void UpdateForm()
         {
-            Pokemon.Species = (PokemonType)Species.SelectedItem;
-
             foreach (Stat s in Enum.GetValues(typeof(Stat)))
             {
                 var modifier = Pokemon.Nature.GetModifier(s);
@@ -774,13 +739,42 @@ namespace EVTracker
                 else StatLabels[s].ForeColor = Color.Green;
             }
 
+            var selectedSpecies = Species.Items.Cast<PokemonType>().Where(s => s.Name == Pokemon.Species.Name).ToList();
+            if (selectedSpecies.Any())
+            {
+                Species.SelectedItem = selectedSpecies.First();
+            }
+            Level.Value = Pokemon.Level;
+            var selectedNature = Nature.Items.Cast<Nature>().Where(n => n.Name == Pokemon.Nature.Name).ToList();
+            if (selectedNature.Any())
+            {
+                Nature.SelectedItem = selectedNature.First();
+            }
+            Pokerus.Checked = Pokemon.HasPokerus;
+            var selectedItem = HeldItem.Items.Cast<Items>().Where(i => i == Pokemon.HeldItem).ToList();
+            if (selectedItem.Any())
+            {
+                HeldItem.SelectedItem = selectedItem.First();
+            }
+
+            EVAttack.Value = Pokemon.EV[Stat.Attack];
+            EVDefence.Value = Pokemon.EV[Stat.Defence];
+            EVHP.Value = Pokemon.EV[Stat.HP];
+            EVSpecialAttack.Value = Pokemon.EV[Stat.SpecialAttack];
+            EVSpecialDefence.Value = Pokemon.EV[Stat.SpecialDefence];
+            EVSpeed.Value = Pokemon.EV[Stat.Speed];
+            IVAttack.Value = Pokemon.IV[Stat.Attack];
+            IVDefence.Value = Pokemon.IV[Stat.Defence];
+            IVHP.Value = Pokemon.IV[Stat.HP];
+            IVSpecialAttack.Value = Pokemon.IV[Stat.SpecialAttack];
+            IVSpecialDefence.Value = Pokemon.IV[Stat.SpecialDefence];
+            IVSpeed.Value = Pokemon.IV[Stat.Speed];
             BaseStatHP.Text = Pokemon.Species.BaseStats[Stat.HP].ToString();
             BaseStatAttack.Text = Pokemon.Species.BaseStats[Stat.Attack].ToString();
             BaseStatDefence.Text = Pokemon.Species.BaseStats[Stat.Defence].ToString();
             BaseStatSpecialAttack.Text = Pokemon.Species.BaseStats[Stat.SpecialAttack].ToString();
             BaseStatSpecialDefence.Text = Pokemon.Species.BaseStats[Stat.SpecialDefence].ToString();
             BaseStatSpeed.Text = Pokemon.Species.BaseStats[Stat.Speed].ToString();
-
             ActualStatHP.Text = Pokemon.HP.ToString();
             ActualStatAttack.Text = Pokemon.Attack.ToString();
             ActualStatDefence.Text = Pokemon.Defence.ToString();
@@ -806,31 +800,6 @@ namespace EVTracker
             int remaining = 510 - ev;
             Warning.ForeColor = (remaining >= 0 ? Color.Black : Color.Red);
             Warning.Text = (remaining >= 0 ? "You have " + remaining + " EVs left" : "You are " + (remaining * -1) + " EVs over");
-        }
-
-	    public void Load(Pokemon pokemon)
-	    {
-            Pokemon = pokemon;
-            Species.SelectedIndex = Species.Items.IndexOf(pokemon.Species);
-            Level.Value = pokemon.Level;
-            Nature.SelectedIndex = Nature.Items.IndexOf(pokemon.Nature);
-            Pokerus.Checked = pokemon.HasPokerus;
-            HeldItem.SelectedIndex = HeldItem.Items.IndexOf(pokemon.HeldItem.GetName());
-
-            EVAttack.Value = pokemon.EV[Stat.Attack];
-            EVDefence.Value = pokemon.EV[Stat.Defence];
-            EVHP.Value = pokemon.EV[Stat.HP];
-            EVSpecialAttack.Value = pokemon.EV[Stat.SpecialAttack];
-            EVSpecialDefence.Value = pokemon.EV[Stat.SpecialDefence];
-            EVSpeed.Value = pokemon.EV[Stat.Speed];
-            IVAttack.Value = pokemon.IV[Stat.Attack];
-            IVDefence.Value = pokemon.IV[Stat.Defence];
-            IVHP.Value = pokemon.IV[Stat.HP];
-            IVSpecialAttack.Value = pokemon.IV[Stat.SpecialAttack];
-            IVSpecialDefence.Value = pokemon.IV[Stat.SpecialDefence];
-            IVSpeed.Value = pokemon.IV[Stat.Speed];
-
-            Recalculate();
         }
 	}
 }

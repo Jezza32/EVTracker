@@ -55,6 +55,8 @@ namespace EVTracker
 	    public int SpecialDefence => GetStat(Stat.SpecialDefence);
 	    public int Speed => GetStat(Stat.Speed);
 
+	    public static Pokemon MissingNo => new Pokemon { Species = new PokemonType()};
+
 	    private int GetStat(Stat s)
 		{
 			var value = (2 * Species.BaseStats[s]) + IV[s] + (EV[s] / 4);
