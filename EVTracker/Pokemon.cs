@@ -31,6 +31,7 @@ namespace EVTracker
 	            if (_species == value) return;
 	            _species = value;
                 OnPropertyChanged();
+                OnPropertyChangeStat();
 	        }
 	    }
 
@@ -43,6 +44,7 @@ namespace EVTracker
 	            if (_level == value) return;
 	            _level = value;
                 OnPropertyChanged();
+                OnPropertyChangeStat();
 	        }
 	    }
 
@@ -93,7 +95,7 @@ namespace EVTracker
 		{
 			Level = 1;
 			Species = new PokemonType();
-			Nature = new Nature();
+			Nature = Nature.Hardy;
 			_iv = new ObservableDictionary<Stat, int>();
 	        _iv.CollectionChanged += (o, e) => OnPropertyChangeStat();
 	        _ev = new ObservableDictionary<Stat, int>();

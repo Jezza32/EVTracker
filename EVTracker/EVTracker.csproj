@@ -95,6 +95,7 @@
     <Compile Include="ISaveLoader.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="Nature.cs" />
+    <Compile Include="NaturesLoader.cs" />
     <Compile Include="Page.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -105,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="SaveLoader.cs" />
+    <Compile Include="SpeciesLoader.cs" />
     <Compile Include="Stat.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

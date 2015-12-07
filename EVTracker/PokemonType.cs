@@ -9,13 +9,13 @@ namespace EVTracker
 	public class PokemonType
 	{
 		[DataMember]
-		public int DexNumber { get; set; }
+		public int DexNumber { get; private set; }
 		[DataMember]
-		public string Name { get; set; }
+		public string Name { get; private set; }
 		[DataMember]
-		public IDictionary<Stat, int> GivenEffortValues { get; set; }
+		public IDictionary<Stat, int> GivenEffortValues { get; private set; }
 		[DataMember]
-		public IDictionary<Stat, int> BaseStats { get; set; }
+		public IDictionary<Stat, int> BaseStats { get; private set; }
 
 		public PokemonType()
 		{
@@ -43,5 +43,36 @@ namespace EVTracker
 		{
 			return $"#{DexNumber.ToString().PadLeft(3, '0')} - {Name}";
 		}
+
+	    protected bool Equals(PokemonType other)
+	    {
+	        return DexNumber == other.DexNumber && string.Equals(Name, other.Name);
+	    }
+
+	    public override bool Equals(object obj)
+	    {
+	        if (ReferenceEquals(null, obj)) return false;
+	        if (ReferenceEquals(this, obj)) return true;
+	        if (obj.GetType() != this.GetType()) return false;
+	        return Equals((PokemonType) obj);
+	    }
+
+	    public override int GetHashCode()
+	    {
+	        unchecked
+	        {
+	            return (DexNumber*397) ^ (Name?.GetHashCode() ?? 0);
+	        }
+	    }
+
+	    public static bool operator ==(PokemonType left, PokemonType right)
+	    {
+	        return Equals(left, right);
+	    }
+
+	    public static bool operator !=(PokemonType left, PokemonType right)
+	    {
+	        return !Equals(left, right);
+	    }
 	}
 }

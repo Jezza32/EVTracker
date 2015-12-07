@@ -4,9 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVTracker.Wpf"
+        xmlns:evTracker="clr-namespace:EVTracker;assembly=EVTracker"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <DockPanel d:DataContext="{evTracker:Pokemon}">
+        <DockPanel LastChildFill="False" DockPanel.Dock="Top">
+            <Grid DockPanel.Dock="Left">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ComboBox SelectedItem="{Binding Path=Species}" Name="SpeciesComboBox" Grid.Row="0" Grid.Column="0"></ComboBox>
+                <ComboBox SelectedItem="{Binding Path=Nature}" Name="NatureComboBox" Grid.Row="0" Grid.Column="1"></ComboBox>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+                    <CheckBox IsChecked="{Binding Path=HasPokerus}"></CheckBox>
+                    <Label>Pokérus</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                    <Label>Level</Label>
+                    <xctk:IntegerUpDown Value="{Binding Path=Level}" Increment="1" Maximum="100" Minimum="1" />
+                </StackPanel>
+                <ComboBox SelectedItem="{Binding Path=HeldItem}" Name="HeldItemComboBox" Grid.Row="1" Grid.Column="2"></ComboBox>
+            </Grid>
+            <Image Source="D:/GitHub/EVTracker/EVTracker/Resources/000.png" DockPanel.Dock="Right"></Image>
+        </DockPanel>
+    </DockPanel>
 </Window>
