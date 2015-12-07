@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using EVTracker.Annotations;
+using JulMar.Core.Collections;
 
 namespace EVTracker
 {
@@ -13,8 +16,8 @@ namespace EVTracker
 	{
 	    private PokemonType _species;
 	    private int _level;
-	    private IDictionary<Stat, int> _iv;
-	    private IDictionary<Stat, int> _ev;
+	    private readonly ObservableDictionary<Stat, int> _iv;
+	    private readonly ObservableDictionary<Stat, int> _ev;
 	    private Nature _nature;
 	    private Items _heldItem;
 	    private bool _hasPokerus;
@@ -44,30 +47,10 @@ namespace EVTracker
 	    }
 
 	    [DataMember]
-	    public IDictionary<Stat, int> IV
-	    {
-	        get { return _iv; }
-	        private set
-	        {
-	            if (Equals(value, _iv)) return;
-	            _iv = value;
-	            OnPropertyChanged();
-                OnPropertyChangeStat();
-            }
-	    }
+	    public IDictionary<Stat, int> IV => _iv;
 
 	    [DataMember]
-	    public IDictionary<Stat, int> EV
-	    {
-	        get { return _ev; }
-	        private set
-	        {
-	            if (Equals(value, _ev)) return;
-	            _ev = value;
-	            OnPropertyChanged();
-                OnPropertyChangeStat();
-            }
-	    }
+	    public IDictionary<Stat, int> EV => _ev;
 
 	    [DataMember]
 	    public Nature Nature
@@ -111,8 +94,10 @@ namespace EVTracker
 			Level = 1;
 			Species = new PokemonType();
 			Nature = new Nature();
-			IV = new Dictionary<Stat, int>();
-			EV = new Dictionary<Stat, int>();
+			_iv = new ObservableDictionary<Stat, int>();
+	        _iv.CollectionChanged += (o, e) => OnPropertyChangeStat();
+	        _ev = new ObservableDictionary<Stat, int>();
+	        _ev.CollectionChanged += (o, e) => OnPropertyChangeStat();
 			foreach (Stat s in Enum.GetValues(typeof(Stat)))
 			{
 				IV.Add(s, 0);

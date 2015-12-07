@@ -52,9 +52,29 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Julmar.Core, Version=4.2.3.14815, Culture=neutral, PublicKeyToken=3ea22013129d8c94, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVVMHelpers.2012.4.20.03\lib\4.5\Julmar.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Julmar.Wpf.Behaviors, Version=4.2.3.14815, Culture=neutral, PublicKeyToken=3ea22013129d8c94, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVVMHelpers.2012.4.20.03\lib\4.5\Julmar.Wpf.Behaviors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JulMar.Wpf.Helpers, Version=4.2.3.14815, Culture=neutral, PublicKeyToken=3ea22013129d8c94, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVVMHelpers.2012.4.20.03\lib\4.5\JulMar.Wpf.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVVMHelpers.2012.4.20.03\lib\4.5\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MVVMHelpers.2012.4.20.03\lib\4.5\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -100,6 +120,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
