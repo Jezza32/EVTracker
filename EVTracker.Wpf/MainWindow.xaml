@@ -10,6 +10,9 @@
         Title="MainWindow" Height="350" Width="525">
     <DockPanel d:DataContext="{evTracker:Pokemon}">
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
+            <DockPanel.Resources>
+                <local:DexNumberToSourceConverter x:Key="DexNumberToSource" />
+            </DockPanel.Resources>
             <Grid DockPanel.Dock="Left">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"></RowDefinition>
@@ -32,7 +35,7 @@
                 </StackPanel>
                 <ComboBox SelectedItem="{Binding Path=HeldItem}" Name="HeldItemComboBox" Grid.Row="1" Grid.Column="2"></ComboBox>
             </Grid>
-            <Image Source="D:/GitHub/EVTracker/EVTracker/Resources/000.png" DockPanel.Dock="Right"></Image>
+            <Image Source="{Binding Path=Species.DexNumber, Converter={StaticResource DexNumberToSource}}" DockPanel.Dock="Right"></Image>
         </DockPanel>
     </DockPanel>
 </Window>
