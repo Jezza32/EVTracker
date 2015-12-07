@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,6 +11,8 @@ namespace EVTracker
 {
 	public class Page : TabPage
 	{
+	    private Pokemon _pokemon;
+
 	    public Page(Pokemon pokemon, IDictionary<int, PokemonType> pokemonTypes, IDictionary<string, Nature> natures)
 	    {
 	        Pokemon = pokemon;
@@ -31,7 +34,7 @@ namespace EVTracker
             Nature.SelectedIndex = 0;
             Nature.DropDownStyle = ComboBoxStyle.DropDownList;
             Nature.Location = new Point(Species.Right + 20, Species.Top);
-            Nature.SelectedIndexChanged += (o, args) => { Pokemon.Nature = (Nature) Nature.SelectedItem; UpdateForm(); };
+            Nature.SelectedIndexChanged += (o, args) => { Pokemon.Nature = (Nature) Nature.SelectedItem;  };
             Controls.Add(Nature);
 
             //Pokerus
@@ -40,7 +43,7 @@ namespace EVTracker
 	            Text = Resources.Pokerus,
 	            Location = new Point(Nature.Right + 20, Species.Top)
 	        };
-	        Pokerus.CheckedChanged += (o, args) => { Pokemon.HasPokerus = Pokerus.Checked; UpdateForm(); };
+	        Pokerus.CheckedChanged += (o, args) => { Pokemon.HasPokerus = Pokerus.Checked; };
             Controls.Add(Pokerus);
 
             //HeldItem
@@ -54,7 +57,7 @@ namespace EVTracker
             foreach (Items i in Enum.GetValues(typeof(Items))) HeldItem.Items.Add(i);
             HeldItem.DropDownStyle = ComboBoxStyle.DropDownList;
             HeldItem.SelectedIndex = 0;
-            HeldItem.SelectedIndexChanged += (o, args) => { Pokemon.HeldItem = (Items) HeldItem.SelectedIndex; UpdateForm(); };
+            HeldItem.SelectedIndexChanged += (o, args) => { Pokemon.HeldItem = (Items) HeldItem.SelectedIndex; };
             Controls.Add(HeldItem);
 
 	        var level = new Label
@@ -73,7 +76,7 @@ namespace EVTracker
 	            Location = new Point(50, 62),
 	            Size = new Size(61, 20)
 	        };
-	        Level.ValueChanged += (o, args) => { Pokemon.Level = (int) Level.Value; UpdateForm(); };
+	        Level.ValueChanged += (o, args) => { Pokemon.Level = (int) Level.Value; };
             Controls.Add(Level);
 
 	        Image = new PictureBox
@@ -190,37 +193,37 @@ namespace EVTracker
 	            Location = new Point(15, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVHP); IVHP.ValueChanged += (o, args) => { Pokemon.IV[Stat.HP] = (int) IVHP.Value; UpdateForm(); }; IVHP.Maximum = 31;
+	        groupIVs.Controls.Add(IVHP); IVHP.ValueChanged += (o, args) => { Pokemon.IV[Stat.HP] = (int) IVHP.Value; }; IVHP.Maximum = 31;
 	        IVAttack = new NumericUpDown
 	        {
 	            Location = new Point(96, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVAttack); IVAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.Attack] = (int)IVAttack.Value; UpdateForm(); }; IVAttack.Maximum = 31;
+	        groupIVs.Controls.Add(IVAttack); IVAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.Attack] = (int)IVAttack.Value; }; IVAttack.Maximum = 31;
 	        IVDefence = new NumericUpDown
 	        {
 	            Location = new Point(189, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVDefence); IVDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.Defence] = (int)IVDefence.Value; UpdateForm(); }; IVDefence.Maximum = 31;
+	        groupIVs.Controls.Add(IVDefence); IVDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.Defence] = (int)IVDefence.Value; }; IVDefence.Maximum = 31;
 	        IVSpecialAttack = new NumericUpDown
 	        {
 	            Location = new Point(282, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpecialAttack); IVSpecialAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialAttack] = (int)IVSpecialAttack.Value; UpdateForm();}; IVSpecialAttack.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpecialAttack); IVSpecialAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialAttack] = (int)IVSpecialAttack.Value; }; IVSpecialAttack.Maximum = 31;
 	        IVSpecialDefence = new NumericUpDown
 	        {
 	            Location = new Point(375, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpecialDefence); IVSpecialDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialDefence] = (int)IVSpecialDefence.Value; UpdateForm();}; IVSpecialDefence.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpecialDefence); IVSpecialDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialDefence] = (int)IVSpecialDefence.Value; }; IVSpecialDefence.Maximum = 31;
 	        IVSpeed = new NumericUpDown
 	        {
 	            Location = new Point(468, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpeed); IVSpeed.ValueChanged += (o, args) => { Pokemon.IV[Stat.Speed] = (int)IVSpeed.Value; UpdateForm();}; IVSpeed.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpeed); IVSpeed.ValueChanged += (o, args) => { Pokemon.IV[Stat.Speed] = (int)IVSpeed.Value; }; IVSpeed.Maximum = 31;
             #endregion
 
 
@@ -300,7 +303,7 @@ namespace EVTracker
 	            Location = new Point(82, 41),
 	            Size = new Size(120, 20)
 	        };
-	        EVHP.ValueChanged += (o, args) => { Pokemon.EV[Stat.HP] = (int) EVHP.Value; UpdateForm(); };
+	        EVHP.ValueChanged += (o, args) => { Pokemon.EV[Stat.HP] = (int) EVHP.Value; };
             eVs.Controls.Add(EVHP);
 
 	        var hpUp = new Button
@@ -338,7 +341,7 @@ namespace EVTracker
 	            Location = new Point(82, 67),
 	            Size = new Size(120, 20)
 	        };
-            EVAttack.ValueChanged += (o, args) => { Pokemon.EV[Stat.Attack] = (int) EVAttack.Value; UpdateForm(); };
+            EVAttack.ValueChanged += (o, args) => { Pokemon.EV[Stat.Attack] = (int) EVAttack.Value; };
             eVs.Controls.Add(EVAttack);
 
 	        var protein = new Button
@@ -376,7 +379,7 @@ namespace EVTracker
 	            Location = new Point(82, 93),
 	            Size = new Size(120, 20)
 	        };
-            EVDefence.ValueChanged += (o, args) => { Pokemon.EV[Stat.Defence] = (int) EVDefence.Value; UpdateForm(); };
+            EVDefence.ValueChanged += (o, args) => { Pokemon.EV[Stat.Defence] = (int) EVDefence.Value; };
             eVs.Controls.Add(EVDefence);
 
 	        var iron = new Button
@@ -416,7 +419,7 @@ namespace EVTracker
 	        };
             EVSpecialAttack.ValueChanged += (o, args) =>
             {
-                Pokemon.EV[Stat.SpecialAttack] = (int) EVSpecialAttack.Value; UpdateForm();
+                Pokemon.EV[Stat.SpecialAttack] = (int) EVSpecialAttack.Value; 
             };
             eVs.Controls.Add(EVSpecialAttack);
 
@@ -457,7 +460,7 @@ namespace EVTracker
 	        };
             EVSpecialDefence.ValueChanged += (o, args) =>
             {
-                Pokemon.EV[Stat.SpecialDefence] = (int) EVSpecialDefence.Value; UpdateForm();
+                Pokemon.EV[Stat.SpecialDefence] = (int) EVSpecialDefence.Value; 
             };
             eVs.Controls.Add(EVSpecialDefence);
 
@@ -496,7 +499,7 @@ namespace EVTracker
 	            Location = new Point(82, 171),
 	            Size = new Size(120, 20)
 	        };
-            EVSpeed.ValueChanged += (o, args) => { Pokemon.EV[Stat.Speed] = (int) EVSpeed.Value; UpdateForm(); };
+            EVSpeed.ValueChanged += (o, args) => { Pokemon.EV[Stat.Speed] = (int) EVSpeed.Value; };
             eVs.Controls.Add(EVSpeed);
 
 	        var carbos = new Button
@@ -526,11 +529,25 @@ namespace EVTracker
 	        eVs.Controls.Add(Warning);
             #endregion
 
-            UpdateForm();
-        }
-		public Pokemon Pokemon { get; set; }
+            UpdateForm(null, null);
+	    }
 
-		public IDictionary<Stat, Label> StatLabels { get; set; }
+	    public Pokemon Pokemon
+	    {
+	        get { return _pokemon; }
+	        set
+	        {
+	            if (Equals(_pokemon, value)) return;
+	            if (_pokemon != null)
+	            {
+	                _pokemon.PropertyChanged -= UpdateForm;
+	            }
+	            _pokemon = value;
+	            _pokemon.PropertyChanged += UpdateForm;
+	        }
+	    }
+
+	    public IDictionary<Stat, Label> StatLabels { get; set; }
         
 		public PictureBox Image { get; set; }
 		public NumericUpDown Level { get; set; }
@@ -573,82 +590,82 @@ namespace EVTracker
 	    private void btnHPUp_Click(object sender, EventArgs e)
 	    {
 	        Pokemon.ApplyStatBoost(Stat.HP);
-            UpdateForm();
+            
         }
 
         private void btnProtein_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBoost(Stat.Attack);
-            UpdateForm();
+            
         }
 
         private void btnIron_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBoost(Stat.Defence);
-            UpdateForm();
+            
         }
 
         private void btnCalcium_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBoost(Stat.SpecialAttack);
-            UpdateForm();
+            
         }
 
         private void btnZinc_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBoost(Stat.SpecialDefence);
-            UpdateForm();
+            
         }
 
         private void btnCarbos_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBoost(Stat.Speed);
-            UpdateForm();
+            
         }
 
         private void btnPomeg_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBerry(Stat.HP);
-            UpdateForm();
+            
         }
 
 	    private void btnKelpsy_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBerry(Stat.Attack);
-            UpdateForm();
+            
         }
 
         private void btnQualot_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBerry(Stat.Defence);
-            UpdateForm();
+            
         }
 
         private void btnHondew_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBerry(Stat.SpecialAttack);
-            UpdateForm();
+            
         }
 
         private void btnGrepa_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBerry(Stat.SpecialDefence);
-            UpdateForm();
+            
         }
 
         private void btnTamato_Click(object sender, EventArgs e)
         {
             Pokemon.ApplyStatBerry(Stat.Speed);
-            UpdateForm();
+            
         }
 
         private void cmbPok_SelectedIndexChanged(object sender, EventArgs e)
         {
             Pokemon.Species = (PokemonType)Species.SelectedItem;
-            UpdateForm();
+            
         }
 
-        private void UpdateForm()
+        private void UpdateForm(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
             foreach (Stat s in Enum.GetValues(typeof(Stat)))
             {
@@ -724,7 +741,7 @@ namespace EVTracker
 	    public void Defeat(PokemonType pokemonType)
 	    {
 	        Pokemon.Defeat(pokemonType);
-            UpdateForm();
+            
 	    }
 
 	    public override Color BackColor => Color.White;
