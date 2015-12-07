@@ -1,29 +1,112 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using EVTracker.Annotations;
 
 namespace EVTracker
 {
 	[DataContract]
-	public class Pokemon
+	public class Pokemon : INotifyPropertyChanged
 	{
-		[DataMember]
-		public PokemonType Species { get; set; }
-		[DataMember]
-		public int Level { get; set; }
-		[DataMember]
-		public IDictionary<Stat, int> IV { get; private set; }
-		[DataMember]
-		public IDictionary<Stat, int> EV { get; private set; }
-		[DataMember]
-		public Nature Nature { get; set; }
-		[DataMember]
-		public Items HeldItem { get; set; }
-		[DataMember]
-		public bool HasPokerus { get; set; }
+	    private PokemonType _species;
+	    private int _level;
+	    private IDictionary<Stat, int> _iv;
+	    private IDictionary<Stat, int> _ev;
+	    private Nature _nature;
+	    private Items _heldItem;
+	    private bool _hasPokerus;
 
-		public Pokemon()
+	    [DataMember]
+	    public PokemonType Species
+	    {
+	        get { return _species; }
+	        set
+	        {
+	            if (_species == value) return;
+	            _species = value;
+                OnPropertyChanged();
+	        }
+	    }
+
+	    [DataMember]
+	    public int Level
+	    {
+	        get { return _level; }
+	        set
+	        {
+	            if (_level == value) return;
+	            _level = value;
+                OnPropertyChanged();
+	        }
+	    }
+
+	    [DataMember]
+	    public IDictionary<Stat, int> IV
+	    {
+	        get { return _iv; }
+	        private set
+	        {
+	            if (Equals(value, _iv)) return;
+	            _iv = value;
+	            OnPropertyChanged();
+                OnPropertyChangeStat();
+            }
+	    }
+
+	    [DataMember]
+	    public IDictionary<Stat, int> EV
+	    {
+	        get { return _ev; }
+	        private set
+	        {
+	            if (Equals(value, _ev)) return;
+	            _ev = value;
+	            OnPropertyChanged();
+                OnPropertyChangeStat();
+            }
+	    }
+
+	    [DataMember]
+	    public Nature Nature
+	    {
+	        get { return _nature; }
+	        set
+	        {
+	            if (Equals(value, _nature)) return;
+	            _nature = value;
+	            OnPropertyChanged();
+                OnPropertyChangeStat();
+            }
+	    }
+
+	    [DataMember]
+	    public Items HeldItem
+	    {
+	        get { return _heldItem; }
+	        set
+	        {
+	            if (value == _heldItem) return;
+	            _heldItem = value;
+	            OnPropertyChanged();
+	        }
+	    }
+
+	    [DataMember]
+	    public bool HasPokerus
+	    {
+	        get { return _hasPokerus; }
+	        set
+	        {
+	            if (value == _hasPokerus) return;
+	            _hasPokerus = value;
+	            OnPropertyChanged();
+	        }
+	    }
+
+	    public Pokemon()
 		{
 			Level = 1;
 			Species = new PokemonType();
@@ -80,7 +163,7 @@ namespace EVTracker
 		}
 		#endregion
 
-	    public void ApplyItem(Items item)
+	    private void ApplyItem(Items item)
 	    {
             switch (item)
             {
@@ -111,6 +194,7 @@ namespace EVTracker
             if (value >= 100) return;
             value = Math.Min(100, value + 10);
             EV[stat] = value;
+            OnPropertyChangeStat();
         }
 
         public void ApplyStatBerry(Stat stat)
@@ -119,7 +203,18 @@ namespace EVTracker
             value = value <= 100 ? Math.Max(0, value - 10) : 100;
 
             EV[stat] = value;
+            OnPropertyChangeStat();
         }
+
+	    private void OnPropertyChangeStat()
+	    {
+	        OnPropertyChanged(nameof(HP));
+	        OnPropertyChanged(nameof(Attack));
+	        OnPropertyChanged(nameof(Defence));
+	        OnPropertyChanged(nameof(SpecialAttack));
+	        OnPropertyChanged(nameof(SpecialDefence));
+	        OnPropertyChanged(nameof(Speed));
+	    }
 
 	    public void Defeat(PokemonType pokemonType)
 	    {
@@ -151,11 +246,20 @@ namespace EVTracker
             }
 
             ApplyItem(HeldItem);
+            OnPropertyChangeStat();
         }
 
         private void UpdateStat(Stat stat, int statIncrease)
         {
             EV[stat] = Math.Min(statIncrease * (HeldItem == Items.MachoBrace ? 2 : 1) * (HasPokerus ? 2 : 1) + EV[stat], 255);
         }
-    }
+
+	    public event PropertyChangedEventHandler PropertyChanged;
+
+	    [NotifyPropertyChangedInvocator]
+	    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+	    {
+	        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+	    }
+	}
 }
