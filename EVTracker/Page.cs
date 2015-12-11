@@ -193,37 +193,37 @@ namespace EVTracker
 	            Location = new Point(15, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVHP); IVHP.ValueChanged += (o, args) => { Pokemon.IV[Stat.HP] = (int) IVHP.Value; }; IVHP.Maximum = 31;
+	        groupIVs.Controls.Add(IVHP); IVHP.ValueChanged += (o, args) => { Pokemon.IVHP = (int) IVHP.Value; }; IVHP.Maximum = 31;
 	        IVAttack = new NumericUpDown
 	        {
 	            Location = new Point(96, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVAttack); IVAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.Attack] = (int)IVAttack.Value; }; IVAttack.Maximum = 31;
+	        groupIVs.Controls.Add(IVAttack); IVAttack.ValueChanged += (o, args) => { Pokemon.IVAttack = (int)IVAttack.Value; }; IVAttack.Maximum = 31;
 	        IVDefence = new NumericUpDown
 	        {
 	            Location = new Point(189, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVDefence); IVDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.Defence] = (int)IVDefence.Value; }; IVDefence.Maximum = 31;
+	        groupIVs.Controls.Add(IVDefence); IVDefence.ValueChanged += (o, args) => { Pokemon.IVDefence = (int)IVDefence.Value; }; IVDefence.Maximum = 31;
 	        IVSpecialAttack = new NumericUpDown
 	        {
 	            Location = new Point(282, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpecialAttack); IVSpecialAttack.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialAttack] = (int)IVSpecialAttack.Value; }; IVSpecialAttack.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpecialAttack); IVSpecialAttack.ValueChanged += (o, args) => { Pokemon.IVSpecialAttack = (int)IVSpecialAttack.Value; }; IVSpecialAttack.Maximum = 31;
 	        IVSpecialDefence = new NumericUpDown
 	        {
 	            Location = new Point(375, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpecialDefence); IVSpecialDefence.ValueChanged += (o, args) => { Pokemon.IV[Stat.SpecialDefence] = (int)IVSpecialDefence.Value; }; IVSpecialDefence.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpecialDefence); IVSpecialDefence.ValueChanged += (o, args) => { Pokemon.IVSpecialDefence = (int)IVSpecialDefence.Value; }; IVSpecialDefence.Maximum = 31;
 	        IVSpeed = new NumericUpDown
 	        {
 	            Location = new Point(468, 21),
 	            Size = new Size(56, 20)
 	        };
-	        groupIVs.Controls.Add(IVSpeed); IVSpeed.ValueChanged += (o, args) => { Pokemon.IV[Stat.Speed] = (int)IVSpeed.Value; }; IVSpeed.Maximum = 31;
+	        groupIVs.Controls.Add(IVSpeed); IVSpeed.ValueChanged += (o, args) => { Pokemon.IVSpeed = (int)IVSpeed.Value; }; IVSpeed.Maximum = 31;
             #endregion
 
 
@@ -303,7 +303,7 @@ namespace EVTracker
 	            Location = new Point(82, 41),
 	            Size = new Size(120, 20)
 	        };
-	        EVHP.ValueChanged += (o, args) => { Pokemon.EV[Stat.HP] = (int) EVHP.Value; };
+	        EVHP.ValueChanged += (o, args) => { Pokemon.EVHP = (int) EVHP.Value; };
             eVs.Controls.Add(EVHP);
 
 	        var hpUp = new Button
@@ -341,7 +341,7 @@ namespace EVTracker
 	            Location = new Point(82, 67),
 	            Size = new Size(120, 20)
 	        };
-            EVAttack.ValueChanged += (o, args) => { Pokemon.EV[Stat.Attack] = (int) EVAttack.Value; };
+            EVAttack.ValueChanged += (o, args) => { Pokemon.EVAttack = (int) EVAttack.Value; };
             eVs.Controls.Add(EVAttack);
 
 	        var protein = new Button
@@ -379,7 +379,7 @@ namespace EVTracker
 	            Location = new Point(82, 93),
 	            Size = new Size(120, 20)
 	        };
-            EVDefence.ValueChanged += (o, args) => { Pokemon.EV[Stat.Defence] = (int) EVDefence.Value; };
+            EVDefence.ValueChanged += (o, args) => { Pokemon.EVDefence = (int) EVDefence.Value; };
             eVs.Controls.Add(EVDefence);
 
 	        var iron = new Button
@@ -419,7 +419,7 @@ namespace EVTracker
 	        };
             EVSpecialAttack.ValueChanged += (o, args) =>
             {
-                Pokemon.EV[Stat.SpecialAttack] = (int) EVSpecialAttack.Value; 
+                Pokemon.EVSpecialAttack = (int) EVSpecialAttack.Value; 
             };
             eVs.Controls.Add(EVSpecialAttack);
 
@@ -460,7 +460,7 @@ namespace EVTracker
 	        };
             EVSpecialDefence.ValueChanged += (o, args) =>
             {
-                Pokemon.EV[Stat.SpecialDefence] = (int) EVSpecialDefence.Value; 
+                Pokemon.EVSpecialDefence = (int) EVSpecialDefence.Value; 
             };
             eVs.Controls.Add(EVSpecialDefence);
 
@@ -499,7 +499,7 @@ namespace EVTracker
 	            Location = new Point(82, 171),
 	            Size = new Size(120, 20)
 	        };
-            EVSpeed.ValueChanged += (o, args) => { Pokemon.EV[Stat.Speed] = (int) EVSpeed.Value; };
+            EVSpeed.ValueChanged += (o, args) => { Pokemon.EVSpeed = (int) EVSpeed.Value; };
             eVs.Controls.Add(EVSpeed);
 
 	        var carbos = new Button
@@ -693,18 +693,18 @@ namespace EVTracker
                 HeldItem.SelectedItem = selectedItem.First();
             }
 
-            EVAttack.Value = Pokemon.EV[Stat.Attack];
-            EVDefence.Value = Pokemon.EV[Stat.Defence];
-            EVHP.Value = Pokemon.EV[Stat.HP];
-            EVSpecialAttack.Value = Pokemon.EV[Stat.SpecialAttack];
-            EVSpecialDefence.Value = Pokemon.EV[Stat.SpecialDefence];
-            EVSpeed.Value = Pokemon.EV[Stat.Speed];
-            IVAttack.Value = Pokemon.IV[Stat.Attack];
-            IVDefence.Value = Pokemon.IV[Stat.Defence];
-            IVHP.Value = Pokemon.IV[Stat.HP];
-            IVSpecialAttack.Value = Pokemon.IV[Stat.SpecialAttack];
-            IVSpecialDefence.Value = Pokemon.IV[Stat.SpecialDefence];
-            IVSpeed.Value = Pokemon.IV[Stat.Speed];
+            EVAttack.Value = Pokemon.EVAttack;
+            EVDefence.Value = Pokemon.EVDefence;
+            EVHP.Value = Pokemon.EVHP;
+            EVSpecialAttack.Value = Pokemon.EVSpecialAttack;
+            EVSpecialDefence.Value = Pokemon.EVSpecialDefence;
+            EVSpeed.Value = Pokemon.EVSpeed;
+            IVAttack.Value = Pokemon.IVAttack;
+            IVDefence.Value = Pokemon.IVDefence;
+            IVHP.Value = Pokemon.IVHP;
+            IVSpecialAttack.Value = Pokemon.IVSpecialAttack;
+            IVSpecialDefence.Value = Pokemon.IVSpecialDefence;
+            IVSpeed.Value = Pokemon.IVSpeed;
             BaseStatHP.Text = Pokemon.Species.BaseStats[Stat.HP].ToString();
             BaseStatAttack.Text = Pokemon.Species.BaseStats[Stat.Attack].ToString();
             BaseStatDefence.Text = Pokemon.Species.BaseStats[Stat.Defence].ToString();

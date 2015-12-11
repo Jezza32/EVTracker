@@ -70,20 +70,20 @@
             <TextBlock Text="{Binding Path=Species.BaseStats[Speed]}" Grid.Row="1" Grid.Column="6"></TextBlock>
 
             <Label Grid.Row="2" Grid.Column="0">IVs</Label>
-            <xctk:IntegerUpDown Value="{Binding Path=IV[HP]}" Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=IV[Attack]}" Grid.Row="2" Grid.Column="2" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=IV[Defence]}" Grid.Row="2" Grid.Column="3" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=IV[SpecialAttack]}" Grid.Row="2" Grid.Column="4" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=IV[SpecialDefence]}" Grid.Row="2" Grid.Column="5" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=IV[Speed]}" Grid.Row="2" Grid.Column="6" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=IVHP}" Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=IVAttack}" Grid.Row="2" Grid.Column="2" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=IVDefence}" Grid.Row="2" Grid.Column="3" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=IVSpecialAttack}" Grid.Row="2" Grid.Column="4" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=IVSpecialDefence}" Grid.Row="2" Grid.Column="5" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=IVSpeed}" Grid.Row="2" Grid.Column="6" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
 
             <Label Grid.Row="3" Grid.Column="0">EVs</Label>
-            <xctk:IntegerUpDown Value="{Binding Path=EV[HP]}" Grid.Row="3" Grid.Column="1" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=EV[Attack]}" Grid.Row="3" Grid.Column="2" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=EV[Defence]}" Grid.Row="3" Grid.Column="3" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=EV[SpecialAttack]}" Grid.Row="3" Grid.Column="4" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=EV[SpecialDefence]}" Grid.Row="3" Grid.Column="5" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
-            <xctk:IntegerUpDown Value="{Binding Path=EV[Speed]}" Grid.Row="3" Grid.Column="6" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=EVHP, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=EVAttack, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=EVDefence, Mode=TwoWay}" Grid.Row="3" Grid.Column="3" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=EVSpecialAttack, Mode=TwoWay}" Grid.Row="3" Grid.Column="4" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=EVSpecialDefence, Mode=TwoWay}" Grid.Row="3" Grid.Column="5" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
+            <xctk:IntegerUpDown Value="{Binding Path=EVSpeed, Mode=TwoWay}" Grid.Row="3" Grid.Column="6" Minimum="0" Maximum="31"></xctk:IntegerUpDown>
 
             <Label Grid.Row="4" Grid.Column="0">Actual Stats</Label>
             <TextBlock Text="{Binding Path=HP}" Grid.Row="4" Grid.Column="1"></TextBlock>

@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wpf="clr-namespace:EVTracker.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="731" Width="1000">
     <DockPanel>
-        <TabControl Name="PokemonHolder" ItemsSource="{Binding Path=PokemonList}">
-            <TabControl.ContentTemplate>
-                <DataTemplate>
-                    <wpf:PokemonControl></wpf:PokemonControl>
-                </DataTemplate>
-            </TabControl.ContentTemplate>
-        </TabControl>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Right" LastChildFill="False">
+                <Button DockPanel.Dock="Top" Command="{Binding HondewBerryCommand}" CommandParameter="{Binding Path=CurrentPokemon}"><TextBlock>Hondew Berry</TextBlock></Button>
+                <Button DockPanel.Dock="Top"><TextBlock>Agnew Berry</TextBlock></Button>
+            </DockPanel>
+            <TabControl Name="PokemonHolder" ItemsSource="{Binding Path=PokemonList}" SelectedItem="{Binding Path=CurrentPokemon}" DockPanel.Dock="Left">
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <wpf:PokemonControl></wpf:PokemonControl>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+        </DockPanel>
     </DockPanel>
 </Window>
