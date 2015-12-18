@@ -8,10 +8,7 @@
         Title="MainWindow" Height="731" Width="1000">
     <DockPanel>
         <DockPanel>
-            <DockPanel DockPanel.Dock="Right" LastChildFill="False">
-                <Button DockPanel.Dock="Top" Command="{Binding HondewBerryCommand}" CommandParameter="{Binding Path=CurrentPokemon}"><TextBlock>Hondew Berry</TextBlock></Button>
-                <Button DockPanel.Dock="Top"><TextBlock>Agnew Berry</TextBlock></Button>
-            </DockPanel>
+            <wpf:StatItemControl DockPanel.Dock="Right"></wpf:StatItemControl>
             <TabControl Name="PokemonHolder" ItemsSource="{Binding Path=PokemonList}" SelectedItem="{Binding Path=CurrentPokemon}" DockPanel.Dock="Left">
                 <TabControl.ContentTemplate>
                     <DataTemplate>

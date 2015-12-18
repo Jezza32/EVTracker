@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="EVTracker.Wpf.StatItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button Command="{Binding HpUpCommand}" Grid.Row="0" Grid.Column="0">
+            <TextBlock>HP Up</TextBlock>
+        </Button>
+        <Button Command="{Binding PomegBerryCommand}" Grid.Row="0" Grid.Column="1">
+            <TextBlock>Pomeg Berry</TextBlock>
+        </Button>
+        <Button Command="{Binding ProteinCommand}" Grid.Row="1" Grid.Column="0">
+            <TextBlock>Protein</TextBlock>
+        </Button>
+        <Button Command="{Binding KelpsyBerryCommand}" Grid.Row="1" Grid.Column="1">
+            <TextBlock>Kelpsy Berry</TextBlock>
+        </Button>
+        <Button Command="{Binding IronCommand}" Grid.Row="2" Grid.Column="0">
+            <TextBlock>Iron</TextBlock>
+        </Button>
+        <Button Command="{Binding QualotBerryCommand}" Grid.Row="2" Grid.Column="1">
+            <TextBlock>Qualot Berry</TextBlock>
+        </Button>
+        <Button Command="{Binding CalciumCommand}" Grid.Row="3" Grid.Column="0">
+            <TextBlock>Calcium</TextBlock>
+        </Button>
+        <Button Command="{Binding HondewBerryCommand}" Grid.Row="3" Grid.Column="1">
+            <TextBlock>Hondew Berry</TextBlock>
+        </Button>
+        <Button Command="{Binding ZincCommand}" Grid.Row="4" Grid.Column="0">
+            <TextBlock>Zinc</TextBlock>
+        </Button>
+        <Button Command="{Binding GrepaBerryCommand}" Grid.Row="4" Grid.Column="1">
+            <TextBlock>Grepa Berry</TextBlock>
+        </Button>
+        <Button Command="{Binding CarbosCommand}" Grid.Row="5" Grid.Column="0">
+            <TextBlock>Carbos</TextBlock>
+        </Button>
+        <Button Command="{Binding TamatoBerryCommand}" Grid.Row="5" Grid.Column="1">
+            <TextBlock>Tamato Berry</TextBlock>
+        </Button>
+    </Grid>
+</UserControl>
