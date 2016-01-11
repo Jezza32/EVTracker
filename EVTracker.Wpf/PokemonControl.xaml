@@ -23,8 +23,8 @@
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ComboBox SelectedItem="{Binding Path=Species}" Name="SpeciesComboBox" Grid.Row="0" Grid.Column="0"></ComboBox>
-                <ComboBox SelectedItem="{Binding Path=Nature}" Name="NatureComboBox" Grid.Row="0" Grid.Column="1"></ComboBox>
+                <ComboBox ItemsSource="{Binding Path=DataContext.Species, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:MainWindow}}}" SelectedItem="{Binding Path=Species}" Name="SpeciesComboBox" Grid.Row="0" Grid.Column="0"></ComboBox>
+                <ComboBox ItemsSource="{Binding Path=DataContext.Natures, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:MainWindow}}}" SelectedItem="{Binding Path=Nature}" Name="NatureComboBox" Grid.Row="0" Grid.Column="1"></ComboBox>
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
                     <CheckBox IsChecked="{Binding Path=HasPokerus}"></CheckBox>
                     <Label>Pokérus</Label>
@@ -33,7 +33,7 @@
                     <Label>Level</Label>
                     <xctk:IntegerUpDown Value="{Binding Path=Level}" Increment="1" Maximum="100" Minimum="1" />
                 </StackPanel>
-                <ComboBox SelectedItem="{Binding Path=HeldItem}" Name="HeldItemComboBox" Grid.Row="1" Grid.Column="2"></ComboBox>
+                <ComboBox ItemsSource="{Binding Path=DataContext.Items, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:MainWindow}}}" SelectedItem="{Binding Path=HeldItem}" Name="HeldItemComboBox" Grid.Row="1" Grid.Column="2"></ComboBox>
             </Grid>
             <Image Source="{Binding Path=Species.DexNumber, Converter={StaticResource DexNumberToSource}}" DockPanel.Dock="Right"></Image>
         </DockPanel>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -14,9 +15,19 @@ namespace EVTracker.Wpf
         private Route _currentRoute;
         private Pokemon _currentPokemon;
 
-        public Context(IList<Pokemon> pokemonList, IList<Game> games, IDictionary<int, PokemonType> species)
+        public Context(IList<Pokemon> pokemonList, IList<Game> games, IEnumerable<PokemonType> species, IEnumerable<Nature> natures, IEnumerable<Items> items)
         {
-            _species = species;
+            PokemonList = pokemonList;
+            Games = games;
+            Natures = natures.ToList();
+            CurrentPokemon = pokemonList.FirstOrDefault();
+            CurrentGame = games.FirstOrDefault();
+            CurrentRoute = CurrentGame?.Routes.FirstOrDefault();
+            Species = species.ToList();
+            Items = items.ToList();
+
+            _species = Species.ToDictionary(s => s.DexNumber);
+
             HpUpCommand = new RelayCommand(o => CurrentPokemon.ApplyStatBoost(Stat.HP));
             PomegBerryCommand = new RelayCommand(o => CurrentPokemon.ApplyStatBerry(Stat.HP));
             ProteinCommand = new RelayCommand(o => CurrentPokemon.ApplyStatBoost(Stat.Attack));
@@ -37,11 +48,6 @@ namespace EVTracker.Wpf
                 CurrentPokemon.Defeat(_species[speciesNumber.Value]);
             });
 
-            PokemonList = pokemonList;
-            Games = games;
-            CurrentPokemon = pokemonList.FirstOrDefault();
-            CurrentGame = games.FirstOrDefault();
-            CurrentRoute = CurrentGame?.Routes.FirstOrDefault();
 
             PropertyChanged += (sender, args) =>
             {
@@ -68,8 +74,11 @@ namespace EVTracker.Wpf
 
         public ICommand DefeatPokemon { get; set; }
 
+        public IList<PokemonType> Species { get; }
         public IList<Pokemon> PokemonList { get; }
-        public IList<Game> Games { get; set; }
+        public IList<Game> Games { get; }
+        public IList<Nature> Natures { get; }
+        public List<Items> Items { get; }
 
         public Pokemon CurrentPokemon
         {

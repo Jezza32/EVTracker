@@ -11,14 +11,6 @@ namespace EVTracker.Wpf
         public PokemonControl()
         {
             InitializeComponent();
-            
-            var species = new SpeciesLoader().Load();
-            SpeciesComboBox.ItemsSource = species;
-
-            var natures = new NaturesLoader().Load();
-            NatureComboBox.ItemsSource = natures;
-
-            HeldItemComboBox.ItemsSource = Enum.GetValues(typeof(Items));
         }
     }
 }
