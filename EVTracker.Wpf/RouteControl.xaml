@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="EVTracker.Wpf.RouteControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EVTracker.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel.Resources>
+            <local:DexNumberToSourceConverter x:Key="DexNumberToSource" />
+        </StackPanel.Resources>
+        <StackPanel>
+            <ComboBox ItemsSource="{Binding Path=Games}" SelectedItem="{Binding Path=CurrentGame}"></ComboBox>
+            <ComboBox ItemsSource="{Binding Path=CurrentGame.Routes}" SelectedItem="{Binding Path=CurrentRoute}"></ComboBox>
+        </StackPanel>
+        <ItemsControl ItemsSource="{Binding Path=CurrentRoute.Pokemon}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding Path=DataContext.DefeatPokemon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:MainWindow}}}" CommandParameter="{Binding}">
+                        <Image Source="{Binding Converter={StaticResource DexNumberToSource}}" Height="64" Width="64"></Image>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

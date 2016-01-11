@@ -81,7 +81,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Context.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="RouteControl.xaml.cs">
+      <DependentUpon>RouteControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StatItemControl.xaml.cs">
       <DependentUpon>StatItemControl.xaml</DependentUpon>
     </Compile>
@@ -99,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PokemonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RouteControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
