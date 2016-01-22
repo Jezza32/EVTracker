@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVTracker", "EVTracker\EVTracker.csproj", "{931B6707-9099-4938-BC85-8FD31F6B11FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVTracker.Wpf", "EVTracker.Wpf\EVTracker.Wpf.csproj", "{0D59DB6D-A5C2-4857-98CF-DC28D7F10F27}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pokemon.EVTracker.SpeciesService", "Pokemon.EVTracker.SpeciesService\Pokemon.EVTracker.SpeciesService.xproj", "{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pokemon.EVTracker.Models", "Pokemon.EVTracker.Models\Pokemon.EVTracker.Models.xproj", "{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +33,22 @@ Global
 		{0D59DB6D-A5C2-4857-98CF-DC28D7F10F27}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D59DB6D-A5C2-4857-98CF-DC28D7F10F27}.Release|x86.ActiveCfg = Release|Any CPU
 		{0D59DB6D-A5C2-4857-98CF-DC28D7F10F27}.Release|x86.Build.0 = Release|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Debug|x86.Build.0 = Debug|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Release|x86.ActiveCfg = Release|Any CPU
+		{BB8CDFB2-EEFD-4115-ABFF-9F9BDCA32B2E}.Release|x86.Build.0 = Release|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Debug|x86.Build.0 = Debug|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Release|x86.ActiveCfg = Release|Any CPU
+		{2A919C29-BF9B-4D3F-889D-EE968EC1C55C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
