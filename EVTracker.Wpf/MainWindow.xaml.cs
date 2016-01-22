@@ -19,9 +19,10 @@ namespace EVTracker.Wpf
 
             using (var httpClient = new HttpClient())
             {
-                var response = httpClient.GetAsync("http://localhost:20640/api/v0/species").Result;
-                var games = new GamesLoader().Load().ToList();
-                var pokemonSpecies = response.Content.ReadAsAsync<IEnumerable<PokemonType>>().Result;
+                var speciesResponse = httpClient.GetAsync("http://localhost:20640/api/v0/species").Result;
+                var gamesResponse = httpClient.GetAsync("http://localhost:39775/api/v0/games").Result;
+                var games = gamesResponse.Content.ReadAsAsync<IList<Game>>().Result;
+                var pokemonSpecies = speciesResponse.Content.ReadAsAsync<IEnumerable<PokemonType>>().Result;
                 var natures = new NaturesLoader().Load();
                 var items = Enum.GetValues(typeof(Items));
 
