@@ -13,6 +13,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pokemon.EVTracker.Models", 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pokemon.EVTracker.GamesService", "Pokemon.EVTracker.GamesService\Pokemon.EVTracker.GamesService.xproj", "{381DADC4-6841-4E89-832A-EDA1924B144F}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Pokemon.EVTracker.NaturesService", "Pokemon.EVTracker.NaturesService\Pokemon.EVTracker.NaturesService.xproj", "{4534F910-6755-48B1-87FD-72EF4881FBB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,14 @@ Global
 		{381DADC4-6841-4E89-832A-EDA1924B144F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{381DADC4-6841-4E89-832A-EDA1924B144F}.Release|x86.ActiveCfg = Release|Any CPU
 		{381DADC4-6841-4E89-832A-EDA1924B144F}.Release|x86.Build.0 = Release|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Debug|x86.Build.0 = Debug|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Release|x86.ActiveCfg = Release|Any CPU
+		{4534F910-6755-48B1-87FD-72EF4881FBB6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

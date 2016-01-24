@@ -21,9 +21,10 @@ namespace EVTracker.Wpf
             {
                 var speciesResponse = httpClient.GetAsync("http://localhost:20640/api/v0/species").Result;
                 var gamesResponse = httpClient.GetAsync("http://localhost:39775/api/v0/games").Result;
+                var natureResponse = httpClient.GetAsync("http://localhost:25072/api/v0/natures").Result;
                 var games = gamesResponse.Content.ReadAsAsync<IList<Game>>().Result;
                 var pokemonSpecies = speciesResponse.Content.ReadAsAsync<IEnumerable<PokemonType>>().Result;
-                var natures = new NaturesLoader().Load();
+                var natures = natureResponse.Content.ReadAsAsync<IEnumerable<Nature>>().Result;
                 var items = Enum.GetValues(typeof(Items));
 
                 DataContext = new Context(new List<Pokemon>
