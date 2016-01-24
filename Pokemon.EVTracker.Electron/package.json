@@ -1,0 +1,13 @@
+{
+  "name": "Pokemon.EVTracker.Electron",
+  "version": "0.0.0",
+  "description": "Pokemon.EVTracker.Electron",
+  "main": "main.js",
+  "author": {
+    "name": "Peter",
+    "email": ""
+  },
+  "dependencies": {
+    "electron-prebuilt": "^0.36.5"
+  }
+}
