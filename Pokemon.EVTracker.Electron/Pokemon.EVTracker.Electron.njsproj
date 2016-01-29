@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="index.js" />
     <Compile Include="main.js" />
     <Content Include="index.html" />
     <Content Include="package.json" />
