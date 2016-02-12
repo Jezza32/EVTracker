@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Pokemon.EVTracker.Models;
 
 namespace Pokemon.EVTracker.PokemonService.Models
@@ -14,27 +15,21 @@ namespace Pokemon.EVTracker.PokemonService.Models
             if (pokemon.DexNumber != species.DexNumber) throw new Exception("Wrong Pokemon");
 
             _baseStats = species.BaseStats;
+            Stats = Enum.GetValues(typeof(Stat)).OfType<Stat>().ToDictionary(s => s, s => s == Stat.HP ? CalcHP() : CalcStat(s));
         }
 
-        //public int HP
-        //{
-        //    get
-        //    {
-        //        int value = (2 * _baseStats[Stat.HP]) + IndividualValues[Stat.HP] + (EffortValues[Stat.HP] / 4);
-        //        value *= Level;
-        //        value /= 100;
-        //        value += Level + 10;
-        //        return value;
-        //    }
-        //    set { }
-        //}
-        //public int Attack { get { return GetStat(Stat.Attack); } set {} }
-        //public int Defence { get { return GetStat(Stat.Defence); } set {} }
-        //public int SpecialAttack { get { return GetStat(Stat.SpecialAttack); } set {} }
-        //public int SpecialDefence { get { return GetStat(Stat.SpecialDefence); } set {} }
-        public int Speed { get { return GetStat(Stat.Speed); } set {} }
+        public IDictionary<Stat, int> Stats { get; set; }
 
-        private int GetStat(Stat s)
+        private int CalcHP()
+        {
+            int value = (2 * _baseStats[Stat.HP]) + IndividualValues[Stat.HP] + (EffortValues[Stat.HP] / 4);
+            value *= Level;
+            value /= 100;
+            value += Level + 10;
+            return value;
+        }
+
+        private int CalcStat(Stat s)
         {
             var value = (2 * _baseStats[s]) + IndividualValues[s] + (EffortValues[s] / 4);
             value *= Level;

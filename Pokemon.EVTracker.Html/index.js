@@ -5,7 +5,7 @@ function AppViewModel() {
     this.species = ko.observableArray();
     this.natures = ko.observableArray();
     this.heldItems = ko.observableArray();
-    this.pokemon = ko.observable({Nature: null, Level: null, HeldItem: null});
+    this.pokemon = ko.observable({ Nature: null, Level: null, HeldItem: null, IndividualValues: {HP:0, Attack:0, Defence:0,SpecialAttack:0,SpecialDefence:0,Speed:0 }, EffortValues: {HP:0, Attack:0, Defence:0,SpecialAttack:0,SpecialDefence:0,Speed:0 }, Stats: {HP:0, Attack:0, Defence:0,SpecialAttack:0,SpecialDefence:0,Speed:0 }});
 }
 
 function normaliseDexNumber(dexNum) {
