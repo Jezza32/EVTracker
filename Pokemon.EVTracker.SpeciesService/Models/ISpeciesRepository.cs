@@ -7,5 +7,6 @@ namespace Pokemon.EVTracker.SpeciesService.Models
     public interface ISpeciesRepository
     {
         Task<IEnumerable<PokemonType>> GetAllAsync();
+        Task<PokemonType> GetSpeciesAsync(int dexNumber);
     }
 }

@@ -5,9 +5,9 @@ namespace Pokemon.EVTracker.Models
 {
 	public class Pokemon
 	{
-	    public Pokemon(PokemonType species, int level, Nature nature, Items heldItem, bool hasPokerus, IDictionary<Stat, int> individualValues, IDictionary<Stat, int> effortValues)
+	    public Pokemon(int dexNumber, int level, Nature nature, Items heldItem, bool hasPokerus, IDictionary<Stat, int> individualValues, IDictionary<Stat, int> effortValues)
 	    {
-	        Species = species;
+	        DexNumber = dexNumber;
 	        Level = level;
 	        Nature = nature;
 	        HeldItem = heldItem;
@@ -16,7 +16,7 @@ namespace Pokemon.EVTracker.Models
 	        EffortValues = effortValues;
 	    }
 
-	    public PokemonType Species { get; set; }
+	    public int DexNumber { get; set; }
 	    public int Level { get; set; }
         public Nature Nature { get; set; }
         public Items HeldItem { get; set; }
@@ -26,7 +26,7 @@ namespace Pokemon.EVTracker.Models
 
 	    public override string ToString()
 	    {
-	        return Species.ToString();
+	        return DexNumber.ToString();
 	    }
 	}
 }

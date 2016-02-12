@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Pokemon.EVTracker.PokemonService.Models;
+using Pokemon.EVTracker.PokemonService.Repositories;
 
 namespace Pokemon.EVTracker.PokemonService.Controllers
 {
@@ -20,7 +21,7 @@ namespace Pokemon.EVTracker.PokemonService.Controllers
         }
 
         [HttpGet]
-        public EVTracker.Models.Pokemon Get()
+        public ComputedPokemon Get()
         {
             return _pokemonRepository.Get().Result;
         }

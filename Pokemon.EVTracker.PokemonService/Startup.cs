@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Pokemon.EVTracker.PokemonService.Controllers;
 using Pokemon.EVTracker.PokemonService.Models;
+using Pokemon.EVTracker.PokemonService.Repositories;
 
 namespace Pokemon.EVTracker.PokemonService
 {

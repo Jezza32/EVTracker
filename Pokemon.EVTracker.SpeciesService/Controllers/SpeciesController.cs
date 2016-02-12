@@ -15,9 +15,16 @@ namespace Pokemon.EVTracker.SpeciesService.Controllers
 
         // GET: api/v0/species
         [HttpGet]
-        public Task<IEnumerable<PokemonType>> Get()
+        public Task<IEnumerable<PokemonType>> GetAll()
         {
             return SpeciesRepository.GetAllAsync();
+        }
+
+        // GET: api/v0/species/{dexNumber}
+        [HttpGet("{dexNumber}")]
+        public Task<PokemonType> GetSpecies(int dexNumber)
+        {
+            return SpeciesRepository.GetSpeciesAsync(dexNumber);
         }
     }
 }

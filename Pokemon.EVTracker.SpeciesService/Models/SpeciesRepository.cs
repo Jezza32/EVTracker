@@ -31,5 +31,10 @@ namespace Pokemon.EVTracker.SpeciesService.Models
         {
             return Task.FromResult<IEnumerable<PokemonType>>(_species.Values);
         }
+
+        public Task<PokemonType> GetSpeciesAsync(int dexNumber)
+        {
+            return Task.FromResult(_species[dexNumber]);
+        }
     }
 }
