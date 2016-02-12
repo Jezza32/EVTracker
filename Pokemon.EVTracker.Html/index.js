@@ -2,10 +2,9 @@
 var ko = require('knockout');
 
 function AppViewModel() {
-    this.allSpecies = ko.observableArray();
-    this.species = ko.observable();
-    this.allNatures = ko.observableArray();
-    this.nature = ko.observable();
+    this.species = ko.observableArray();
+    this.natures = ko.observableArray();
+    this.pokemon = ko.observable({Nature: null, Level: null});
 }
 
 function normaliseDexNumber(dexNum) {
@@ -21,9 +20,13 @@ var appViewModel = new AppViewModel();
 ko.applyBindings(appViewModel);
 
 $.getJSON("http://localhost:25072/api/v0/Natures", function (data) {
-    appViewModel.allNatures(data);
+    appViewModel.natures(data);
 });
 
 $.getJSON("http://localhost:20640/api/v0/Species", function (data) {
-    appViewModel.allSpecies(data);
+    appViewModel.species(data);
+});
+
+$.getJSON("http://localhost:57528/api/v0/Pokemon", function (data) {
+    appViewModel.pokemon(data);
 });
