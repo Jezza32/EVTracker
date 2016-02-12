@@ -1,8 +1,6 @@
-using System.ComponentModel;
-
 namespace Pokemon.EVTracker.Models
 {
-    public enum Items
+    public enum Item
     {
         None,
         MachoBrace,

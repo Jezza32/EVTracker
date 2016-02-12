@@ -6,8 +6,13 @@
 </head>
     <body>
         <select data-bind="options: species, optionsText: function(item) { return '#' + normaliseDexNumber(item.DexNumber) + ' - ' + item.Name;}, value: pokemon().species"></select>
-        <input type="number" min="1" max="100" data-bind="value: pokemon().Level"/>
         <select data-bind="options: natures, optionsText: 'Name', value: pokemon().Nature"></select>
+        <input type="checkbox" data-bind="value: pokemon().HasPokerus"/>
+        <label>Pokérus</label>
+        <br/>
+        <label>Level:</label>
+        <input type="number" min="1" max="100" data-bind="value: pokemon().Level"/>
+        <select data-bind="options: heldItems, value: pokemon().HeldItem"></select>
 
         <script src="index.js"></script>
     </body>
