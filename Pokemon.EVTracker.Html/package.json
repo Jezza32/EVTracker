@@ -1,7 +1,7 @@
 {
-  "name": "Pokemon.EVTracker.Electron",
+  "name": "Pokemon.EVTracker.Html",
   "version": "0.0.0",
-  "description": "Pokemon.EVTracker.Electron",
+  "description": "Pokemon.EVTracker.Html",
   "main": "main.js",
   "author": {
     "name": "Peter",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "electron-prebuilt": "^0.36.5",
-    "jquery": "^2.2.0"
+    "jquery": "^2.2.0",
+    "knockout": "^3.4.0"
   }
 }
