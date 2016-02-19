@@ -2,10 +2,14 @@
 var ko = require('knockout');
 
 function AppViewModel() {
+    this.stats = ko.observableArray(["HP", "Attack", "Defence", "SpecialAttack", "SpecialDefence", "Speed"]);
+    this.selectedRoute = ko.observable({ Name: null, Pokemon: null });
+    this.selectedGame = ko.observable({ Routes: [{ Name: null, Pokemon: null }] });
+    this.games = ko.observableArray([{ Routes: [] }]);
     this.species = ko.observableArray();
     this.natures = ko.observableArray();
     this.heldItems = ko.observableArray();
-    this.pokemon = ko.observable({ Nature: null, Level: null, HeldItem: null, IndividualValues: {HP:0, Attack:0, Defence:0,SpecialAttack:0,SpecialDefence:0,Speed:0 }, EffortValues: {HP:0, Attack:0, Defence:0,SpecialAttack:0,SpecialDefence:0,Speed:0 }, Stats: {HP:0, Attack:0, Defence:0,SpecialAttack:0,SpecialDefence:0,Speed:0 }});
+    this.pokemon = ko.observable({ Nature: null, Level: null, HeldItem: null, IndividualValues: { HP: 0, Attack: 0, Defence: 0, SpecialAttack: 0, SpecialDefence: 0, Speed: 0 }, EffortValues: { HP: 0, Attack: 0, Defence: 0, SpecialAttack: 0, SpecialDefence: 0, Speed: 0 }, Stats: { HP: 0, Attack: 0, Defence: 0, SpecialAttack: 0, SpecialDefence: 0, Speed: 0 } });
 }
 
 function normaliseDexNumber(dexNum) {
@@ -34,4 +38,24 @@ $.getJSON("http://localhost:57528/api/v0/Pokemon", function (data) {
 
 $.getJSON("http://localhost:38327/api/v0/Items", function (data) {
     appViewModel.heldItems(data);
+});
+
+$.getJSON("http://localhost:39775/api/v0/Games", function (data) {
+    appViewModel.games(data);
+});
+
+$(document).on("click", ".stat-change", function () {
+    var type = $(this).data("type");
+    var stat = $(this).data("stat");
+    var change = $(this).data("change");
+    $.getJSON("http://localhost:57528/api/v0/Pokemon/update/" + type + "/" + stat + "/" + change, function (data) {
+        appViewModel.pokemon(data);
+    });
+});
+
+$(document).on("click", ".defeat", function () {
+    var dex = $(this).data("dex");
+    $.getJSON("http://localhost:57528/api/v0/Pokemon/defeat/" + dex, function (data) {
+        appViewModel.pokemon(data);
+    });
 });

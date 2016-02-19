@@ -4,34 +4,53 @@
     <meta charset="UTF-8">
     <title>EV Tracker</title>
 </head>
-    <body>
-        <select data-bind="options: species, optionsText: function(item) { return '#' + normaliseDexNumber(item.DexNumber) + ' - ' + item.Name;}, value: pokemon().species"></select>
-        <select data-bind="options: natures, optionsText: 'Name', value: pokemon().Nature"></select>
-        <input type="checkbox" data-bind="value: pokemon().HasPokerus"/>
-        <label>Pokérus</label>
-        <br/>
-        <label>Level:</label>
-        <input type="number" min="1" max="100" data-bind="value: pokemon().Level"/>
-        <select data-bind="options: heldItems, value: pokemon().HeldItem"></select>
-        <br/>
-        <table>
-            <thead>
-                <tr>
-                    <th>HP</th>
-                    <th>Attack</th>
-                    <th>Defence</th>
-                    <th>Special Attack</th>
-                    <th>Special Defence</th>
-                    <th>Speed</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td data-bind="text: pokemon().IndividualValues['HP']"></td><td data-bind="text: pokemon().IndividualValues['Attack']"></td><td data-bind="text: pokemon().IndividualValues['Defence']"></td><td data-bind="text: pokemon().IndividualValues['SpecialAttack']"></td><td data-bind="text: pokemon().IndividualValues['SpecialDefence']"></td><td data-bind="text: pokemon().IndividualValues['Speed']"></td></tr>
-                <tr><td data-bind="text: pokemon().EffortValues['HP']"></td><td data-bind="text: pokemon().EffortValues['Attack']"></td><td data-bind="text: pokemon().EffortValues['Defence']"></td><td data-bind="text: pokemon().EffortValues['SpecialAttack']"></td><td data-bind="text: pokemon().EffortValues['SpecialDefence']"></td><td data-bind="text: pokemon().EffortValues['Speed']"></td></tr>
-                <tr><td data-bind="text: pokemon().Stats['HP']"></td><td data-bind="text: pokemon().Stats['Attack']"></td><td data-bind="text: pokemon().Stats['Defence']"></td><td data-bind="text: pokemon().Stats['SpecialAttack']"></td><td data-bind="text: pokemon().Stats['SpecialDefence']"></td><td data-bind="text: pokemon().Stats['Speed']"></td></tr>
-            </tbody>
-        </table>
+<body>
+    <select data-bind="options: species, optionsText: function(item) { return '#' + normaliseDexNumber(item.DexNumber) + ' - ' + item.Name;}, value: pokemon().species"></select>
+    <select data-bind="options: natures, optionsText: 'Name', value: pokemon().Nature"></select>
+    <input type="checkbox" data-bind="value: pokemon().HasPokerus" />
+    <label>Pokérus</label>
+    <br />
+    <label>Level:</label>
+    <input type="number" min="1" max="100" data-bind="value: pokemon().Level" />
+    <select data-bind="options: heldItems, value: pokemon().HeldItem"></select>
+    <br />
+    <table>
+        <thead>
+            <tr data-bind="foreach: stats">
+                <th data-bind="text: $data"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-bind="foreach: stats">
+                <td>
+                    <span data-bind="text: $root.pokemon().IndividualValues[$data]"></span>
+                    <button class="stat-change" data-type="individual" data-bind="attr: {'data-stat': $data}" data-change="1">^</button>
+                    <button class="stat-change" data-type="individual" data-bind="attr: {'data-stat': $data}" data-change="-1">v</button>
+                </td>
+            </tr>
+            <tr data-bind="foreach: stats">
+                <td>
+                    <span data-bind="text: $root.pokemon().EffortValues[$data]"></span>
+                    <button class="stat-change" data-type="effort" data-bind="attr: {'data-stat': $data}" data-change="1">^</button>
+                    <button class="stat-change" data-type="effort" data-bind="attr: {'data-stat': $data}" data-change="-1">v</button>
+                </td>
+            </tr>
+            <tr data-bind="foreach: stats">
+                <td data-bind="text: $root.pokemon().Stats[$data]"></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
 
-        <script src="index.js"></script>
-    </body>
+    <select data-bind="options: games, optionsText: function(item) { return item.Name }, value: selectedGame"></select>
+    <select data-bind="options: selectedGame().Routes, optionsText: function(item) { return item.Name }, value: selectedRoute"></select>
+    <br/>
+    <!-- ko if: selectedRoute() != null -->
+    <span data-bind="foreach: selectedRoute().Pokemon">
+        <button class="defeat" data-bind="text: $data, attr: {'data-dex': $data}"></button>
+    </span>
+    <!-- /ko-->
+
+    <script src="index.js"></script>
+</body>
 </html>
