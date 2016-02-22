@@ -6,7 +6,7 @@
 </head>
 <body>
     <select data-bind="options: species, optionsText: function(item) { return '#' + normaliseDexNumber(item.DexNumber) + ' - ' + item.Name;}, value: pokemon().species"></select>
-    <select data-bind="options: natures, optionsText: 'Name', value: pokemon().Nature"></select>
+    <select data-bind="options: natures, optionsText: 'Name', value: pokemon().Nature" id="nature-selector"></select>
     <input type="checkbox" data-bind="value: pokemon().HasPokerus" />
     <label>Pokérus</label>
     <br />

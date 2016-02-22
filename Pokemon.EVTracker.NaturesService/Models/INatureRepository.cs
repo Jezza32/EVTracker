@@ -7,5 +7,6 @@ namespace Pokemon.EVTracker.NaturesService.Models
     public interface INatureRepository
     {
         Task<IEnumerable<Nature>> Get();
+        Task<Nature> Get(string nature);
     }
 }

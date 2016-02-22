@@ -64,5 +64,18 @@ namespace Pokemon.EVTracker.PokemonService.Repositories
                 return await Get();
             }
         }
+
+        public async Task<ComputedPokemon> UpdateNature(string nature)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var natureResponse = await httpClient.GetAsync($"http://localhost:25072/api/v0/natures/{nature}");
+                var natureObj = await natureResponse.Content.ReadAsAsync<Nature>();
+
+                _trackedPokemon.Nature = natureObj;
+
+                return await Get();
+            }
+        }
     }
 }

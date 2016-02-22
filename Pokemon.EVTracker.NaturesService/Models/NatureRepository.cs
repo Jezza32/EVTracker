@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
@@ -25,6 +26,11 @@ namespace Pokemon.EVTracker.NaturesService.Models
         public Task<IEnumerable<Nature>> Get()
         {
             return Task.FromResult<IEnumerable<Nature>>(_natures);
+        }
+
+        public Task<Nature> Get(string nature)
+        {
+            return Task.FromResult<Nature>(_natures.FirstOrDefault(n => n.Name == nature));
         }
     }
 }

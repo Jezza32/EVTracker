@@ -14,9 +14,9 @@ namespace Pokemon.EVTracker.PokemonService.Controllers
     [Route("api/v0/[controller]")]
     public class PokemonController : Controller
     {
-        private readonly PokemonRepository _pokemonRepository;
+        private readonly IPokemonRepository _pokemonRepository;
 
-        public PokemonController([FromServices] PokemonRepository pokemonRepository)
+        public PokemonController([FromServices] IPokemonRepository pokemonRepository)
         {
             _pokemonRepository = pokemonRepository;
         }
@@ -28,7 +28,7 @@ namespace Pokemon.EVTracker.PokemonService.Controllers
         }
         
         [HttpGet("update/{type}/{stat}/{change}")]
-        public Task<ComputedPokemon> GetSpecies(string type, Stat stat, int change)
+        public Task<ComputedPokemon> UpdateValue(string type, Stat stat, int change)
         {
             if (string.Equals("effort", type, StringComparison.CurrentCultureIgnoreCase))
             {
@@ -41,6 +41,12 @@ namespace Pokemon.EVTracker.PokemonService.Controllers
             }
 
             return Get();
+        }
+        
+        [HttpGet("update/nature/{nature}")]
+        public Task<ComputedPokemon> UpdateNature(string nature)
+        {
+            return _pokemonRepository.UpdateNature(nature);
         }
         
         [HttpGet("defeat/{dexNumber}")]

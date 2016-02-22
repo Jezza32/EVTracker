@@ -23,5 +23,11 @@ namespace Pokemon.EVTracker.NaturesService.Controllers
         {
             return _natureRepository.Get();
         }
+
+        [HttpGet("{nature}")]
+        public Task<Nature> Get(string nature)
+        {
+            return _natureRepository.Get(nature);
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace Pokemon.EVTracker.PokemonService
             // Add framework services.
             services.AddMvc();
 
-            services.AddSingleton<PokemonRepository, PokemonRepository>();
+            services.AddSingleton<IPokemonRepository, PokemonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

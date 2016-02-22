@@ -21,6 +21,7 @@ function normaliseDexNumber(dexNum) {
 }
 
 var appViewModel = new AppViewModel();
+var oldNature;
 
 ko.applyBindings(appViewModel);
 
@@ -58,4 +59,14 @@ $(document).on("click", ".defeat", function () {
     $.getJSON("http://localhost:57528/api/v0/Pokemon/defeat/" + dex, function (data) {
         appViewModel.pokemon(data);
     });
+});
+
+$(document).on("change", "#nature-selector", function () {
+    var nature = appViewModel.pokemon().Nature;
+    if (nature != null && nature !== oldNature) {
+        oldNature = nature;
+        $.getJSON("http://localhost:57528/api/v0/Pokemon/update/nature/" + nature.Name, function (data) {
+            appViewModel.pokemon(data);
+        });
+    }
 });
