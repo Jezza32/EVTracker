@@ -1,3 +1,0 @@
-﻿# Pokemon.EVTracker.Electron
-
-
